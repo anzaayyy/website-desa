@@ -14,6 +14,7 @@ $routes->get('perangkat', 'PerangkatController::perangkat');
 $routes->get('berita', 'BeritaController::index');
 $routes->get('berita/(:segment)', 'BeritaController::detail/$1');
 $routes->get('pengumuman', 'PengumumanController::index');
+$routes->get('pengumuman/(:segment)', 'PengumumanController::detail/$1');
 $routes->get('agenda', 'AgendaController::index');
 $routes->get('penduduk', 'PendudukController::index');
 $routes->get('wilayah', 'WilayahController::index');
