@@ -1,0 +1,300 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* cegah space horizontal */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+  background: url("/assets/img/bg.jpeg") no-repeat center center;
+  background-size: cover;
+  padding: 0.5rem 1rem;
+}
+
+h1,
+h3,
+h2,
+h4 {
+  font-family: fantasy;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #000704;
+  padding: 0.5rem 1rem;
+  border-radius: 24px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.navbar-nav .nav-link {
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li {
+  position: relative;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  display: block;
+  transition: background 0.3s;
+}
+
+.navbar a:hover {
+  color: #53ad60;
+}
+
+/* Dropdown */
+.dropdown-menu {
+  display: none;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: max-content;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  z-index: 1000;
+  padding: 0.5rem 0;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block; /* kalau mau terbuka saat hover */
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.dropdown-menu li {
+  width: 100%;
+}
+
+.dropdown-menu a {
+  color: black;
+  padding: 0.5rem 1rem;
+}
+
+.dropdown-menu a:hover {
+  background-color: #070707;
+}
+
+/* img logo */
+.pentagon-wrapper {
+  width: 250px; /* bisa disesuaikan */
+  max-width: 100%; /* biar responsif */
+}
+
+.pentagon-img {
+  width: 100%; /* biar ikut parent */
+  aspect-ratio: 1/1; /* bentuk selalu kotak */
+  object-fit: cover; /* foto tidak gepeng */
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+
+/* section */
+section {
+  padding: 50px 30px; /* jarak atas-bawah & kiri-kanan */
+  margin-bottom: 20px; /* jarak antar section */
+  background: #26ff0038;
+}
+
+section img {
+  max-width: 100%;
+  border-radius: 8px; /* opsional biar lebih halus */
+}
+
+/* Biar teks di dalam row nggak nempel */
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  background: #f4ecec;
+  border-radius: 50px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* supaya gradient stat-number tidak keluar */
+  gap: 10px; /* jarak antara number dan label */
+}
+
+.stat-number {
+  display: inline-block;
+  min-width: 40px; /* biar bulat kalau angka 1 digit */
+  height: 40px;
+  line-height: 40px;
+  background: linear-gradient(90deg, #00ff66, #00ccff);
+  border-radius: 20px;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+  transition: width 1s ease;
+}
+
+.stat-label {
+  flex: 1;
+  font-weight: 700;
+  font-size: 18px;
+  color: #000;
+  text-align: center;
+  padding-left: 10px;
+}
+
+.state-item {
+  display: flex;
+  align-items: center;
+  background: #f4ecec;
+  border-radius: 50px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* supaya gradient stat-number tidak keluar */
+  gap: 4px; /* jarak antara number dan label */
+}
+
+.state-number {
+  display: inline-block;
+  width: 50%;
+  height: 40px;
+  line-height: 40px;
+  background: linear-gradient(90deg, #00ff66, #00ccff);
+  border-radius: 20px;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+  transition: width 1s ease;
+}
+
+.state-label {
+  flex: 1;
+  font-weight: 700;
+  font-size: 18px;
+  color: #000;
+  text-align: center;
+  padding-left: 10px;
+}
+
+.card-text {
+  text-align: justify;
+}
+
+.btn-bg {
+  font-size: 20px;
+  color: #000000;
+  background-color: #53ad60;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-family: fantasy;
+}
+
+.btn-bg:hover {
+  color: #53ad60;
+  background-color: #000;
+}
+
+.list-in li {
+  list-style-type: circle;
+}
+
+/* Footer */
+footer h4 {
+  margin-bottom: 0.5rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  /* Navbar */
+  .navbar ul {
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #000704;
+    padding: 0.5rem;
+    border-radius: 8px;
+  }
+  .navbar a {
+    padding: 0.75rem 1rem;
+    width: 100%;
+  }
+
+  .dropdown-menu a {
+    color: #ddd;
+  }
+
+  /* Section */
+  section {
+    padding: 40px 20px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Logo lebih kecil */
+  .pentagon-wrapper {
+    width: 150px;
+  }
+
+  /* Section */
+  section {
+    padding: 30px 15px;
+    margin-bottom: 20px;
+  }
+
+  /* Teks */
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+
+h3 {
+  color: #0275d8;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+h5 {
+  color: #333;
+  margin-top: 20px;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 25px;
+}
+
+li {
+  margin-bottom: 5px;
+}
+

@@ -1,0 +1,90 @@
+<?php
+
+namespace App\Controllers\Admin;
+
+use App\Controllers\BaseController;
+use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\BeritaModel;
+
+class BeritaController extends BaseController
+{
+    protected $beritaModel;
+
+    public function __construct()
+    {
+        $this->beritaModel = new BeritaModel();
+    }
+
+    public function index()
+    {
+        $data['berita'] = $this->beritaModel->orderBy('tanggal', 'DESC')->findAll();
+        return view('admin/berita/index', $data);
+    }
+
+    public function create()
+    {
+        return view('admin/berita/create');
+    }
+
+    public function store()
+    {
+        $gambar = $this->request->getFile('gambar');
+        $namaGambar = null;
+
+        if ($gambar && $gambar->isValid() && !$gambar->hasMoved()) {
+            $namaGambar = $gambar->getRandomName();
+            $gambar->move('uploads/berita', $namaGambar);
+        }
+
+        $this->beritaModel->save([
+            'judul'   => $this->request->getPost('judul'),
+            'isi'     => $this->request->getPost('isi'),
+            'tanggal' => $this->request->getPost('tanggal'),
+            'gambar'  => $namaGambar ? 'uploads/berita/'.$namaGambar : null,
+        ]);
+
+        return redirect()->to('/admin/berita')->with('success', 'Berita berhasil ditambahkan');
+    }
+
+    public function edit($id)
+    {
+        $data['berita'] = $this->beritaModel->find($id);
+        return view('admin/berita/edit', $data);
+    }
+
+    public function update($id)
+    {
+        $berita = $this->beritaModel->find($id);
+        $gambar = $this->request->getFile('gambar');
+        $namaGambar = $berita['gambar'];
+
+        if ($gambar && $gambar->isValid() && !$gambar->hasMoved()) {
+            if ($namaGambar && file_exists($namaGambar)) {
+                unlink($namaGambar);
+            }
+            $namaGambarBaru = $gambar->getRandomName();
+            $gambar->move('uploads/berita', $namaGambarBaru);
+            $namaGambar = 'uploads/berita/'.$namaGambarBaru;
+        }
+
+        $this->beritaModel->update($id, [
+            'judul'   => $this->request->getPost('judul'),
+            'isi'     => $this->request->getPost('isi'),
+            'tanggal' => $this->request->getPost('tanggal'),
+            'gambar'  => $namaGambar,
+        ]);
+
+        return redirect()->to('/admin/berita')->with('success', 'Berita berhasil diperbarui');
+    }
+
+    public function delete($id)
+    {
+        $berita = $this->beritaModel->find($id);
+        if ($berita['gambar'] && file_exists($berita['gambar'])) {
+            unlink($berita['gambar']);
+        }
+        $this->beritaModel->delete($id);
+
+        return redirect()->to('/admin/berita')->with('success', 'Berita berhasil dihapus');
+    }
+}
