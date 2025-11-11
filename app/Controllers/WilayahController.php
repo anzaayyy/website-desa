@@ -3,12 +3,15 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\WilayahModel;
 
 class WilayahController extends BaseController
 {
     public function index()
     {
-        return view('wilayah');
+        $wilayahModel = new WilayahModel();
+        $data['wilayah'] = $wilayahModel->findAll();
+
+        return view('wilayah', $data);
     }
 }

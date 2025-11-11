@@ -16,21 +16,25 @@
 
     <!-- Statistik Wilayah -->
     <div class="row text-center mb-5">
+      <?php 
+        $total_rw = array_sum(array_column($wilayah, 'jumlah_rw'));
+        $total_rt = array_sum(array_column($wilayah, 'jumlah_rt'));
+      ?>
       <div class="col-md-4 col-6 mb-3">
         <div class="p-3 bg-white shadow-sm rounded">
-          <h4 class="fw-bold mb-0">5</h4>
+          <h4 class="fw-bold mb-0"><?= count($wilayah) ?></h4>
           <p class="text-muted mb-0">Dusun</p>
         </div>
       </div>
       <div class="col-md-4 col-6 mb-3">
         <div class="p-3 bg-white shadow-sm rounded">
-          <h4 class="fw-bold mb-0">12</h4>
+          <h4 class="fw-bold mb-0"><?= $total_rw ?></h4>
           <p class="text-muted mb-0">RW</p>
         </div>
       </div>
       <div class="col-md-4 col-6 mb-3">
         <div class="p-3 bg-white shadow-sm rounded">
-          <h4 class="fw-bold mb-0">68</h4>
+          <h4 class="fw-bold mb-0"><?= $total_rt ?></h4>
           <p class="text-muted mb-0">RT</p>
         </div>
       </div>
@@ -47,22 +51,6 @@
       </div>
     </div>
 
-    <!-- Grafik Luas Wilayah dan Penggunaan Lahan -->
-    <div class="row g-4 mb-5">
-      <div class="col-md-6">
-        <div class="card shadow-sm p-3">
-          <h5 class="text-center mb-3">Luas Wilayah per Dusun (Ha)</h5>
-          <canvas id="chartLuasWilayah"></canvas>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card shadow-sm p-3">
-          <h5 class="text-center mb-3">Penggunaan Lahan</h5>
-          <canvas id="chartLahan"></canvas>
-        </div>
-      </div>
-    </div>
-
     <!-- Tabel Data Wilayah -->
     <div class="card shadow-sm">
       <div class="card-header bg-primary text-white fw-bold">Rincian Data Wilayah per Dusun</div>
@@ -72,60 +60,35 @@
             <thead class="table-light text-center">
               <tr>
                 <th>No</th>
-                <th>Nama Dusun</th>
+                <th>Nama Wilayah</th>
                 <th>RW</th>
                 <th>RT</th>
                 <th>Luas (Ha)</th>
-                <th>Potensi Utama</th>
+                <th>Deskripsi</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="text-center">1</td>
-                <td>Dusun Sumber Rejo</td>
-                <td class="text-center">3</td>
-                <td class="text-center">18</td>
-                <td class="text-center">145</td>
-                <td>Pertanian & Peternakan</td>
-              </tr>
-              <tr>
-                <td class="text-center">2</td>
-                <td>Dusun Mekar Sari</td>
-                <td class="text-center">2</td>
-                <td class="text-center">12</td>
-                <td class="text-center">120</td>
-                <td>Perkebunan & UMKM</td>
-              </tr>
-              <tr>
-                <td class="text-center">3</td>
-                <td>Dusun Sukamaju</td>
-                <td class="text-center">3</td>
-                <td class="text-center">20</td>
-                <td class="text-center">165</td>
-                <td>Perdagangan & Jasa</td>
-              </tr>
-              <tr>
-                <td class="text-center">4</td>
-                <td>Dusun Sidomulyo</td>
-                <td class="text-center">2</td>
-                <td class="text-center">10</td>
-                <td class="text-center">130</td>
-                <td>Perikanan & Pariwisata</td>
-              </tr>
-              <tr>
-                <td class="text-center">5</td>
-                <td>Dusun Tegal Asri</td>
-                <td class="text-center">2</td>
-                <td class="text-center">8</td>
-                <td class="text-center">110</td>
-                <td>Kerajinan & Industri Rumah Tangga</td>
-              </tr>
+              <?php if (!empty($wilayah)): ?>
+                <?php $no = 1; foreach ($wilayah as $w): ?>
+                  <tr>
+                    <td class="text-center"><?= $no++ ?></td>
+                    <td><?= esc($w['nama_wilayah']) ?></td>
+                    <td class="text-center"><?= esc($w['jumlah_rw']) ?></td>
+                    <td class="text-center"><?= esc($w['jumlah_rt']) ?></td>
+                    <td class="text-center"><?= esc($w['luas']) ?></td>
+                    <td><?= esc($w['deskripsi']) ?></td>
+                  </tr>
+                <?php endforeach; ?>
+              <?php else: ?>
+                <tr>
+                  <td colspan="6" class="text-center text-muted">Belum ada data wilayah.</td>
+                </tr>
+              <?php endif; ?>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
