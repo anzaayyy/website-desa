@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 
 class PendudukModel extends Model
 {
-    protected $table            = 'penduduks';
-    protected $primaryKey       = 'id';
+    protected $table            = 'tb_penduduk';
+    protected $primaryKey       = 'id_penduduk';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['nik', 'nama', 'jenis_kelamin', 'alamat','pekerjaan', 'dusun'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -21,7 +21,7 @@ class PendudukModel extends Model
     protected array $castHandlers = [];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
@@ -43,4 +43,26 @@ class PendudukModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    // Hitung total per kategori
+    public function getSummary()
+    {
+        return [
+            'total'       => $this->countAllResults(),
+            'laki'        => $this->where('jenis_kelamin', 'L')->countAllResults(),
+            'perempuan'   => $this->where('jenis_kelamin', 'P')->countAllResults(),
+            'kk'          => $this->distinct()->select('alamat')->countAllResults(), // anggap 1 alamat = 1 KK
+        ];
+    }
+
+    // Rekap per dusun
+    public function getRekapDusun()
+    {
+        return $this->select("dusun,
+                SUM(jenis_kelamin='L') AS laki,
+                SUM(jenis_kelamin='P') AS perempuan,
+                COUNT(*) AS total")
+            ->groupBy('dusun')
+            ->findAll();
+    }
 }
