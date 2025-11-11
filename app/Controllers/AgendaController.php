@@ -15,23 +15,21 @@ class AgendaController extends BaseController
         return view('agenda', $data);
     }
 
-    /**
-     * Halaman detail agenda (akses via slug)
-     * Contoh URL: /agenda/rapat-desa-2025
-     */
     public function detail($slug)
     {
         $agendaModel = new AgendaModel();
         $agenda = $agendaModel->where('slug', $slug)->first();
 
-        // Jika slug tidak ditemukan
         if (!$agenda) {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Agenda tidak ditemukan.');
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
 
-        $data['agenda'] = $agenda;
+        $data = [
+            'agenda' => $agenda,
+            'meta_title' => !empty($agenda['meta_title']) ? $agenda['meta_title'] : $agenda['judul'],
+            'meta_desc'  => !empty($agenda['meta_desc']) ? $agenda['meta_desc'] : substr(strip_tags($agenda['deskripsi']), 0, 160)
+        ];
 
-        // Kirim data ke view detail
-        return view('agenda_detail', $data);
+        return view('detailAgenda', $data);
     }
 }
