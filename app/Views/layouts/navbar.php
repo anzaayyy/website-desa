@@ -20,8 +20,8 @@
           </button>
 
           <!--Menu-->
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul>
+          <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <ul class="navbar-nav">
               <li><a href="<?= base_url('index'); ?>">BERANDA</a></li>
               <li class="nav-item dropdown">
                 <a
@@ -148,6 +148,7 @@
                 </ul>
               </li>
             </ul>
+            <a href="<?= base_url('login'); ?>" class="btn-login">LOGIN</a>
           </div>
         </div>
       </nav>
