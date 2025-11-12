@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 
 class LembagaModel extends Model
 {
-    protected $table            = 'lembagas';
-    protected $primaryKey       = 'id';
+    protected $table            = 'tb_lembaga';
+    protected $primaryKey       = 'id_lembaga';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['nama',	'nama_lembaga',	'jabatan',	'deskripsi',	'gambar',	'alt_gambar',	'kontak',	'link_kontak',	'meta_title',	'meta_desc',	'slug'	];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -21,7 +21,7 @@ class LembagaModel extends Model
     protected array $castHandlers = [];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
@@ -43,4 +43,9 @@ class LembagaModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getBySlug($slug)
+    {
+        return $this->where('slug', $slug)->first();
+    }
 }

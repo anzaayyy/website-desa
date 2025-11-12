@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 
 class WilayahModel extends Model
 {
-    protected $table            = 'wilayahs';
-    protected $primaryKey       = 'id';
+    protected $table            = 'tb_wilayah';
+    protected $primaryKey       = 'id_wilayah';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['nama_wilayah', 'luas', 'jumlah_rw','jumlah_rt','deskripsi'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -21,7 +21,7 @@ class WilayahModel extends Model
     protected array $castHandlers = [];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

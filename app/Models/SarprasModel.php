@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 
 class SarprasModel extends Model
 {
-    protected $table            = 'sarpras';
-    protected $primaryKey       = 'id';
+    protected $table            = 'tb_sarana';
+    protected $primaryKey       = 'id_sarana';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['judul_sarana',	'isi_sarana',	'judul_prasarana',	'isi_prasarana'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -21,7 +21,7 @@ class SarprasModel extends Model
     protected array $castHandlers = [];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
