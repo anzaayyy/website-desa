@@ -9,6 +9,9 @@ class SarprasController extends BaseController
 {
     public function index()
     {
-        return view('sarana_prasarana');
+        $model = new SarprasModel(); 
+        $data['sarpras'] = $model->findAll();
+
+        return view('sarana_prasarana', $data);
     }
 }
