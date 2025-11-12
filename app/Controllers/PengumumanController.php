@@ -10,10 +10,25 @@ class PengumumanController extends BaseController
 {
     public function index()
     {
-        $pengumumanModel = new PengumumanModel();
-        // ambil 4 pengumuman terbaru
-        $data['pengumuman'] = $pengumumanModel->orderBy('tanggal', 'DESC')->findAll(4);
+        $model = new PengumumanModel();
+        $data['pengumuman'] = $model->orderBy('tanggal', 'DESC')->findAll();
 
         return view('pengumuman', $data);
-}
+    }
+
+    public function detail($slug)
+    {
+        $model = new PengumumanModel();
+        $pengumuman = $model->where('slug', $slug)->first();
+
+        if (!$pengumuman) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Pengumuman tidak ditemukan");
+        }
+
+        $data['p'] = $pengumuman;
+        $data['title'] = $pengumuman['meta_title'] ?: $pengumuman['judul'];
+        $data['meta_desc'] = $pengumuman['meta_desc'] ?: strip_tags($pengumuman['deskripsi']);
+
+        return view('detailPengumuman', $data);
+    }
 }

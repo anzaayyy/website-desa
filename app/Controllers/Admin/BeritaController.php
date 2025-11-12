@@ -3,7 +3,6 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\BeritaModel;
 
 class BeritaController extends BaseController
@@ -38,7 +37,7 @@ class BeritaController extends BaseController
 
         $this->beritaModel->save([
             'judul'   => $this->request->getPost('judul'),
-            'isi'     => $this->request->getPost('isi'),
+            'deskripsi'     => $this->request->getPost('deskripsi'),
             'tanggal' => $this->request->getPost('tanggal'),
             'gambar'  => $namaGambar ? 'uploads/berita/'.$namaGambar : null,
         ]);
@@ -69,7 +68,7 @@ class BeritaController extends BaseController
 
         $this->beritaModel->update($id, [
             'judul'   => $this->request->getPost('judul'),
-            'isi'     => $this->request->getPost('isi'),
+            'deskripsi'     => $this->request->getPost('deskripsi'),
             'tanggal' => $this->request->getPost('tanggal'),
             'gambar'  => $namaGambar,
         ]);

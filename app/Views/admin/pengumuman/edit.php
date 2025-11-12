@@ -12,18 +12,13 @@
         </div>
 
         <div class="mb-3">
-            <label>Isi</label>
-            <textarea name="isi" class="form-control" required><?= esc($pengumuman['isi']) ?></textarea>
+            <label>Deskripsi</label>
+            <textarea name="deskripsi" class="form-control" required><?= esc($pengumuman['deskripsi']) ?></textarea>
         </div>
 
         <div class="mb-3">
-            <label>Tanggal Posting</label>
-            <input type="date" name="tanggal_post" class="form-control" value="<?= esc($pengumuman['tanggal_post']) ?>">
-        </div>
-
-        <div class="mb-3">
-            <label>Tanggal Berlaku</label>
-            <input type="date" name="tanggal_exp" class="form-control" value="<?= esc($pengumuman['tanggal_exp']) ?>">
+            <label>Tanggal</label>
+            <input type="date" name="tanggal" class="form-control" value="<?= esc($pengumuman['tanggal']) ?>">
         </div>
 
         <div class="mb-3">
@@ -32,14 +27,6 @@
                 <img src="<?= base_url('uploads/pengumuman/'.$pengumuman['gambar']) ?>" width="100" class="mb-2">
             <?php endif; ?>
             <input type="file" name="gambar" class="form-control">
-        </div>
-
-        <div class="mb-3">
-            <label>File Lampiran</label><br>
-            <?php if ($pengumuman['file']): ?>
-                <a href="<?= base_url('uploads/pengumuman/file/'.$pengumuman['file']) ?>" target="_blank">File lama</a><br>
-            <?php endif; ?>
-            <input type="file" name="file" class="form-control">
         </div>
 
         <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
