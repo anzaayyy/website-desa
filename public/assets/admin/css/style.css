@@ -29,8 +29,8 @@ body.admin-page {
 }
 
 .sidebar {
-  width: 240px;
-  background: #343a40;
+  width: 250px;
+  background: #0a3a04;
   color: #fff;
   flex-shrink: 0;
 }
@@ -46,9 +46,16 @@ body.admin-page {
 .content {
   flex-grow: 1;
   padding: 20px;
+  margin-top: 70px;
   background: #f8f9fa;
 }
+
 .topbar {
+  position: fixed;
+  top: 0;
+  left: 250px; /* sesuaikan lebar sidebar kamu */
+  right: 0;
+  height: 60px;
   background: #fff;
   padding: 10px 15px;
   border-bottom: 1px solid #ddd;
@@ -132,6 +139,19 @@ body.login-page {
 
 .app-logo img {
   height: 90px;
+}
+
+.logo-admin {
+  text-align: center;
+}
+
+.logo-img img {
+  height: 50px;
+}
+
+.logo-admin h2 {
+  font-weight: 700;
+  font-size: small;
 }
 
 .auth-heading {

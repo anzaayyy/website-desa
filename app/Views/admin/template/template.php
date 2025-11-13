@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= esc($title ?? 'Admin Panel') ?></title>
+    <title><?= esc($title ?? 'Website Desa') ?></title>
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -13,32 +13,43 @@
 
     <!-- Font Awesome (icon) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-
 </head>
 <body class="admin-page">
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <h4 class="p-3">ADMIN</h4>
+            <div class="logo-admin">
+                <a class="logo-img">
+                    <img src="<?= base_url('assets/admin/img/logo.jpeg') ?>" alt="Logo Desa">
+                </a>
+                <h2>Admin Desa</h2>
+            </div>
         <a href="<?= base_url('admin/dashboard') ?>"><i class="fa fa-home"></i> Dashboard</a>
         <a href="<?= base_url('admin/sejarah') ?>"><i class="fa fa-book"></i> Sejarah Desa</a>
         <a href="<?= base_url('admin/visimisi') ?>"><i class="fa fa-book"></i> Visi Misi</a>
         <a href="<?= base_url('admin/berita') ?>"><i class="fa fa-newspaper"></i> Berita</a>
         <a href="<?= base_url('admin/pengumuman') ?>"><i class="fa fa-newspaper"></i> Pengumuman</a>
         <a href="<?= base_url('admin/agenda') ?>"><i class="fa fa-newspaper"></i> Agenda</a>
-        <a href="<?= base_url('logout') ?>"><i class="fa fa-sign-out-alt"></i> Logout</a>
     </div>
 
     <!-- Main Content -->
     <div class="content">
-        <!-- Topbar -->
         <div class="topbar">
             <span>Welcome, Admin</span>
-            <span><?= date('d M Y H:i') ?></span>
+            <div class="dropdown">
+                <a class="d-flex align-items-center text-decoration-none dropdown-toggle" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="User" width="30" height="30" class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userMenu">
+                    <li>
+                    <form action="/logout" method="post" class="m-0">
+                        <button type="submit" class="dropdown-item text-danger">Log Out</button>
+                    </form>
+                    </li>
+                </ul>
+            </div>
         </div>
-
-        <!-- Page Content -->
-        <div class="mt-3">
+        <div class="">
             <?= $this->renderSection('content') ?>
         </div>
     </div>
