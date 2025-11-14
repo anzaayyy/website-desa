@@ -33,8 +33,8 @@ $routes->get('pengaduan', 'PengaduanController::index');
 
 // LOGIN ADMIN
 $routes->get('login', 'AuthController::login');
-$routes->post('login', 'AuthController::processLogin');
-$routes->get('logout', 'AuthController::logout');
+$routes->post('login/process', 'AuthController::processLogin');
+$routes->post('logout', 'AuthController::logout');
 
 $routes->group('admin', ['filter' => 'auth'], function($routes) {
 // ADMIN DASHBOARD
