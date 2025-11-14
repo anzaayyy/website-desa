@@ -22,12 +22,12 @@
       <td><?= $b['tanggal'] ?></td>
       <td>
         <?php if($b['gambar']): ?>
-          <img src="<?= base_url($b['gambar']) ?>" width="100">
+          <img src="<?= base_url('assets/img/' . $b['gambar']) ?>" width="100">
         <?php endif; ?>
       </td>
       <td>
-        <a href="<?= base_url('admin/berita/edit/'.$b['id']) ?>" class="btn btn-warning btn-sm">Edit</a>
-        <a href="<?= base_url('admin/berita/delete/'.$b['id']) ?>" onclick="return confirm('Yakin hapus?')" class="btn btn-danger btn-sm">Hapus</a>
+        <a href="<?= base_url('admin/berita/edit/'.$b['id_berita']) ?>" class="btn btn-warning btn-sm">Edit</a>
+        <a href="<?= base_url('admin/berita/delete/'.$b['id_berita']) ?>" onclick="return confirm('Yakin hapus?')" class="btn btn-danger btn-sm">Hapus</a>
       </td>
     </tr>
     <?php endforeach; ?>
