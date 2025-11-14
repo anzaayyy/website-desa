@@ -2,6 +2,13 @@
 <?= $this->section('content') ?>
 
 <h2>Manajemen Berita</h2>
+
+<?php if (session()->getFlashdata('success')): ?>
+  <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+<?php elseif (session()->getFlashdata('error')): ?>
+  <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
+<?php endif; ?>
+
 <a href="<?= base_url('admin/berita/create') ?>" class="btn btn-primary mb-3">+ Tambah Berita</a>
 
 <table class="table table-bordered">

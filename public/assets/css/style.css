@@ -221,6 +221,20 @@ section img {
   background-color: #000;
 }
 
+.btn-login {
+  background-color: #000000;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 15px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #0a3a04;
+  color: #064115;
+}
+
 .list-in li {
   list-style-type: circle;
 }
@@ -297,4 +311,3 @@ ul {
 li {
   margin-bottom: 5px;
 }
-

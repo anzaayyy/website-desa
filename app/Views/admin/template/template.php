@@ -9,13 +9,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- css -->
-    <link rel="stylesheet" href="<?= base_url('admin/css/style.css'); ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/admin/css/style.css'); ?>" />
 
     <!-- Font Awesome (icon) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 
 </head>
-<body>
+<body class="admin-page">
 
     <!-- Sidebar -->
     <div class="sidebar">
