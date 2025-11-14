@@ -5,9 +5,9 @@
 <?php if ($visimisi): ?>
     <p><strong>Visi:</strong> <?= esc($visimisi['visi']) ?></p>
     <p><strong>Misi:</strong> <?= esc($visimisi['misi']) ?></p>
-    <img src="<?= base_url($visimisi['gambar']) ?>" alt="Visi Misi" width="200">
+    <img src="<?= base_url('assets/img/' . $visimisi['gambar']) ?>" alt="Visi Misi" width="200">
     <br><br>
-    <a href="<?= base_url('admin/visimisi/edit/'.$visimisi['id']) ?>" class="btn btn-primary">Edit</a>
+    <a href="<?= base_url('admin/visimisi/edit/'.$visimisi['id_visimisi']) ?>" class="btn btn-primary">Edit</a>
 <?php else: ?>
     <p>Data Visi & Misi belum ada</p>
 <?php endif; ?>

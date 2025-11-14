@@ -22,7 +22,7 @@
         <tr>
             <td><?= $no++ ?></td>
             <td><?= esc($row['judul']) ?></td>
-            <td><img src="<?= base_url($row['gambar']) ?>" width="100"></td>
+            <td><img src="<?= base_url('assets/img/' . $row['gambar']) ?>" width="100"></td>
             <td><?= word_limiter(strip_tags($row['isi']), 20) ?></td>
             <td>
                 <a href="<?= base_url('admin/sejarah/edit/'.$row['id']) ?>" class="btn btn-sm btn-warning">Edit</a>

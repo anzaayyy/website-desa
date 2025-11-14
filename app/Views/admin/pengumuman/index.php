@@ -21,8 +21,8 @@
     <td><?= esc($p['tanggal']) ?></td>
     <td><?= esc($p['gambar']) ?></td>
     <td>
-      <a href="<?= base_url('admin/pengumuman/edit/'.$p['id']) ?>" class="btn btn-sm btn-warning">Edit</a>
-      <a href="<?= base_url('admin/pengumuman/delete/'.$p['id']) ?>" onclick="return confirm('Hapus?')" class="btn btn-sm btn-danger">Delete</a>
+      <a href="<?= base_url('admin/pengumuman/edit/'.$p['id_pengumuman']) ?>" class="btn btn-sm btn-warning">Edit</a>
+      <a href="<?= base_url('admin/pengumuman/delete/'.$p['id_pengumuman']) ?>" onclick="return confirm('Hapus?')" class="btn btn-sm btn-danger">Delete</a>
     </td>
   </tr>
   <?php endforeach; ?>
