@@ -14,7 +14,9 @@ $routes->get('perangkat', 'PerangkatController::perangkat');
 $routes->get('berita', 'BeritaController::index');
 $routes->get('berita/(:segment)', 'BeritaController::detail/$1');
 $routes->get('pengumuman', 'PengumumanController::index');
+$routes->get('pengumuman/(:segment)', 'PengumumanController::detail/$1');
 $routes->get('agenda', 'AgendaController::index');
+$routes->get('agenda/(:segment)', 'AgendaController::detail/$1');
 $routes->get('penduduk', 'PendudukController::index');
 $routes->get('wilayah', 'WilayahController::index');
 $routes->get('lembaga', 'LembagaController::index');
@@ -31,8 +33,8 @@ $routes->get('pengaduan', 'PengaduanController::index');
 
 // LOGIN ADMIN
 $routes->get('login', 'AuthController::login');
-$routes->post('login', 'AuthController::processLogin');
-$routes->get('logout', 'AuthController::logout');
+$routes->post('login/process', 'AuthController::processLogin');
+$routes->post('logout', 'AuthController::logout');
 
 $routes->group('admin', ['filter' => 'auth'], function($routes) {
 // ADMIN DASHBOARD

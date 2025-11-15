@@ -8,73 +8,35 @@
   </div>
 
   <div class="row g-4">
-    <div class="col-md-3 text-center">
-      <div class="card border-0 shadow-sm h-100">
-        <img
-          src="assets/img/agenda1.jpg"
-          alt="Agenda Desa"
-          class="card-img-top"
-          style="height: 180px; object-fit: cover"
-        />
-        <div class="card-body">
-          <h5 class="card-title mb-2">Rapat Koordinasi Pembangunan</h5>
-          <p class="text-muted small mb-1">📅 10 Juli 2026</p>
-          <p class="text-muted small mb-2">📍 Balai Desa Sukamaju</p>
-          <a href="#" class="text-primary fw-semibold small">Lihat Detail</a>
+    <?php if (!empty($agenda)): ?>
+      <?php foreach ($agenda as $item): ?>
+        <div class="col-md-3 text-center">
+          <div class="card border-0 shadow-sm h-100">
+            <img
+              src="<?= base_url('uploads/agenda/' . $item['gambar']) ?>"
+              alt="<?= esc($item['alt_gambar']) ?>"
+              class="card-img-top"
+              style="height: 180px; object-fit: cover"
+            />
+            <div class="card-body">
+              <h5 class="card-title mb-2"><?= esc($item['judul']) ?></h5>
+              <p class="text-muted small mb-1">
+                📅 <?= date('d M Y', strtotime($item['tanggal_mulai'])) ?>
+                <?php if ($item['tanggal_selesai'] && $item['tanggal_selesai'] != $item['tanggal_mulai']): ?>
+                  – <?= date('d M Y', strtotime($item['tanggal_selesai'])) ?>
+                <?php endif; ?>
+              </p>
+              <p class="text-muted small mb-2">📍 <?= esc($item['nama_agenda']) ?></p>
+              <a href="<?= site_url('agenda/' . $item['slug']) ?>" class="text-primary fw-semibold small">Lihat Detail</a>
+            </div>
+          </div>
         </div>
+      <?php endforeach; ?>
+    <?php else: ?>
+      <div class="text-center text-muted">
+        <p>Belum ada agenda desa saat ini.</p>
       </div>
-    </div>
-
-    <div class="col-md-3 text-center">
-      <div class="card border-0 shadow-sm h-100">
-        <img
-          src="assets/img/agenda2.jpg"
-          alt="Agenda Desa"
-          class="card-img-top"
-          style="height: 180px; object-fit: cover"
-        />
-        <div class="card-body">
-          <h5 class="card-title mb-2">Gotong Royong Bersih Desa</h5>
-          <p class="text-muted small mb-1">📅 15 Juli 2026</p>
-          <p class="text-muted small mb-2">📍 Dusun Krajan</p>
-          <a href="#" class="text-primary fw-semibold small">Lihat Detail</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 text-center">
-      <div class="card border-0 shadow-sm h-100">
-        <img
-          src="assets/img/agenda3.jpg"
-          alt="Agenda Desa"
-          class="card-img-top"
-          style="height: 180px; object-fit: cover"
-        />
-        <div class="card-body">
-          <h5 class="card-title mb-2">Pelatihan Digital UMKM</h5>
-          <p class="text-muted small mb-1">📅 22 Juli 2026</p>
-          <p class="text-muted small mb-2">📍 Aula Kantor Desa</p>
-          <a href="#" class="text-primary fw-semibold small">Lihat Detail</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 text-center">
-      <div class="card border-0 shadow-sm h-100">
-        <img
-          src="assets/img/agenda4.jpg"
-          alt="Agenda Desa"
-          class="card-img-top"
-          style="height: 180px; object-fit: cover"
-        />
-        <div class="card-body">
-          <h5 class="card-title mb-2">Musyawarah Rencana Kerja</h5>
-          <p class="text-muted small mb-1">📅 30 Juli 2026</p>
-          <p class="text-muted small mb-2">📍 Balai Desa Sukamaju</p>
-          <a href="#" class="text-primary fw-semibold small">Lihat Detail</a>
-        </div>
-      </div>
-    </div>
+    <?php endif; ?>
   </div>
 </section>
 

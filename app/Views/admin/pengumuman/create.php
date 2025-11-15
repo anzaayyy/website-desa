@@ -8,24 +8,16 @@
     <input type="text" name="judul" class="form-control" required>
   </div>
   <div class="mb-3">
-    <label>Isi</label>
-    <textarea name="isi" class="form-control" required></textarea>
+    <label>Deskripsi</label>
+    <textarea name="deskripsi" class="form-control" required></textarea>
   </div>
   <div class="mb-3">
     <label>Gambar</label>
     <input type="file" name="gambar" class="form-control">
   </div>
   <div class="mb-3">
-    <label>File Lampiran</label>
-    <input type="file" name="file" class="form-control">
-  </div>
-  <div class="mb-3">
-    <label>Tanggal Posting</label>
-    <input type="date" name="tanggal_post" class="form-control" required>
-  </div>
-  <div class="mb-3">
-    <label>Berlaku Hingga</label>
-    <input type="date" name="tanggal_exp" class="form-control">
+    <label>Tanggal</label>
+    <input type="date" name="tanggal" class="form-control" required>
   </div>
   <button type="submit" class="btn btn-success">Simpan</button>
 </form>
