@@ -29,11 +29,20 @@ body.admin-page {
 }
 
 .sidebar {
-  width: 240px;
-  background: #343a40;
+  width: 250px;
+  background: #0a3a04;
   color: #fff;
   flex-shrink: 0;
+  transition: transform 0.3s ease-in-out;
+  height: 100vh;
+  position: fixed; /* wajib */
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
 }
+
 .sidebar a {
   color: #fff;
   text-decoration: none;
@@ -46,15 +55,40 @@ body.admin-page {
 .content {
   flex-grow: 1;
   padding: 20px;
+  margin-top: 70px;
   background: #f8f9fa;
+  margin-left: 250px; /* beri ruang untuk sidebar */
+  transition: margin-left 0.3s ease;
 }
+
 .topbar {
+  position: fixed;
+  top: 0;
+  left: 250px; /* sesuaikan lebar sidebar kamu */
+  right: 0;
+  height: 60px;
   background: #fff;
   padding: 10px 15px;
   border-bottom: 1px solid #ddd;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.close-btn {
+  display: none;
+  font-size: 8px;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
 /* TOMBOL LOGIN  */
@@ -134,6 +168,19 @@ body.login-page {
   height: 90px;
 }
 
+.logo-admin {
+  text-align: center;
+}
+
+.logo-img img {
+  height: 50px;
+}
+
+.logo-admin h2 {
+  font-weight: 700;
+  font-size: small;
+}
+
 .auth-heading {
   font-weight: 700;
 }
@@ -168,5 +215,31 @@ body.login-page {
 @media (max-width: 768px) {
   .auth-background-col {
     display: none;
+  }
+
+  .sidebar {
+    transform: translateX(-100%); /* default tersembunyi */
+  }
+
+  .sidebar.active {
+    transform: translateX(0); /* muncul */
+  }
+
+  .content {
+    margin-left: 0;
+    width: 100% !important;
+  }
+
+  .topbar {
+    left: 0 !important;
+    width: 100% !important;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+   .close-btn {
+    display: block;
   }
 }
