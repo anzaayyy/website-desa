@@ -76,4 +76,12 @@ $routes->group('admin', ['filter' => 'auth'], function($routes) {
     $routes->get('agenda/edit/(:num)', 'Admin\AgendaController::edit/$1');
     $routes->post('agenda/update/(:num)', 'Admin\AgendaController::update/$1');
     $routes->get('agenda/delete/(:num)', 'Admin\AgendaController::delete/$1');
+
+    // ADMIN WILAYAH
+    $routes->get('wilayah', 'Admin\WilayahController::index');
+    $routes->get('wilayah/create', 'Admin\WilayahController::create');
+    $routes->post('wilayah/store', 'Admin\WilayahController::store');
+    $routes->get('wilayah/edit/(:num)', 'Admin\WilayahController::edit/$1');
+    $routes->post('wilayah/update/(:num)', 'Admin\WilayahController::update/$1');
+    $routes->get('wilayah/delete/(:num)', 'Admin\WilayahController::delete/$1');
 });
