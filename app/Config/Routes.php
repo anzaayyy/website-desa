@@ -92,4 +92,12 @@ $routes->group('admin', ['filter' => 'auth'], function($routes) {
     $routes->get('perangkat/edit/(:num)', 'Admin\PerangkatController::edit/$1');
     $routes->post('perangkat/update/(:num)', 'Admin\PerangkatController::update/$1');
     $routes->get('perangkat/delete/(:num)', 'Admin\PerangkatController::delete/$1');
+
+    // ADMIN PENDUDUK
+    $routes->get('penduduk', 'Admin\PendudukController::index');
+    $routes->get('penduduk/create', 'Admin\PendudukController::create');
+    $routes->post('penduduk/store', 'Admin\PendudukController::store');
+    $routes->get('penduduk/edit/(:num)', 'Admin\PendudukController::edit/$1');
+    $routes->post('penduduk/update/(:num)', 'Admin\PendudukController::update/$1');
+    $routes->get('penduduk/delete/(:num)', 'Admin\PendudukController::delete/$1');
 });
