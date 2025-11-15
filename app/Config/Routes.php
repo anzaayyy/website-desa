@@ -76,4 +76,20 @@ $routes->group('admin', ['filter' => 'auth'], function($routes) {
     $routes->get('agenda/edit/(:num)', 'Admin\AgendaController::edit/$1');
     $routes->post('agenda/update/(:num)', 'Admin\AgendaController::update/$1');
     $routes->get('agenda/delete/(:num)', 'Admin\AgendaController::delete/$1');
+
+    // ADMIN STRUKTUR
+    $routes->get('struktur', 'Admin\StrukturController::index');
+    $routes->get('struktur/create', 'Admin\StrukturController::create');
+    $routes->post('struktur/store', 'Admin\StrukturController::store');
+    $routes->get('struktur/edit/(:num)', 'Admin\StrukturController::edit/$1');
+    $routes->post('struktur/update/(:num)', 'Admin\StrukturController::update/$1');
+    $routes->post('struktur/delete/(:num)', 'Admin\StrukturController::delete/$1');
+
+    // ADMIN PERANGKAT
+    $routes->get('perangkat', 'Admin\PerangkatController::index');
+    $routes->get('perangkat/create', 'Admin\PerangkatController::create');
+    $routes->post('perangkat/store', 'Admin\PerangkatController::store');
+    $routes->get('perangkat/edit/(:num)', 'Admin\PerangkatController::edit/$1');
+    $routes->post('perangkat/update/(:num)', 'Admin\PerangkatController::update/$1');
+    $routes->get('perangkat/delete/(:num)', 'Admin\PerangkatController::delete/$1');
 });

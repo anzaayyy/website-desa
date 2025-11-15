@@ -28,6 +28,8 @@
         <a href="<?= base_url('admin/dashboard') ?>"><i class="fa fa-home"></i> Dashboard</a>
         <a href="<?= base_url('admin/sejarah') ?>"><i class="fa fa-book"></i> Sejarah Desa</a>
         <a href="<?= base_url('admin/visimisi') ?>"><i class="fa fa-book"></i> Visi Misi</a>
+        <a href="<?= base_url('admin/struktur') ?>"><i class="fa fa-book"></i> Struktur Organisasi</a>
+        <a href="<?= base_url('admin/perangkat') ?>"><i class="fa fa-book"></i> Perangkat Desa</a>
         <a href="<?= base_url('admin/berita') ?>"><i class="fa fa-newspaper"></i> Berita</a>
         <a href="<?= base_url('admin/pengumuman') ?>"><i class="fa fa-newspaper"></i> Pengumuman</a>
         <a href="<?= base_url('admin/agenda') ?>"><i class="fa fa-newspaper"></i> Agenda</a>

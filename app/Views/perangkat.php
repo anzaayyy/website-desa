@@ -18,8 +18,8 @@
           // Siapkan path foto (gunakan default jika kosong)
           $fileName = $p['foto'] ?? '';
           $imgSrc   = $fileName
-            ? base_url('assets/img/' . $fileName)
-            : base_url('assets/img/pejabat.jpeg'); // fallback default
+            ? base_url('uploads/perangkat/' . $fileName)
+            : base_url('uploads/perangkat/pejabat.jpeg'); // fallback default
 
           // ALT foto
           $altFoto  = !empty($p['alt_foto'])
@@ -48,6 +48,5 @@
     </div>
   </div>
 </section>
-
 
 <?= $this->endSection() ?>

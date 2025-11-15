@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class StrukturModel extends Model
 {
     protected $table            = 'tb_struktur';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_struktur';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
