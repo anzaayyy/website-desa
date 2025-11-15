@@ -22,28 +22,22 @@
     </tr>
   </thead>
   <tbody>
-    <?php if (!empty($berita) && is_array($berita)): ?>
-      <?php foreach ($berita as $i => $b): ?>
-        <tr>
-          <td><?= $i + 1 ?></td>
-          <td><?= esc($b['judul']) ?></td>
-          <td><?= esc($b['tanggal']) ?></td>
-          <td>
-            <?php if ($b['gambar']): ?>
-              <img src="<?= base_url($b['gambar']) ?>" width="100">
-            <?php endif; ?>
-          </td>
-          <td>
-            <a href="<?= base_url('admin/berita/edit/' . $b['id']) ?>" class="btn btn-warning btn-sm">Edit</a>
-            <a href="<?= base_url('admin/berita/delete/' . $b['id']) ?>" onclick="return confirm('Yakin hapus?')" class="btn btn-danger btn-sm">Hapus</a>
-          </td>
-        </tr>
-      <?php endforeach; ?>
-    <?php else: ?>
-      <tr>
-        <td colspan="5" class="text-center">Belum ada data berita.</td>
-      </tr>
-    <?php endif; ?>
+    <?php foreach ($berita as $i => $b): ?>
+    <tr>
+      <td><?= $i+1 ?></td>
+      <td><?= esc($b['judul']) ?></td>
+      <td><?= $b['tanggal'] ?></td>
+      <td>
+        <?php if($b['gambar']): ?>
+          <img src="<?= base_url('assets/img/' . $b['gambar']) ?>" width="100">
+        <?php endif; ?>
+      </td>
+      <td>
+        <a href="<?= base_url('admin/berita/edit/'.$b['id_berita']) ?>" class="btn btn-warning btn-sm">Edit</a>
+        <a href="<?= base_url('admin/berita/delete/'.$b['id_berita']) ?>" onclick="return confirm('Yakin hapus?')" class="btn btn-danger btn-sm">Hapus</a>
+      </td>
+    </tr>
+    <?php endforeach; ?>
   </tbody>
 </table>
 
