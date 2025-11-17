@@ -34,6 +34,8 @@
         <a href="<?= base_url('admin/pengumuman') ?>"><i class="fa fa-newspaper"></i> Pengumuman</a>
         <a href="<?= base_url('admin/agenda') ?>"><i class="fa fa-newspaper"></i> Agenda</a>
         <a href="<?= base_url('admin/penduduk') ?>"><i class="fa fa-newspaper"></i> Penduduk</a>
+        <a href="<?= base_url('admin/wilayah') ?>"><i class="fa fa-newspaper"></i> Wilayah</a>
+        <a href="<?= base_url('logout') ?>"><i class="fa fa-sign-out-alt"></i> Logout</a>
     </div>
 
     <!-- Main Content -->
