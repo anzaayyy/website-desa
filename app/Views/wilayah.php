@@ -28,14 +28,14 @@
       </div>
       <div class="col-md-4 col-6 mb-3">
         <div class="p-3 bg-white shadow-sm rounded">
-          <h4 class="fw-bold mb-0"><?= $total_rw ?></h4>
-          <p class="text-muted mb-0">RW</p>
+          <h4 class="fw-bold mb-0"><?= $total_rt ?></h4>
+          <p class="text-muted mb-0">RT</p>
         </div>
       </div>
       <div class="col-md-4 col-6 mb-3">
         <div class="p-3 bg-white shadow-sm rounded">
-          <h4 class="fw-bold mb-0"><?= $total_rt ?></h4>
-          <p class="text-muted mb-0">RT</p>
+          <h4 class="fw-bold mb-0"><?= $total_rw ?></h4>
+          <p class="text-muted mb-0">RW</p>
         </div>
       </div>
     </div>
@@ -61,8 +61,8 @@
               <tr>
                 <th>No</th>
                 <th>Nama Wilayah</th>
-                <th>RW</th>
                 <th>RT</th>
+                <th>RW</th>
                 <th>Luas (Ha)</th>
                 <th>Deskripsi</th>
               </tr>
@@ -73,8 +73,8 @@
                   <tr>
                     <td class="text-center"><?= $no++ ?></td>
                     <td><?= esc($w['nama_wilayah']) ?></td>
-                    <td class="text-center"><?= esc($w['jumlah_rw']) ?></td>
                     <td class="text-center"><?= esc($w['jumlah_rt']) ?></td>
+                    <td class="text-center"><?= esc($w['jumlah_rw']) ?></td>
                     <td class="text-center"><?= esc($w['luas']) ?></td>
                     <td><?= esc($w['deskripsi']) ?></td>
                   </tr>

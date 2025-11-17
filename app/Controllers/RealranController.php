@@ -3,12 +3,17 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\RealranModel;
 
 class RealranController extends BaseController
 {
     public function index()
     {
-        return view('realisasi_anggaran');
+        $model = new RealranModel();
+
+        // Ambil semua data realisasi anggaran
+        $data['realisasi'] = $model->findAll();
+
+        return view('realisasi_anggaran', $data);
     }
 }

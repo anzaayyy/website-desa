@@ -35,6 +35,7 @@
             <a href="<?= base_url('admin/pengumuman') ?>"><i class="fa fa-newspaper"></i> Pengumuman</a>
             <a href="<?= base_url('admin/agenda') ?>"><i class="fa fa-newspaper"></i> Agenda</a>
             <a href="<?= base_url('admin/penduduk') ?>"><i class="fa fa-newspaper"></i> Penduduk</a>
+            <a href="<?= base_url('admin/wilayah') ?>"><i class="fa fa-newspaper"></i> Wilayah</a>
             <a href="<?= base_url('admin/apbdes') ?>"><i class="fa fa-newspaper"></i> APBDes</a>
             <a href="<?= base_url('admin/realisasi') ?>"><i class="fa fa-newspaper"></i> Realisasi Anggaran</a>
             <a href="<?= base_url('admin/pembangunan') ?>"><i class="fa fa-newspaper"></i> Pembangunan</a>
