@@ -138,16 +138,31 @@
     </div>
   </div>
 
-  <!-- RINGKASAN APBDES -->
+  <!-- RINGKASAN APBDES (DINAMIS DARI DB) -->
   <div class="card border-0 shadow-sm">
     <div class="card-body text-center">
       <h5 class="mb-3 text-dark">Ringkasan Akhir APBDes</h5>
-      <p class="mb-1"><strong>Total Pendapatan:</strong> Rp 1.320.000.000</p>
-      <p class="mb-1"><strong>Total Belanja:</strong> Rp 1.155.000.000</p>
-      <p class="mb-1"><strong>Pembiayaan Netto:</strong> Rp 50.000.000</p>
-      <p class="fw-bold text-success mt-3">
-        Sisa Lebih Anggaran (SiLPA): Rp 215.000.000
-      </p>
+
+      <?php if (!empty($apbdes)) : ?>
+        <p class="mb-1">
+          <strong>Total Pendapatan:</strong>
+          Rp <?= number_format($apbdes['total_pendapatan'], 0, ',', '.'); ?>
+        </p>
+        <p class="mb-1">
+          <strong>Total Belanja:</strong>
+          Rp <?= number_format($apbdes['total_belanja'], 0, ',', '.'); ?>
+        </p>
+        <p class="mb-1">
+          <strong>Pembiayaan Netto:</strong>
+          Rp <?= number_format($apbdes['total_pembiayaan'], 0, ',', '.'); ?>
+        </p>
+        <p class="fw-bold text-success mt-3">
+          Sisa Lebih Anggaran (SiLPA):
+          Rp <?= number_format($apbdes['silpa'], 0, ',', '.'); ?>
+        </p>
+      <?php else : ?>
+        <p class="text-muted">Data APBDes belum tersedia.</p>
+      <?php endif; ?>
     </div>
   </div>
 </section>

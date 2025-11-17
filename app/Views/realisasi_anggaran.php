@@ -20,32 +20,50 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Pemerintahan Desa</td>
-            <td>Rp150.000.000</td>
-            <td>Rp120.000.000</td>
-            <td>80%</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Pembangunan</td>
-            <td>Rp300.000.000</td>
-            <td>Rp270.000.000</td>
-            <td>90%</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Pemberdayaan Masyarakat</td>
-            <td>Rp100.000.000</td>
-            <td>Rp85.000.000</td>
-            <td>85%</td>
-          </tr>
+          <?php $no = 1; ?>
+          <?php foreach ($realisasi as $row): ?>
+            <tr>
+              <td><?= $no++ ?></td>
+              <td><?= $row['bidang'] ?></td>
+              <td>Rp<?= number_format($row['anggaran'], 0, ',', '.') ?></td>
+              <td>Rp<?= number_format($row['realisasi'], 0, ',', '.') ?></td>
+              <td><?= $row['persentase'] ?>%</td>
+            </tr>
+          <?php endforeach; ?>
         </tbody>
       </table>
     </div>
     <canvas id="anggaranChart" height="120"></canvas>
   </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const labels = <?= json_encode(array_column($realisasi, 'bidang')); ?>;
+    const anggaran = <?= json_encode(array_column($realisasi, 'anggaran')); ?>;
+    const realisasi = <?= json_encode(array_column($realisasi, 'realisasi')); ?>;
+
+    const ctx = document.getElementById('anggaranChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Anggaran',
+                    data: anggaran,
+                    borderWidth: 1
+                },
+                {
+                    label: 'Realisasi',
+                    data: realisasi,
+                    borderWidth: 1
+                }
+            ]
+        }
+    });
+</script>
+
 
 <?= $this->endSection() ?>
