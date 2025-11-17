@@ -25,7 +25,7 @@
           $slug         = esc($row['slug'] ?? '');
           $judul        = esc($row['judul'] ?? '');
           $deskripsi    = nl2br(esc($row['deskripsi'] ?? ''));
-          $img          = !empty($row['gambar']) ? base_url('assets/img/' . $row['gambar']) : base_url('assets/img/pejabat.jpeg');
+          $img          = !empty($row['gambar']) ? base_url('uploads/struktur/' . $row['gambar']) : base_url('uploads/struktur/pejabat.jpeg');
           $alt          = esc($row['alt_gambar'] ?? $nama);
           $modalId      = 'modalPerangkat' . $i;
           $profilHref   = !empty($slug) ? base_url('struktur/' . $slug) : '#';

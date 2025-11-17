@@ -77,11 +77,27 @@ $routes->group('admin', ['filter' => 'auth'], function($routes) {
     $routes->post('agenda/update/(:num)', 'Admin\AgendaController::update/$1');
     $routes->get('agenda/delete/(:num)', 'Admin\AgendaController::delete/$1');
 
-    // ADMIN WILAYAH
-    $routes->get('wilayah', 'Admin\WilayahController::index');
-    $routes->get('wilayah/create', 'Admin\WilayahController::create');
-    $routes->post('wilayah/store', 'Admin\WilayahController::store');
-    $routes->get('wilayah/edit/(:num)', 'Admin\WilayahController::edit/$1');
-    $routes->post('wilayah/update/(:num)', 'Admin\WilayahController::update/$1');
-    $routes->get('wilayah/delete/(:num)', 'Admin\WilayahController::delete/$1');
+    // ADMIN STRUKTUR
+    $routes->get('struktur', 'Admin\StrukturController::index');
+    $routes->get('struktur/create', 'Admin\StrukturController::create');
+    $routes->post('struktur/store', 'Admin\StrukturController::store');
+    $routes->get('struktur/edit/(:num)', 'Admin\StrukturController::edit/$1');
+    $routes->post('struktur/update/(:num)', 'Admin\StrukturController::update/$1');
+    $routes->post('struktur/delete/(:num)', 'Admin\StrukturController::delete/$1');
+
+    // ADMIN PERANGKAT
+    $routes->get('perangkat', 'Admin\PerangkatController::index');
+    $routes->get('perangkat/create', 'Admin\PerangkatController::create');
+    $routes->post('perangkat/store', 'Admin\PerangkatController::store');
+    $routes->get('perangkat/edit/(:num)', 'Admin\PerangkatController::edit/$1');
+    $routes->post('perangkat/update/(:num)', 'Admin\PerangkatController::update/$1');
+    $routes->get('perangkat/delete/(:num)', 'Admin\PerangkatController::delete/$1');
+
+    // ADMIN PENDUDUK
+    $routes->get('penduduk', 'Admin\PendudukController::index');
+    $routes->get('penduduk/create', 'Admin\PendudukController::create');
+    $routes->post('penduduk/store', 'Admin\PendudukController::store');
+    $routes->get('penduduk/edit/(:num)', 'Admin\PendudukController::edit/$1');
+    $routes->post('penduduk/update/(:num)', 'Admin\PendudukController::update/$1');
+    $routes->get('penduduk/delete/(:num)', 'Admin\PendudukController::delete/$1');
 });

@@ -17,8 +17,8 @@
           <?php
             // path gambar: gunakan default jika kosong
             $imgPath = $p['gambar']
-              ? base_url('assets/img/' . $p['gambar'])
-              : base_url('assets/img/pengumuman-default.jpeg');
+              ? base_url('uploads/pengumuman/' . $p['gambar'])
+              : base_url('uploads/pengumuman/pengumuman-default.jpeg');
 
             $alt = $p['alt_gambar'] ?: 'Gambar Pengumuman';
             $tanggal = date('d F Y', strtotime($p['tanggal']));
