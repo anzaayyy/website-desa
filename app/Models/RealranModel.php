@@ -6,13 +6,19 @@ use CodeIgniter\Model;
 
 class RealranModel extends Model
 {
-    protected $table            = 'realrans';
+    protected $table            = 'tb_realisasi_anggaran';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        'bidang',
+        'anggaran',
+        'realisasi',
+        'persentase',
+        'deskripsi'
+    ];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

@@ -6,13 +6,20 @@ use CodeIgniter\Model;
 
 class APBDesModel extends Model
 {
-    protected $table            = 'apbdes';
-    protected $primaryKey       = 'id';
+    protected $table            = 'tb_apbdes';
+    protected $primaryKey       = 'id_apbdes';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        'tahun',
+        'desakripsi',
+        'total_pendapatan',
+        'total_belanja',
+        'total_pembiayaan',
+        'silpa'
+    ];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
