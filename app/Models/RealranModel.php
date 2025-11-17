@@ -12,13 +12,7 @@ class RealranModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [
-        'bidang',
-        'anggaran',
-        'realisasi',
-        'persentase',
-        'deskripsi'
-    ];
+    protected $allowedFields    = ['bidang', 'anggaran', 'realisasi', 'persentase', 'deskripsi'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

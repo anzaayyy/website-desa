@@ -16,7 +16,10 @@ class PendudukController extends BaseController
 
     public function index()
     {
-        $data['penduduk'] = $this->penduduk->findAll();
+        $data = [
+            'title' => 'Data Penduduk',
+            'data' => $this->penduduk->orderBy('id_penduduk', 'DESC')->findAll()
+        ];
         return view('admin/penduduk/index', $data);
     }
 

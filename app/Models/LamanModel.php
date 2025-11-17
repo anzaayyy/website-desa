@@ -6,13 +6,21 @@ use CodeIgniter\Model;
 
 class LamanModel extends Model
 {
-    protected $table            = 'lamen';
-    protected $primaryKey       = 'id';
+    protected $table            = 'tb_layanan';
+    protected $primaryKey       = 'id_layanan';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [ 'nama',
+        'nik',
+        'jenis_surat',
+        'nomor_hp',
+        'alamat',
+        'keperluan',
+        'file_berkas',
+        'status',
+        'tanggal_pengajuan'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
