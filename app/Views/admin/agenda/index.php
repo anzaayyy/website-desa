@@ -1,8 +1,7 @@
 <?= $this->extend('admin/template/template') ?>
 <?= $this->section('content') ?>
 
-<div class="container mt-4">
-  <div class="d-flex justify-content-between align-items-center mb-3">
+  <div class="d-flex justify-content-between align-items-center mb-2">
     <h3 class="fw-bold">Daftar Agenda Desa</h3>
     <a href="<?= base_url('admin/agenda/create') ?>" class="btn btn-primary">+ Tambah Agenda</a>
   </div>
@@ -52,6 +51,5 @@
       </tbody>
     </table>
   </div>
-</div>
 
 <?= $this->endSection() ?>

@@ -22,6 +22,11 @@
           <div class="dashboard-value"><?= esc($artikelCount ?? 0) ?></div>
         </div>
       </div>
+      <div class="col-md-4">
+        <div class="dashboard-card">
+          <div class="dashboard-title">Role Anda : Admin</div>
+        </div>
+      </div>
     </div>
   </div>
 

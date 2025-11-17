@@ -1,18 +1,19 @@
 <?= $this->extend('admin/template/template') ?>
 <?= $this->section('content') ?>
 
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <h3 class="fw-bold">Data Penduduk</h3>
-    <a href="<?= base_url('admin/penduduk/create') ?>" class="btn btn-primary">+ Tambah Penduduk</a>
+<div class="d-flex justify-content-between align-items-center mb-2">
+    <h3 class="fw-bold">Manajemen Data Penduduk</h3>
+    <a href="<?= base_url('admin/penduduk/create') ?>" class="btn btn-primary">+ Tambah Data</a>
 </div>
 
 <?php if (session()->getFlashdata('success')): ?>
   <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
 <?php endif; ?>
 
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
+  <div class="table-responsive shadow-sm bg-white p-3 rounded">
+    <table class="table table-bordered table-striped align-middle">
+      <thead class="table-light">
+        <tr class="text-center">
             <th>No</th>
             <th>NIK</th>
             <th>Nama</th>
@@ -23,6 +24,7 @@
         </tr>
     </thead>
     <tbody>
+        <?php if (!empty($penduduk)): ?>
         <?php $no=1; foreach ($penduduk as $p): ?>
         <tr>
             <td><?= $no++ ?></td>
@@ -39,7 +41,11 @@
             </td>
         </tr>
         <?php endforeach; ?>
+        <?php else: ?>
+          <tr><td colspan="7" class="text-center text-muted">Belum ada data penduduk</td></tr>
+        <?php endif; ?>
     </tbody>
-</table>
+    </table>
+  </div>
 
 <?= $this->endSection() ?>

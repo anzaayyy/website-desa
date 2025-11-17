@@ -23,24 +23,30 @@
                 <a class="logo-img">
                     <img src="<?= base_url('assets/admin/img/logo.jpeg') ?>" alt="Logo Desa">
                 </a>
-                <h2>Admin Desa</h2>
+                <h2>Website Desa</h2>
             </div>
-        <a href="<?= base_url('admin/dashboard') ?>"><i class="fa fa-home"></i> Dashboard</a>
-        <a href="<?= base_url('admin/sejarah') ?>"><i class="fa fa-book"></i> Sejarah Desa</a>
-        <a href="<?= base_url('admin/visimisi') ?>"><i class="fa fa-book"></i> Visi Misi</a>
-        <a href="<?= base_url('admin/struktur') ?>"><i class="fa fa-book"></i> Struktur Organisasi</a>
-        <a href="<?= base_url('admin/perangkat') ?>"><i class="fa fa-book"></i> Perangkat Desa</a>
-        <a href="<?= base_url('admin/berita') ?>"><i class="fa fa-newspaper"></i> Berita</a>
-        <a href="<?= base_url('admin/pengumuman') ?>"><i class="fa fa-newspaper"></i> Pengumuman</a>
-        <a href="<?= base_url('admin/agenda') ?>"><i class="fa fa-newspaper"></i> Agenda</a>
-        <a href="<?= base_url('admin/penduduk') ?>"><i class="fa fa-newspaper"></i> Penduduk</a>
+        <div class="sidebar-content">
+            <a href="<?= base_url('admin/dashboard') ?>"><i class="fa fa-home"></i> Dashboard</a>
+            <a href="<?= base_url('admin/sejarah') ?>"><i class="fa fa-book"></i> Sejarah Desa</a>
+            <a href="<?= base_url('admin/visimisi') ?>"><i class="fa fa-book"></i> Visi Misi</a>
+            <a href="<?= base_url('admin/struktur') ?>"><i class="fa fa-book"></i> Struktur Organisasi</a>
+            <a href="<?= base_url('admin/perangkat') ?>"><i class="fa fa-book"></i> Perangkat Desa</a>
+            <a href="<?= base_url('admin/berita') ?>"><i class="fa fa-newspaper"></i> Berita</a>
+            <a href="<?= base_url('admin/pengumuman') ?>"><i class="fa fa-newspaper"></i> Pengumuman</a>
+            <a href="<?= base_url('admin/agenda') ?>"><i class="fa fa-newspaper"></i> Agenda</a>
+            <a href="<?= base_url('admin/penduduk') ?>"><i class="fa fa-newspaper"></i> Penduduk</a>
+            <a href="<?= base_url('admin/apbdes') ?>"><i class="fa fa-newspaper"></i> APBDes</a>
+            <a href="<?= base_url('admin/realisasi') ?>"><i class="fa fa-newspaper"></i> Realisasi Anggaran</a>
+            <a href="<?= base_url('admin/pembangunan') ?>"><i class="fa fa-newspaper"></i> Pembangunan</a>
+            <a href="<?= base_url('admin/persuratan') ?>"><i class="fa fa-newspaper"></i> Persuratan</a>
+        </div>
     </div>
 
     <!-- Main Content -->
     <div class="content">
         <div class="topbar">
             <span class="menu-toggle" onclick="toggleSidebar()">&#9776;</span>
-            <span>Welcome, Admin</span>
+            <span>Manajemen Website Desa</span>
             <div class="dropdown">
                 <a class="d-flex align-items-center text-decoration-none dropdown-toggle" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="User" width="30" height="30" class="rounded-circle">

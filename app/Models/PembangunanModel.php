@@ -6,13 +6,14 @@ use CodeIgniter\Model;
 
 class PembangunanModel extends Model
 {
-    protected $table            = 'pembangunans';
-    protected $primaryKey       = 'id';
+    protected $table            = 'tb_pembangunan';
+    protected $primaryKey       = 'id_pembangunan';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['nama_pembangunan', 'lokasi', 'anggaran', 'progres', 'deskripsi',
+        'meta_title', 'meta_desc', 'slug', 'foto', 'alt_foto'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -21,7 +22,7 @@ class PembangunanModel extends Model
     protected array $castHandlers = [];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

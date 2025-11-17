@@ -6,13 +6,14 @@ use CodeIgniter\Model;
 
 class APBDesModel extends Model
 {
-    protected $table            = 'apbdes';
-    protected $primaryKey       = 'id';
+    protected $table            = 'tb_apbdes';
+    protected $primaryKey       = 'id_apbdes';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['tahun', 'deskripsi', 'total_pendapatan',
+'total_belanja', 'total_pembiayaan', 'silpa'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -21,7 +22,7 @@ class APBDesModel extends Model
     protected array $castHandlers = [];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

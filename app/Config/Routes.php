@@ -100,4 +100,36 @@ $routes->group('admin', ['filter' => 'auth'], function($routes) {
     $routes->get('penduduk/edit/(:num)', 'Admin\PendudukController::edit/$1');
     $routes->post('penduduk/update/(:num)', 'Admin\PendudukController::update/$1');
     $routes->get('penduduk/delete/(:num)', 'Admin\PendudukController::delete/$1');
+
+    // ADMIN APBDES
+    $routes->get('apbdes', 'Admin\ApbdesController::index');
+    $routes->get('apbdes/create', 'Admin\ApbdesController::create');
+    $routes->post('apbdes/store', 'Admin\ApbdesController::store');
+    $routes->get('apbdes/edit/(:num)', 'Admin\ApbdesController::edit/$1');
+    $routes->post('apbdes/update/(:num)', 'Admin\ApbdesController::update/$1');
+    $routes->get('apbdes/delete/(:num)', 'Admin\ApbdesController::delete/$1');
+
+    // ADMIN ANGGARAN
+     $routes->get('realisasi', 'Admin\RealisasiAnggaranController::index');
+    $routes->get('realisasi/create', 'Admin\RealisasiAnggaranController::create');
+    $routes->post('realisasi/store', 'Admin\RealisasiAnggaranController::store');
+    $routes->get('realisasi/edit/(:num)', 'Admin\RealisasiAnggaranController::edit/$1');
+    $routes->post('realisasi/update/(:num)', 'Admin\RealisasiAnggaranController::update/$1');
+    $routes->get('realisasi/delete/(:num)', 'Admin\RealisasiAnggaranController::delete/$1');
+
+    // ADMIN PEMBANGUNAN
+    $routes->get('pembangunan', 'Admin\\PembangunanController::index');
+    $routes->get('pembangunan/create', 'Admin\\PembangunanController::create');
+    $routes->post('pembangunan/store', 'Admin\\PembangunanController::store');
+    $routes->get('pembangunan/edit/(:num)', 'Admin\\PembangunanController::edit/$1');
+    $routes->post('pembangunan/update/(:num)', 'Admin\\PembangunanController::update/$1');
+    $routes->get('pembangunan/delete/(:num)', 'Admin\\PembangunanController::delete/$1');
+
+    // ADMIN PERSURATAN
+    $routes->get('persuratan', 'Admin\PersuratanController::index');
+    $routes->get('persuratan/create', 'Admin\PersuratanController::create');
+    $routes->post('persuratan/store', 'Admin\PersuratanController::store');
+    $routes->get('persuratan/edit/(:num)', 'Admin\PersuratanController::edit/$1');
+    $routes->post('persuratan/update/(:num)', 'Admin\PersuratanController::update/$1');
+    $routes->get('persuratan/delete/(:num)', 'Admin\PersuratanController::delete/$1');
 });

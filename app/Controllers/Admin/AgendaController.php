@@ -16,7 +16,10 @@ class AgendaController extends BaseController
 
     public function index()
     {
-        $data['agenda'] = $this->agendaModel->findAll();
+        $data = [
+            'title' => 'Agenda Desa',
+            'data' => $this->agendaModel->orderBy('id', 'DESC')->findAll()
+        ];
         return view('admin/agenda/index', $data);
     }
 
