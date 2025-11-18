@@ -3,18 +3,19 @@
 
 <div class="container">
 
-  <h3 class="fw-bold mb-3">Data Wilayah</h3>
-
-  <a href="/admin/wilayah/create" class="btn btn-primary mb-3">+ Tambah Wilayah</a>
+<div class="d-flex justify-content-between align-items-center mb-2">
+  <h3 class="fw-bold">Manajemen Data Wilayah</h3>
+  <a href="/admin/wilayah/create" class="btn btn-primary">+ Tambah Data</a>
+</div>
 
   <?php if(session()->getFlashdata('success')): ?>
     <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
   <?php endif; ?>
 
-  <div class="table-responsive">
-    <table class="table table-bordered align-middle">
-      <thead class="table-light text-center">
-        <tr>
+  <div class="table-responsive shadow-sm bg-white p-3 rounded">
+    <table class="table table-bordered table-striped align-middle">
+        <thead class="table-light">
+            <tr class="text-center">
           <th>No</th>
           <th>Nama Wilayah</th>
           <th>RT</th>
@@ -25,6 +26,7 @@
         </tr>
       </thead>
       <tbody>
+        <?php if (!empty($wilayah)): ?>
         <?php $no=1; foreach($wilayah as $w): ?>
         <tr>
           <td class="text-center"><?= $no++ ?></td>
@@ -39,6 +41,11 @@
           </td>
         </tr>
         <?php endforeach; ?>
+        <?php else: ?>
+          <tr>
+            <td colspan="8" class="text-center">Belum ada data wilayah.</td>
+          </tr>
+        <?php endif; ?>
       </tbody>
     </table>
   </div>

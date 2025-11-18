@@ -6,8 +6,8 @@ use CodeIgniter\Model;
 
 class InforlayananModel extends Model
 {
-    protected $table            = 'inforlayanans';
-    protected $primaryKey       = 'id';
+    protected $table            = 'tb_informasi_layanan';
+    protected $primaryKey       = 'id_informasi';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;

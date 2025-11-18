@@ -100,6 +100,30 @@ $routes->group('admin', ['filter' => 'auth'], function($routes) {
     $routes->get('penduduk/edit/(:num)', 'Admin\PendudukController::edit/$1');
     $routes->post('penduduk/update/(:num)', 'Admin\PendudukController::update/$1');
     $routes->get('penduduk/delete/(:num)', 'Admin\PendudukController::delete/$1');
+    
+    // ADMIN WILAYAH
+    $routes->get('wilayah', 'Admin\WilayahController::index');
+    $routes->get('wilayah/create', 'Admin\WilayahController::create');
+    $routes->post('wilayah/store', 'Admin\WilayahController::store');
+    $routes->get('wilayah/edit/(:num)', 'Admin\WilayahController::edit/$1');
+    $routes->post('wilayah/update/(:num)', 'Admin\WilayahController::update/$1');
+    $routes->get('wilayah/delete/(:num)', 'Admin\WilayahController::delete/$1');
+
+     // ADMIN LEMBAGA
+    $routes->get('lembaga', 'Admin\LembagaController::index');
+    $routes->get('lembaga/create', 'Admin\LembagaController::create');
+    $routes->post('lembaga/store', 'Admin\LembagaController::store');
+    $routes->get('lembaga/edit/(:num)', 'Admin\LembagaController::edit/$1');
+    $routes->post('lembaga/update/(:num)', 'Admin\LembagaController::update/$1');
+    $routes->get('lembaga/delete/(:num)', 'Admin\LembagaController::delete/$1');
+
+    // ADMIN SARPRAS
+    $routes->get('sarpra', 'Admin\SarpraController::index');
+    $routes->get('sarpra/create', 'Admin\SarpraController::create');
+    $routes->post('sarpra/store', 'Admin\SarpraController::store');
+    $routes->get('sarpra/edit/(:num)', 'Admin\SarpraController::edit/$1');
+    $routes->post('sarpra/update/(:num)', 'Admin\SarpraController::update/$1');
+    $routes->get('sarpra/delete/(:num)', 'Admin\SarpraController::delete/$1');
 
     // ADMIN APBDES
     $routes->get('apbdes', 'Admin\ApbdesController::index');
