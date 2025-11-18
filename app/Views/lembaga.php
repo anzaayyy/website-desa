@@ -15,7 +15,7 @@
             <div class="card-body">
               <div class="d-flex align-items-center mb-3">
                 <img 
-                  src="<?= base_url('uploads/' . esc($l['gambar'])) ?>" 
+                  src="<?= base_url('uploads/lembaga/' . esc($l['gambar'])) ?>" 
                   alt="<?= esc($l['alt_gambar']) ?>" 
                   class="rounded-circle me-3" 
                   style="width: 70px; height: 70px; object-fit: cover;"

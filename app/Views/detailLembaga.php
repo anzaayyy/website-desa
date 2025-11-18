@@ -5,7 +5,7 @@
   <div class="container">
     <div class="text-center mb-4">
       <img 
-        src="<?= base_url('uploads/' . esc($lembaga['gambar'])) ?>" 
+        src="<?= base_url('uploads/lembaga/' . esc($lembaga['gambar'])) ?>" 
         alt="<?= esc($lembaga['alt_gambar']) ?>" 
         class="rounded-circle shadow-sm mb-3" 
         style="width:120px;height:120px;object-fit:cover;"
