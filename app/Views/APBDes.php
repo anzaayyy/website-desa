@@ -11,6 +11,7 @@
   <div class="card border-0 shadow-sm mb-4">
     <div class="card-body">
       <h5 class="mb-3 text-success">Rincian Pendapatan Desa</h5>
+
       <div class="table-responsive">
         <table class="table table-bordered align-middle">
           <thead class="table-light">
@@ -21,36 +22,34 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Pendapatan Asli Desa (PAD)</td>
-              <td>150.000.000</td>
-              <td>Dari hasil usaha desa dan retribusi</td>
-            </tr>
-            <tr>
-              <td>Dana Desa (DD)</td>
-              <td>750.000.000</td>
-              <td>Dari Pemerintah Pusat</td>
-            </tr>
-            <tr>
-              <td>Alokasi Dana Desa (ADD)</td>
-              <td>350.000.000</td>
-              <td>Dari Pemerintah Kabupaten/Kota</td>
-            </tr>
-            <tr>
-              <td>Bantuan Keuangan Provinsi</td>
-              <td>70.000.000</td>
-              <td>Untuk program pembangunan tertentu</td>
-            </tr>
-            <tr class="fw-bold table-success">
-              <td>Total Pendapatan</td>
-              <td>1.320.000.000</td>
-              <td></td>
-            </tr>
+            <?php if (!empty($pendapatan)): ?>
+              <?php foreach ($pendapatan as $row): ?>
+                <tr>
+                  <td><?= esc($row['kategori']) ?></td>
+                  <td>Rp<?= number_format($row['jumlah'], 0, ',', '.') ?></td>
+                  <td><?= esc($row['keterangan']) ?></td>
+                </tr>
+              <?php endforeach; ?>
+
+              <!-- BARIS TOTAL -->
+              <tr class="fw-bold table-success">
+                <td>Total Pendapatan</td>
+                <td>Rp<?= number_format($totalPendapatan, 0, ',', '.') ?></td>
+                <td></td>
+              </tr>
+
+            <?php else: ?>
+              <tr>
+                <td colspan="3" class="text-center">Belum ada data pendapatan desa.</td>
+              </tr>
+            <?php endif; ?>
           </tbody>
         </table>
       </div>
+
     </div>
   </div>
+
 
   <!-- RINCIAN BELANJA -->
   <div class="card border-0 shadow-sm mb-4">
@@ -61,43 +60,37 @@
           <thead class="table-light">
             <tr>
               <th>Bidang</th>
-              <th>Rencana (Rp)</th>
-              <th>Realisasi (Rp)</th>
+              <th>Anggaran</th>
+              <th>Realisasi</th>
               <th>Persentase</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Penyelenggaraan Pemerintahan Desa</td>
-              <td>350.000.000</td>
-              <td>340.000.000</td>
-              <td>97%</td>
-            </tr>
-            <tr>
-              <td>Pembangunan Desa</td>
-              <td>500.000.000</td>
-              <td>480.000.000</td>
-              <td>96%</td>
-            </tr>
-            <tr>
-              <td>Pembinaan Kemasyarakatan</td>
-              <td>200.000.000</td>
-              <td>195.000.000</td>
-              <td>98%</td>
-            </tr>
-            <tr>
-              <td>Pemberdayaan Masyarakat</td>
-              <td>150.000.000</td>
-              <td>140.000.000</td>
-              <td>93%</td>
-            </tr>
-            <tr class="fw-bold table-primary">
-              <td>Total Belanja</td>
-              <td>1.200.000.000</td>
-              <td>1.155.000.000</td>
-              <td>96%</td>
-            </tr>
+            <?php if (!empty($realisasi)): ?>
+              <?php foreach ($realisasi as $row): ?>
+                <tr>
+                  <td><?= esc($row['bidang']) ?></td>
+                  <td>Rp<?= number_format((float)$row['anggaran'], 0, ',', '.') ?></td>
+                  <td>Rp<?= number_format((float)$row['realisasi'], 0, ',', '.') ?></td>
+                  <td><?= esc($row['persentase']) ?>%</td>
+                </tr>
+              <?php endforeach; ?>
+
+              <!-- 🔽 Baris TOTAL -->
+              <tr class="fw-bold table-primary">
+                <td class="text-start">Total</td>
+                <td>Rp<?= number_format($totalAnggaran, 0, ',', '.') ?></td>
+                <td>Rp<?= number_format($totalRealisasi, 0, ',', '.') ?></td>
+                <td><?= $totalPersentase ?>%</td>
+              </tr>
+
+            <?php else: ?>
+              <tr>
+                <td colspan="5" class="text-center">Belum ada data realisasi anggaran.</td>
+              </tr>
+            <?php endif; ?>
           </tbody>
+
         </table>
       </div>
     </div>
@@ -107,6 +100,7 @@
   <div class="card border-0 shadow-sm mb-4">
     <div class="card-body">
       <h5 class="mb-3 text-warning">Rincian Pembiayaan Desa</h5>
+
       <div class="table-responsive">
         <table class="table table-bordered align-middle">
           <thead class="table-light">
@@ -117,26 +111,33 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Penerimaan Pembiayaan</td>
-              <td>50.000.000</td>
-              <td>Silpa Tahun Sebelumnya</td>
-            </tr>
-            <tr>
-              <td>Pengeluaran Pembiayaan</td>
-              <td>0</td>
-              <td>-</td>
-            </tr>
-            <tr class="fw-bold table-warning">
-              <td>Total Pembiayaan Netto</td>
-              <td>50.000.000</td>
-              <td></td>
-            </tr>
+            <?php if (!empty($pembiayaan)): ?>
+              <?php foreach ($pembiayaan as $row): ?>
+                <tr>
+                  <td><?= esc($row['uraian']) ?></td>
+                  <td>Rp<?= number_format($row['jumlah'], 0, ',', '.') ?></td>
+                  <td><?= esc($row['keterangan']) ?></td>
+                </tr>
+              <?php endforeach; ?>
+
+              <!-- TOTAL PEMBIAYAAN NETTO -->
+              <tr class="fw-bold table-warning">
+                <td>Total Pembiayaan Netto</td>
+                <td>Rp<?= number_format($totalPembiayaanNetto, 0, ',', '.') ?></td>
+                <td></td>
+              </tr>
+            <?php else: ?>
+              <tr>
+                <td colspan="3" class="text-center">Belum ada data pembiayaan desa.</td>
+              </tr>
+            <?php endif; ?>
           </tbody>
         </table>
       </div>
+
     </div>
   </div>
+
 
   <!-- RINGKASAN APBDES (DINAMIS DARI DB) -->
   <div class="card border-0 shadow-sm">
