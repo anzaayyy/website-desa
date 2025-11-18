@@ -24,6 +24,7 @@ $routes->get('sarana_prasarana', 'SarprasController::index');
 $routes->get('APBDes', 'APBDesController::index');
 $routes->get('realisasi_anggaran', 'RealranController::index');
 $routes->get('pembangunan', 'PembangunanController::index');
+$routes->get('pembangunan/(:segment)', 'PembangunanController::detail/$1');
 $routes->get('persuratan', 'PersuratanController::index');
 $routes->get('layanan_mandiri', 'LamanController::index');
 $routes->get('informasi_layanan', 'InforlayananController::index');

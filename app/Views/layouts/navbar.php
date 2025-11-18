@@ -1,6 +1,6 @@
       <div class="text-center mb-4">
         <img
-          src="assets/img/logo.jpeg"
+          src="<?= base_url('assets/img/logo.jpeg') ?>" alt="Logo"
           alt="Logo"
           class="img-fluid pentagon-wrapper pentagon-img mb-3"
           style="width: 100px; height: 100px; object-fit: cover"
