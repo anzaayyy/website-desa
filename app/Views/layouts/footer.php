@@ -3,7 +3,7 @@
         <div class="row text-center text-md-start">
           <div class="d-flex gap-3">
             <img
-              src="assets/img/logo.jpeg"
+              src="<?= base_url('assets/img/logo.jpeg') ?>" alt="Logo"
               alt="Logo"
               style="width: 100px; height: 100px; object-fit: cover"
               class="pentagon-wrapper pentagon-img"

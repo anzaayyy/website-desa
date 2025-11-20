@@ -3,12 +3,38 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\PembangunanModel;
+use CodeIgniter\Exceptions\PageNotFoundException;
 
 class PembangunanController extends BaseController
 {
     public function index()
     {
-        return view('pembangunan');
+        $model = new PembangunanModel();
+
+        // Ambil semua pembangunan, urutkan dari terbaru
+        $pembangunan = $model
+            ->orderBy('created_at', 'DESC')
+            ->findAll();
+
+        return view('pembangunan', [
+            'pembangunan' => $pembangunan,
+        ]);
+    }
+
+    // (Opsional) detail berdasarkan slug
+    public function detail($slug)
+    {
+        $model = new PembangunanModel();
+
+        $data = $model->where('slug', $slug)->first();
+
+        if (!$data) {
+            throw new PageNotFoundException('Data pembangunan tidak ditemukan.');
+        }
+
+        return view('pembangunan_detail', [
+            'pembangunan' => $data,
+        ]);
     }
 }
