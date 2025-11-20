@@ -1,3 +1,4 @@
+      <img src="assets/img/bg.jpeg" alt="Background Desa" class="bg-img">
       <div class="text-center mb-4">
         <img
           src="assets/img/logo.jpeg"
@@ -147,8 +148,8 @@
                   <li><a class="dropdown-item" href="<?= base_url('pengaduan'); ?>">Pengaduan</a></li>
                 </ul>
               </li>
+              <li><a href="<?= base_url('login'); ?>" class="btn-login">LOGIN</a></li>
             </ul>
-            <a href="<?= base_url('login'); ?>" class="btn-login">LOGIN</a>
           </div>
         </div>
       </nav>

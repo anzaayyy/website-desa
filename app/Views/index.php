@@ -5,7 +5,7 @@
       <!-- Profil Desa -->
       <h1 class="mb-4">PROFIL DESA</h1>
 
-      <section id="sejarah">
+      <section id="sejarah"  class="reveal">
         <div class="container">
           <div class="row g-4 align-items-center">
             <div class="col-md-4 text-center">
@@ -30,7 +30,7 @@
       </section>
 
       <!-- Visi Misi -->
-      <section id="vm">
+      <section id="vm"  class="reveal">
         <h2 class="mb-4 text-center">VISI & MISI</h2>
         <div class="row g-4">
           <div class="col-md-4 text-center">
@@ -63,7 +63,7 @@
       </section>
 
       <!-- Struktur Organisasi -->
-      <section id="struktur">
+      <section id="struktur" class="reveal">
         <div class="d-flex justify-content-between align-items-center mb-4">
           <h3>STRUKTUR DESA</h3>
           <a href="<?= base_url('struktur'); ?>" class="btn-bg"> Selengkapnya </a>
@@ -127,7 +127,7 @@
       </section>
 
       <!-- Perangkat Desa -->
-      <section id="perangkat">
+      <section id="perangkat" class="reveal">
         <div class="d-flex justify-content-between align-items-center mb-4">
           <h3>PERANGKAT DESA</h3>
           <a href="<?= base_url('perangkat'); ?>" class="btn-bg"> Selengkapnya </a>
@@ -193,7 +193,7 @@
       <!-- Berita -->
       <h1 class="mb-4">BERITA</h1>
 
-      <section id="berita">
+      <section id="berita" class="reveal">
         <h3 class="mb-4 text-center">BERITA</h3>
         <div class="row g-4 mb-4">
           <div class="col-md-6">
@@ -301,7 +301,7 @@
       </section>
 
       <!-- Pengumuman Desa -->
-      <section id="pengumuman">
+      <section id="pengumuman" class="reveal">
         <h2 class="mb-4 text-center">PENGUMUMAN DESA</h2>
         <div class="row g-4 mb-4">
           <div class="col-md-6">
@@ -375,7 +375,7 @@
       </section>
 
       <!-- Agenda Desa -->
-      <section id="agenda">
+      <section id="agenda" class="reveal">
         <div class="d-flex justify-content-between align-items-center mb-4">
           <h3 class="mb-0">AGENDA DESA</h3>
           <a href="<?= base_url('agenda'); ?>" class="btn-bg"> Selengkapnya </a>
@@ -439,7 +439,7 @@
       <h1 class="mb-4">DATA DESA</h1>
 
       <!-- Jumlah Penduduk -->
-      <section id="penduduk">
+      <section id="penduduk" class="reveal">
         <h3 class="mb-4 text-center">JUMLAH PENDUDUK</h3>
         <div class="row g-4 d-flex align-items-center">
           <div class="col-md-6">
@@ -463,7 +463,7 @@
       </section>
 
       <!-- Wilayah -->
-      <section id="wilayah">
+      <section id="wilayah" class="reveal">
         <h3 class="mb-4">WILAYAH</h3>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel facere
@@ -497,7 +497,7 @@
       </section>
 
       <!-- Lembaga -->
-      <section id="lembaga">
+      <section id="lembaga" class="reveal">
         <h3 class="mb-4 text-center">LEMBAGA</h3>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel facere
@@ -617,7 +617,7 @@
       </section>
 
       <!-- sarana prasarana -->
-      <section id="sarpra">
+      <section id="sarpra" class="reveal">
         <h3 class="mb-4">SARANA DAN PRASARANA</h3>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel facere
@@ -643,7 +643,7 @@
       <h1 class="mb-4">INFORMASI</h1>
 
       <!-- APBDes -->
-      <section id="APBDes">
+      <section id="APBDes" class="reveal">
         <h5 class="text-center">
           ANGGARAN PENDAPATAN DAN BELANJA DESA
           <br />
@@ -679,7 +679,7 @@
       </section>
 
       <!-- Realisasi Anggaran -->
-       <section id="realisasi">
+       <section id="realisasi" class="reveal">
         <div class="container">
           <div class="text-center mb-4">
             <h2 class="fw-bold">Realisasi Anggaran Desa</h2>
@@ -727,7 +727,7 @@
       </section>
 
       <!-- Pembangunan -->
-       <section id="pembangunan">
+       <section id="pembangunan" class="reveal">
         <div class="container">
           <div class="text-center mb-4">
             <h2 class="fw-bold">Pembangunan Desa</h2>
@@ -783,7 +783,7 @@
       <h1 class="mb-4">LAYANAN PUBLIK</h1>
 
       <!-- Persuratan -->
-       <section id="persuratan">
+       <section id="persuratan" class="reveal">
         <div class="container">
           <div class="text-center mb-4">
             <h2 class="fw-bold">Layanan Persuratan</h2>
@@ -827,7 +827,7 @@
       </section>
 
       <!-- Layanan Mandiri -->
-      <section id="layananpu">
+      <section id="layananpu" class="reveal">
         <div class="mb-4">
           <p class="card-text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel facere
@@ -865,7 +865,7 @@
       </section>
 
       <!-- Informasi Layanan -->
-<section id="informasila">
+<section id="informasila" class="reveal">
   <div class="container">
     <div class="mb-4 text-center">
       <h3 class="mb-3">INFORMASI LAYANAN</h3>
@@ -965,7 +965,7 @@
       <h1 class="mb-4">KONTAK & PENGADUAN</h1>
 
       <!-- Kontak -->
-      <section id="contact">
+      <section id="contact" class="reveal">
         <div class="container">
 
           <div class="section-title text-center mb-5">
@@ -999,7 +999,7 @@
       </section>
 
       <!-- Kritik -->
-      <section id="kritik">
+      <section id="kritik" class="reveal">
         <div class="container">
 
           <div class="section-title text-center mb-5">
@@ -1030,7 +1030,7 @@
       </section>
 
       <!-- Pengaduan -->
-      <section id="pengaduan">
+      <section id="pengaduan" class="reveal">
         <div class="container">
 
           <div class="section-title text-center mb-5">

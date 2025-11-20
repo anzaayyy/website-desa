@@ -1,9 +1,3 @@
-function toggleSidebar() {
-  document.querySelector(".sidebar").classList.toggle("active");
-}
-function closeSidebar() {
-  document.querySelector(".sidebar").classList.remove("active");
-}
 const togglePassword = document.querySelector("#togglePassword");
 const password = document.querySelector("#password");
 
