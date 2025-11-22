@@ -38,7 +38,7 @@
         </div>
       <?php endforeach; ?>
     <?php else: ?>
-      <p class="text-center text-muted">Belum ada data lembaga yang tersedia.</p>
+      <p class="text-center text-muted alert alert-info">Belum ada data lembaga yang tersedia.</p>
     <?php endif; ?>
   </div>
 </section>

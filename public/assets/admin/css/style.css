@@ -49,6 +49,39 @@ body.admin-page {
   overflow-y: auto;
   overflow-x: hidden;
   padding-bottom: 30px; /* biar scroll tidak kepotong */
+  scroll-behavior: smooth;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-left: 4px solid transparent;
+  transition: 0.25s ease;
+  font-size: 15px;
+}
+
+/* Hover */
+.sidebar-link:hover {
+  color: #000000;
+}
+
+.sidebar-link:hover i {
+  color: #000000;
+}
+
+/* Active */
+.sidebar-link.active {
+  background-color: #0c4205;
+  border-left-color: #000000;
+  color: #000000;
+  font-weight: 800;
+}
+
+.sidebar-link.active i {
+  color: #000000;
 }
 
 .sidebar-content::-webkit-scrollbar {
@@ -78,9 +111,6 @@ body.admin-page {
   padding: 10px 15px;
 }
 
-.sidebar a:hover {
-  background: #495057;
-}
 .content {
   flex-grow: 1;
   padding: 20px;

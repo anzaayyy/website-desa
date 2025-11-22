@@ -1,6 +1,7 @@
 <?= $this->extend('layouts/template') ?>
+<?= $this->section('content') ?>
 
-<?= $this->section('content') ?><section class="py-5">
+<section class="py-5">
   <div class="container">
     <h2 class="fw-bold mb-3"><?= esc($agenda['judul']) ?></h2>
     <p class="text-muted mb-2">📅 <?= date('d M Y', strtotime($agenda['tanggal_mulai'])) ?>

@@ -33,7 +33,7 @@
         </div>
       <?php endforeach; ?>
     <?php else: ?>
-      <div class="text-center text-muted">
+      <div class="text-center alert alert-info">
         <p>Belum ada agenda desa saat ini.</p>
       </div>
     <?php endif; ?>
