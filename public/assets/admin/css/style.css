@@ -65,8 +65,6 @@ body.admin-page {
 
 /* Hover */
 .sidebar-link:hover {
-  background-color: #0c4205; 
-  border-left-color: #000000; 
   color: #000000;
 }
 

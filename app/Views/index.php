@@ -17,7 +17,7 @@
             </div>
 
             <div class="col-md-8">
-              <h3 class="fw-bold"><?= esc(strtoupper($sejarah['judul'])); ?></h3>
+              <h3><?= esc(strtoupper($sejarah['judul'])); ?></h3>
               <div class="card-text mb-3">
                 <?= $sejarah['isi']; ?>
               </div>
@@ -36,27 +36,20 @@
           <div class="col-md-4 text-center">
             <h3 class="card-title">VISI</h3>
             <p class="card-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-              exercitationem distinctio accusantium impedit dicta optio
-              reprehenderit eligendi porro ullam assumenda eos quam, sint illum
-              dolor aperiam blanditiis repellat dolores ipsum.
+              <?= esc($vimi['visi'] ?? 'Belum ada visi yang ditetapkan.'); ?>
             </p>
           </div>
           <div class="col-md-4 text-center">
-            <img
-              src="assets/img/VM.jpeg"
-              alt="visimisi"
-              class="img-fluid"
-              style="width: 300px; height: 300px; object-fit: cover"
-            />
+              <img
+                src="<?= base_url('assets/img/' . $vimi['gambar']); ?>"
+                alt="<?= esc($vimi['alt_gambar'] ?? 'visimisi'); ?>"
+                class="img-fluid shadow rounded"
+                style="width: 300px; height: 300px; object-fit: cover;" />
           </div>
           <div class="col-md-4 text-center">
             <h3 class="card-title">MISI</h3>
             <p class="card-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Temporibus excepturi voluptatibus deserunt incidunt, blanditiis
-              possimus perspiciatis. Architecto placeat fugit at rerum? Voluptas
-              quisquam odit, optio atque inventore aspernatur sunt suscipit.
+              <?= $vimi['misi'] ?? 'Belum ada misi yang ditetapkan.'; ?>
             </p>
           </div>
         </div>
@@ -64,65 +57,42 @@
 
       <!-- Struktur Organisasi -->
       <section id="struktur" class="reveal">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-          <h3>STRUKTUR DESA</h3>
-          <a href="<?= base_url('struktur'); ?>" class="btn-bg"> Selengkapnya </a>
-        </div>
-        <div class="row g-4 mb-4">
-          <div class="col-md-6">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/pejabat.jpeg"
-                alt="Foto Perangkat Desa"
-                style="width: 100px; height: 100px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">Nama Lengkap</h5>
-                <p class="text-muted mb-0">Jabatan</p>
-              </div>
-            </div>
+        <div class="container">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3>STRUKTUR DESA</h3>
+            <a href="<?= base_url('struktur'); ?>" class="btn-bg">Selengkapnya</a>
           </div>
-          <div class="col-md-6">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/pejabat.jpeg"
-                alt="Foto Perangkat Desa"
-                style="width: 100px; height: 100px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">Nama Lengkap</h5>
-                <p class="text-muted mb-0">Jabatan</p>
-              </div>
+
+          <?php if (!empty($struktur)): ?>
+            <div class="row g-4">
+              <?php foreach ($struktur as $i => $row):
+                // variabel aman + fallback
+                $nama       = esc($row['nama'] ?? 'Tanpa Nama');
+                $jabatan    = esc($row['jabatan'] ?? '—');
+                $slug       = esc($row['slug'] ?? '');
+                $img        = !empty($row['gambar']) ? base_url('uploads/struktur/' . $row['gambar']) : base_url('uploads/struktur/pejabat.jpeg');
+                $alt        = esc($row['alt_gambar'] ?? $nama);
+              ?>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-center gap-3">
+                    <img
+                      src="<?= $img ?>"
+                      alt="<?= $alt ?>"
+                      style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;"
+                    />
+                    <div>
+                      <h5 class="mb-1"><?= $nama ?></h5>
+                      <p class="text-muted mb-0"><?= $jabatan ?></p>
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach; ?>
             </div>
-          </div>
-        </div>
-        <div class="row g-4">
-          <div class="col-md-6">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/pejabat.jpeg"
-                alt="Foto Perangkat Desa"
-                style="width: 100px; height: 100px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">Nama Lengkap</h5>
-                <p class="text-muted mb-0">Jabatan</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/pejabat.jpeg"
-                alt="Foto Perangkat Desa"
-                style="width: 100px; height: 100px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">Nama Lengkap</h5>
-                <p class="text-muted mb-0">Jabatan</p>
-              </div>
-            </div>
-          </div>
+
+          <?php else: ?>
+            <div class="alert alert-info">Belum ada data struktur.</div>
+          <?php endif; ?>
+
         </div>
       </section>
 
@@ -130,63 +100,44 @@
       <section id="perangkat" class="reveal">
         <div class="d-flex justify-content-between align-items-center mb-4">
           <h3>PERANGKAT DESA</h3>
-          <a href="<?= base_url('perangkat'); ?>" class="btn-bg"> Selengkapnya </a>
+          <a href="<?= base_url('perangkat'); ?>" class="btn-bg">Selengkapnya</a>
         </div>
+
         <div class="row g-4 mb-4">
-          <div class="col-md-6">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/pejabat.jpeg"
-                alt="Foto Perangkat Desa"
-                style="width: 100px; height: 100px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">Nama Lengkap</h5>
-                <p class="text-muted mb-0">Jabatan</p>
+          <?php if (!empty($perangkat)): ?>
+            <?php foreach ($perangkat as $p): ?>
+              <?php
+                // Path foto perangkat (fallback jika kosong)
+                $fileName = $p['foto'] ?? '';
+                $imgSrc   = $fileName
+                  ? base_url('uploads/perangkat/' . $fileName)
+                  : base_url('uploads/perangkat/pejabat.jpeg');
+                $altFoto  = !empty($p['alt_foto'])
+                  ? $p['alt_foto']
+                  : 'Foto ' . ($p['nama'] ?? 'Perangkat Desa');
+              ?>
+              <div class="col-md-6">
+                <div class="d-flex align-items-center gap-3">
+                  <img
+                    src="<?= esc($imgSrc) ?>"
+                    alt="<?= esc($altFoto) ?>"
+                    style="width: 100px; height: 100px; object-fit: cover;"
+                    class="rounded-circle"
+                  />
+                  <div>
+                    <h5 class="mb-1"><?= esc($p['nama'] ?? '-') ?></h5>
+                    <p class="text-muted mb-0"><?= esc($p['jabatan'] ?? '-') ?></p>
+                  </div>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <div class="col-12">
+              <div class="alert alert-info text-center mb-0">
+                Belum ada data perangkat.
               </div>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/pejabat.jpeg"
-                alt="Foto Perangkat Desa"
-                style="width: 100px; height: 100px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">Nama Lengkap</h5>
-                <p class="text-muted mb-0">Jabatan</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row g-4">
-          <div class="col-md-6">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/pejabat.jpeg"
-                alt="Foto Perangkat Desa"
-                style="width: 100px; height: 100px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">Nama Lengkap</h5>
-                <p class="text-muted mb-0">Jabatan</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/pejabat.jpeg"
-                alt="Foto Perangkat Desa"
-                style="width: 100px; height: 100px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">Nama Lengkap</h5>
-                <p class="text-muted mb-0">Jabatan</p>
-              </div>
-            </div>
-          </div>
+          <?php endif; ?>
         </div>
       </section>
 
@@ -195,183 +146,101 @@
 
       <section id="berita" class="reveal">
         <h3 class="mb-4 text-center">BERITA</h3>
+
         <div class="row g-4 mb-4">
-          <div class="col-md-6">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/artikel.jpeg"
-                alt="Artikel"
-                style="width: 100px; height: 100px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">JUDUL ARTIKEL</h5>
-                <p class="text-muted mb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit...
-                </p>
-                <p class="text-muted mb-2">20 Juni 2026</p>
+          <?php if (!empty($berita)): ?>
+            <?php foreach ($berita as $b): ?>
+              <?php
+                // Path gambar berita
+                $imgPath = !empty($b['gambar'])
+                  ? base_url('uploads/berita/' . $b['gambar'])
+                  : base_url('uploads/berita/gtong.jpg'); // fallback
+
+                $altFoto  = !empty($b['alt_gambar']) ? $b['alt_gambar'] : 'Gambar Berita';
+                $tanggal  = !empty($b['tanggal']) ? date('d F Y', strtotime($b['tanggal'])) : '-';
+              ?>
+              <div class="col-md-6">
+                <div class="d-flex align-items-center gap-3">
+                  <img
+                    src="<?= esc($imgPath) ?>"
+                    alt="<?= esc($altFoto) ?>"
+                    style="width: 100px; height: 100px; object-fit: cover;"
+                    class="rounded"
+                  />
+                  <div>
+                    <h5 class="mb-1">
+                      <a href="<?= base_url('berita/' . esc($b['slug'])) ?>" class="text-dark text-decoration-none">
+                        <?= esc($b['judul']) ?>
+                      </a>
+                    </h5>
+                    <p class="text-muted mb-0">
+                      <?= character_limiter(strip_tags($b['deskripsi']), 50) ?>...
+                    </p>
+                    <p class="text-muted mb-2"><?= esc($tanggal) ?></p>
+                  </div>
+                </div>
               </div>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <div class="col-12 text-center">
+              <div class="alert alert-info">Belum ada berita untuk ditampilkan.</div>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/artikel.jpeg"
-                alt="Artikel"
-                style="width: 100px; height: 100px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">JUDUL ARTIKEL</h5>
-                <p class="text-muted mb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit...
-                </p>
-                <p class="text-muted mb-2">20 Juni 2026</p>
-              </div>
-            </div>
-          </div>
+          <?php endif; ?>
         </div>
-        <div class="row g-4 mb-4">
-          <div class="col-md-6">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/artikel.jpeg"
-                alt="Artikel"
-                style="width: 100px; height: 100px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">JUDUL ARTIKEL</h5>
-                <p class="text-muted mb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit...
-                </p>
-                <p class="text-muted mb-2">20 Juni 2026</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/artikel.jpeg"
-                alt="Artikel"
-                style="width: 100px; height: 100px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">JUDUL ARTIKEL</h5>
-                <p class="text-muted mb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit...
-                </p>
-                <p class="text-muted mb-2">20 Juni 2026</p>
-              </div>
-            </div>
-          </div>
+
+        <div class="text-center">
+          <a href="<?= base_url('berita'); ?>" class="btn-bg"> Selengkapnya </a>
         </div>
-        <div class="row g-4 mb-4">
-          <div class="col-md-6">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/artikel.jpeg"
-                alt="Artikel"
-                style="width: 100px; height: 100px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">JUDUL ARTIKEL</h5>
-                <p class="text-muted mb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit...
-                </p>
-                <p class="text-muted mb-2">20 Juni 2026</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/artikel.jpeg"
-                alt="Artikel"
-                style="width: 100px; height: 100px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">JUDUL ARTIKEL</h5>
-                <p class="text-muted mb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit...
-                </p>
-                <p class="text-muted mb-2">20 Juni 2026</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <a href="<?= base_url('berita'); ?>" class="btn-bg"> Selengkapnya </a>
       </section>
 
       <!-- Pengumuman Desa -->
       <section id="pengumuman" class="reveal">
         <h2 class="mb-4 text-center">PENGUMUMAN DESA</h2>
+
         <div class="row g-4 mb-4">
-          <div class="col-md-6">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/artikel.jpeg"
-                alt="Artikel"
-                style="width: 100px; height: 100px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">JUDUL ARTIKEL</h5>
-                <p class="text-muted mb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit...
-                </p>
-                <p class="text-muted mb-2">20 Juni 2026</p>
+          <?php if (!empty($pengumuman)): ?>
+            <?php foreach ($pengumuman as $p): ?>
+              <?php
+                // Path gambar
+                $img = !empty($p['gambar'])
+                  ? base_url('uploads/pengumuman/' . $p['gambar'])
+                  : base_url('uploads/pengumuman/pengumuman-default.jpeg'); // fallback otomatis
+
+                $alt = !empty($p['alt_gambar']) ? $p['alt_gambar'] : 'Gambar Pengumuman';
+                $tanggal = !empty($p['tanggal']) ? date('d F Y', strtotime($p['tanggal'])) : '-';
+              ?>
+              <div class="col-md-6">
+                <div class="d-flex align-items-center gap-3">
+                  <img
+                    src="<?= esc($img) ?>"
+                    alt="<?= esc($alt) ?>"
+                    style="width: 100px; height: 100px; object-fit: cover"
+                    class="rounded"
+                  />
+                  <div>
+                    <h5 class="mb-1">
+                      <a href="<?= base_url('pengumuman/' . esc($p['slug'])) ?>" class="text-dark text-decoration-none">
+                        <?= esc($p['judul']) ?>
+                      </a>
+                    </h5>
+                    <p class="text-muted mb-0">
+                      <?= character_limiter(strip_tags($p['deskripsi']), 100) ?>...
+                    </p>
+                    <p class="text-muted mb-2"><?= esc($tanggal) ?></p>
+                  </div>
+                </div>
               </div>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <div class="col-12">
+              <div class="alert alert-info text-center">Belum ada pengumuman untuk ditampilkan.</div>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/artikel.jpeg"
-                alt="Artikel"
-                style="width: 100px; height: 100px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">JUDUL ARTIKEL</h5>
-                <p class="text-muted mb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit...
-                </p>
-                <p class="text-muted mb-2">20 Juni 2026</p>
-              </div>
-            </div>
-          </div>
+          <?php endif; ?>
         </div>
-        <div class="row g-4 mb-4">
-          <div class="col-md-6">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/artikel.jpeg"
-                alt="Artikel"
-                style="width: 100px; height: 100px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">JUDUL ARTIKEL</h5>
-                <p class="text-muted mb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit...
-                </p>
-                <p class="text-muted mb-2">20 Juni 2026</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/artikel.jpeg"
-                alt="Artikel"
-                style="width: 100px; height: 100px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">JUDUL ARTIKEL</h5>
-                <p class="text-muted mb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit...
-                </p>
-                <p class="text-muted mb-2">20 Juni 2026</p>
-              </div>
-            </div>
-          </div>
+
+        <div class="text-center">
+          <a href="<?= base_url('pengumuman'); ?>" class="btn-bg"> Selengkapnya </a>
         </div>
-        <a href="<?= base_url('pengumuman'); ?>" class="btn-bg"> Selengkapnya </a>
       </section>
 
       <!-- Agenda Desa -->
@@ -380,59 +249,42 @@
           <h3 class="mb-0">AGENDA DESA</h3>
           <a href="<?= base_url('agenda'); ?>" class="btn-bg"> Selengkapnya </a>
         </div>
+
         <div class="row g-4">
-          <div class="col-md-3 text-center">
-            <div class="align-items-center">
-              <img
-                src="assets/img/artikel.jpeg"
-                alt="Artikel"
-                class="mb-3"
-                style="width: 150px; height: 150px; object-fit: cover"
-              />
-              <div>
-                <h5>JUDUL ARTIKEL</h5>
+          <?php if (!empty($agenda)): ?>
+            <?php foreach ($agenda as $item): ?>
+              <?php
+                // Path gambar + fallback jika kosong
+                $gambar = !empty($item['gambar'])
+                  ? base_url('uploads/agenda/' . $item['gambar'])
+                  : base_url('uploads/agenda/agenda-default.jpeg');
+
+                $alt = !empty($item['alt_gambar']) ? $item['alt_gambar'] : $item['judul'];
+              ?>
+              <div class="col-md-3 text-center">
+                <div class="align-items-center">
+                  <img
+                    src="<?= esc($gambar) ?>"
+                    alt="<?= esc($alt) ?>"
+                    class="mb-3"
+                    style="width: 150px; height: 150px; object-fit: cover"
+                  />
+                  <div>
+                    <h5>
+                      <a href="<?= base_url('agenda/' . esc($item['slug'])) ?>"
+                        class="text-dark text-decoration-none">
+                        <?= esc($item['judul']) ?>
+                      </a>
+                    </h5>
+                  </div>
+                </div>
               </div>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <div class="col-12 text-center">
+              <div class="alert alert-info">Belum ada agenda desa saat ini.</div>
             </div>
-          </div>
-          <div class="col-md-3 text-center">
-            <div class="align-items-center">
-              <img
-                src="assets/img/artikel.jpeg"
-                alt="Artikel"
-                class="mb-3"
-                style="width: 150px; height: 150px; object-fit: cover"
-              />
-              <div>
-                <h5>JUDUL ARTIKEL</h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 text-center">
-            <div class="align-items-center">
-              <img
-                src="assets/img/artikel.jpeg"
-                alt="Artikel"
-                class="mb-3"
-                style="width: 150px; height: 150px; object-fit: cover"
-              />
-              <div>
-                <h5>JUDUL ARTIKEL</h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 text-center">
-            <div class="align-items-center">
-              <img
-                src="assets/img/artikel.jpeg"
-                alt="Artikel"
-                class="mb-3"
-                style="width: 150px; height: 150px; object-fit: cover"
-              />
-              <div>
-                <h5>JUDUL ARTIKEL</h5>
-              </div>
-            </div>
-          </div>
+          <?php endif; ?>
         </div>
       </section>
 
@@ -444,7 +296,7 @@
         <div class="row g-4 d-flex align-items-center">
           <div class="col-md-6">
             <!-- canvas untuk grafik -->
-            <canvas id="myChartPenduduk" width="300" height="200"></canvas>
+            <canvas id="myChartDetail" width="300" height="200"></canvas>
           </div>
           <div class="col-md-6">
             <p class="card-text">
@@ -465,155 +317,89 @@
       <!-- Wilayah -->
       <section id="wilayah" class="reveal">
         <h3 class="mb-4">WILAYAH</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel facere
-          eos maiores voluptatem magnam corrupti officia nam. Mollitia ab
-          expedita omnis adipisci perferendis temporibus dolorem similique nobis
-          voluptatibus, eveniet a.
+
+        <p class="text-muted">
+          Wilayah Desa Makmur Jaya terbagi menjadi beberapa dusun, RW, dan RT dengan karakteristik geografis yang beragam.
+          Setiap wilayah memiliki peran penting dalam penyelenggaraan pemerintahan desa serta pengelolaan potensi sumber daya alam dan masyarakatnya.
         </p>
+
+        <?php
+          $total_rw = array_sum(array_column($wilayah, 'jumlah_rw'));
+          $total_rt = array_sum(array_column($wilayah, 'jumlah_rt'));
+        ?>
+
         <div class="row g-4 mb-3 align-items-center text-center">
           <div class="col-md-4">
             <div class="stat-item">
-              <div class="stat-number" data-value="5">5</div>
+              <div class="stat-number" data-value="<?= count($wilayah) ?>">
+                <?= count($wilayah) ?>
+              </div>
               <div class="stat-label">Dusun</div>
             </div>
           </div>
 
           <div class="col-md-4">
             <div class="stat-item">
-              <div class="stat-number" data-value="12">12</div>
+              <div class="stat-number" data-value="<?= $total_rw ?>">
+                <?= $total_rw ?>
+              </div>
               <div class="stat-label">RW</div>
             </div>
           </div>
 
           <div class="col-md-4">
             <div class="stat-item">
-              <div class="stat-number" data-value="68">68</div>
+              <div class="stat-number" data-value="<?= $total_rt ?>">
+                <?= $total_rt ?>
+              </div>
               <div class="stat-label">RT</div>
             </div>
           </div>
         </div>
+
         <a href="<?= base_url('wilayah'); ?>" class="btn-bg"> Lihat Detail </a>
       </section>
 
       <!-- Lembaga -->
       <section id="lembaga" class="reveal">
         <h3 class="mb-4 text-center">LEMBAGA</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel facere
-          eos maiores voluptatem magnam corrupti officia nam. Mollitia ab
-          expedita omnis adipisci perferendis temporibus dolorem similique nobis
-          voluptatibus, eveniet a.
+
+        <p class="text-center mb-5">
+          Berikut adalah informasi mengenai berbagai lembaga yang berperan dalam mendukung jalannya pemerintahan dan pembangunan desa.
         </p>
+
         <div class="row g-4 mb-4">
-          <div class="col-md-3">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/pejabat.jpeg"
-                alt="Artikel"
-                style="width: 50px; height: 50px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">Nama Lembaga</h5>
-                <p class="text-muted mb-0">Ketua : Name</p>
+          <?php if (!empty($lembaga)): ?>
+            <?php foreach ($lembaga as $l): ?>
+              <div class="col-md-3">
+                <div class="d-flex align-items-center gap-3">
+                  <img
+                    src="<?= base_url('uploads/lembaga/' . esc($l['gambar'])) ?>"
+                    alt="<?= esc($l['alt_gambar']) ?>"
+                    style="width: 50px; height: 50px; object-fit: cover"
+                    class="rounded-circle"
+                  />
+                  <div>
+                    <h5 class="mb-1">
+                      <a href="<?= base_url('lembaga/' . esc($l['slug'])) ?>" class="text-decoration-none text-dark">
+                        <?= esc($l['nama_lembaga']) ?>
+                      </a>
+                    </h5>
+                    <p class="text-muted mb-0">
+                      <?= esc($l['jabatan']) ?> : <?= esc($l['nama']) ?>
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/pejabat.jpeg"
-                alt="Artikel"
-                style="width: 50px; height: 50px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">Nama Lembaga</h5>
-                <p class="text-muted mb-0">Ketua : Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/pejabat.jpeg"
-                alt="Artikel"
-                style="width: 50px; height: 50px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">Nama Lembaga</h5>
-                <p class="text-muted mb-0">Ketua : Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/pejabat.jpeg"
-                alt="Artikel"
-                style="width: 50px; height: 50px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">Nama Lembaga</h5>
-                <p class="text-muted mb-0">Ketua : Name</p>
-              </div>
-            </div>
-          </div>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <div class="text-center text-muted alert alert-info">Belum ada data lembaga ditampilkan.</div>
+          <?php endif; ?>
         </div>
-        <div class="row g-4 mb-4">
-          <div class="col-md-3">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/pejabat.jpeg"
-                alt="Artikel"
-                style="width: 50px; height: 50px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">Nama Lembaga</h5>
-                <p class="text-muted mb-0">Ketua : Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/pejabat.jpeg"
-                alt="Artikel"
-                style="width: 50px; height: 50px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">Nama Lembaga</h5>
-                <p class="text-muted mb-0">Ketua : Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/pejabat.jpeg"
-                alt="Artikel"
-                style="width: 50px; height: 50px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">Nama Lembaga</h5>
-                <p class="text-muted mb-0">Ketua : Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="d-flex align-items-center gap-3">
-              <img
-                src="assets/img/pejabat.jpeg"
-                alt="Artikel"
-                style="width: 50px; height: 50px; object-fit: cover"
-              />
-              <div>
-                <h5 class="mb-1">Nama Lembaga</h5>
-                <p class="text-muted mb-0">Ketua : Name</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <a href="<?= base_url('lembaga'); ?>" class="btn-bg"> Lihat Detail </a>
+
+        <a href="<?= base_url('lembaga'); ?>" class="btn-bg d-block mx-auto" style="width: max-content;">
+          Lihat Detail
+        </a>
       </section>
 
       <!-- sarana prasarana -->

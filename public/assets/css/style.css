@@ -232,17 +232,18 @@ section img {
 }
 
 .btn-bg {
-  font-size: 20px;
+  font-size: 16px;
   color: #000000;
-  background-color: #53ad60;
-  padding: 5px 10px;
-  border-radius: 20px;
-  font-family: fantasy;
+  background-color: #53ad60a4;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-decoration: none;
 }
 
 .btn-bg:hover {
   color: #53ad60;
-  background-color: #000;
+  background-color: #000000;
 }
 
 .btn-login {

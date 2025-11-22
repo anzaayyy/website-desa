@@ -1,4 +1,4 @@
-      <img src="assets/img/bg.jpeg" alt="Background Desa" class="bg-img">
+      <img src="<?= base_url('uploads/profil/bg.jpeg') ?>" alt="Background Desa" class="bg-img">
       <div class="text-center mb-4">
         <img
           src="<?= base_url('assets/img/logo.jpeg') ?>" alt="Logo"
@@ -27,7 +27,6 @@
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                 >
@@ -55,7 +54,6 @@
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                 >
@@ -76,7 +74,6 @@
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                 >
@@ -96,7 +93,6 @@
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                 >
@@ -113,7 +109,6 @@
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                 >
@@ -136,7 +131,6 @@
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                 >
