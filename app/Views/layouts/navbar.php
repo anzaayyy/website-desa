@@ -1,3 +1,4 @@
+      <img src="<?= base_url('uploads/profil/bg.jpeg') ?>" alt="Background Desa" class="bg-img">
       <div class="text-center mb-4">
         <img
           src="<?= base_url('assets/img/logo.jpeg') ?>" alt="Logo"
@@ -26,7 +27,6 @@
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                 >
@@ -54,7 +54,6 @@
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                 >
@@ -75,7 +74,6 @@
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                 >
@@ -95,7 +93,6 @@
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                 >
@@ -112,7 +109,6 @@
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                 >
@@ -135,7 +131,6 @@
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                 >
@@ -147,8 +142,8 @@
                   <li><a class="dropdown-item" href="<?= base_url('pengaduan'); ?>">Pengaduan</a></li>
                 </ul>
               </li>
+              <li><a href="<?= base_url('login'); ?>" class="btn-login">LOGIN</a></li>
             </ul>
-            <a href="<?= base_url('login'); ?>" class="btn-login">LOGIN</a>
           </div>
         </div>
       </nav>

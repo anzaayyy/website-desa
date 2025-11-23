@@ -58,54 +58,18 @@
                 <?php endif; ?>
 
                 <div class="mt-2 d-flex gap-2">
-                  <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#<?= $modalId ?>">
-                    Selengkapnya
-                  </button>
+                  <?php if (!empty($slug)): ?>
+                      <a href="<?= $profilHref = base_url('struktur/' . $slug); ?>" class="btn-bg btn-sm">Selengkapnya</a>
+                  <?php endif; ?>
                 </div>
               </div>
             </article>
-          </div>
-
-          <!-- Modal per orang -->
-          <div class="modal fade" id="<?= $modalId ?>" tabindex="-1" aria-labelledby="<?= $modalId ?>Label" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="<?= $modalId ?>Label"><?= $nama ?> — <?= $jabatan ?></h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-                </div>
-                <div class="modal-body">
-                  <div class="d-flex gap-3 mb-3">
-                    <img src="<?= $img ?>" alt="<?= $alt ?>" width="96" height="96" style="object-fit:cover; border-radius:8px;">
-                    <div class="small">
-                      <?php if ($nip): ?><p class="mb-1"><strong>NIP:</strong> <?= $nip ?></p><?php endif; ?>
-                      <?php if ($masa): ?><p class="mb-1"><strong>Masa Jabatan:</strong> <?= $masa ?></p><?php endif; ?>
-                      <?php if ($kontakText): ?><p class="mb-1"><strong>Kontak:</strong> <a href="<?= esc($kontakHref) ?>"><?= $kontakText ?></a></p><?php endif; ?>
-                      <?php if ($email): ?><p class="mb-1"><strong>Email:</strong> <a href="<?= esc($emailHref) ?>"><?= $email ?></a></p><?php endif; ?>
-                      <?php if (!empty($row['link_medsos'])): ?><p class="mb-0"><strong><?= $medsos ?>:</strong> <a href="<?= esc($medsosHref) ?>" target="_blank" rel="noopener noreferrer">Kunjungi</a></p><?php endif; ?>
-                    </div>
-                  </div>
-                  <?php if ($deskripsi): ?>
-                    <p class="small text-muted"><?= $deskripsi ?></p>
-                  <?php else: ?>
-                    <p class="small text-muted">Belum ada deskripsi.</p>
-                  <?php endif; ?>
-                </div>
-                <div class="modal-footer">
-                  <?php if (!empty($slug)): ?>
-                    <a href="<?= $profilHref ?>" class="btn btn-primary btn-sm">Lihat Profil Lengkap</a>
-                  <?php endif; ?>
-                  <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
-                </div>
-              </div>
-            </div>
           </div>
         <?php endforeach; ?>
       </div>
     <?php else: ?>
       <div class="alert alert-info">Belum ada data struktur.</div>
     <?php endif; ?>
-
   </div>
 </section>
 
