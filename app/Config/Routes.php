@@ -6,7 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
-$routes->get('index', 'Home::index');
+$routes->get('/', 'Home::index');
 $routes->get('sejarah', 'SejarahController::index');
 $routes->get('visimisi', 'VimiController::index');
 $routes->get('struktur', 'StrukturController::struktur');
@@ -37,24 +37,24 @@ $routes->get('login', 'AuthController::login');
 $routes->post('login/process', 'AuthController::processLogin');
 $routes->post('logout', 'AuthController::logout');
 
-$routes->group('admin', ['filter' => 'auth'], function($routes) {
-// ADMIN DASHBOARD
+$routes->group('admin', ['filter' => 'auth'], function ($routes) {
+    // ADMIN DASHBOARD
     $routes->get('/', 'Admin\DashboardController::index');
     $routes->get('dashboard', 'Admin\DashboardController::index');
 
-// ADMIN SEJARAH
+    // ADMIN SEJARAH
     $routes->get('sejarah', 'Admin\SejarahController::index');
     $routes->post('sejarah/store', 'Admin\SejarahController::store');
     $routes->get('sejarah/edit/(:num)', 'Admin\SejarahController::edit/$1');
     $routes->post('sejarah/update/(:num)', 'Admin\SejarahController::update/$1');
     $routes->get('sejarah/delete/(:num)', 'Admin\SejarahController::delete/$1');
 
-// ADMIN VISI MISI
+    // ADMIN VISI MISI
     $routes->get('visimisi', 'Admin\VisimisiController::index');
     $routes->get('visimisi/edit/(:num)', 'Admin\VisimisiController::edit/$1');
     $routes->post('visimisi/update/(:num)', 'Admin\VisimisiController::update/$1');
 
-// ADMIN BERITA
+    // ADMIN BERITA
     $routes->get('berita', 'Admin\BeritaController::index');
     $routes->get('berita/create', 'Admin\BeritaController::create');
     $routes->post('berita/store', 'Admin\BeritaController::store');
@@ -62,7 +62,7 @@ $routes->group('admin', ['filter' => 'auth'], function($routes) {
     $routes->post('berita/update/(:num)', 'Admin\BeritaController::update/$1');
     $routes->get('berita/delete/(:num)', 'Admin\BeritaController::delete/$1');
 
-// ADMIN PENGUMUMAN
+    // ADMIN PENGUMUMAN
     $routes->get('pengumuman', 'Admin\PengumumanController::index');
     $routes->get('pengumuman/create', 'Admin\PengumumanController::create');
     $routes->post('pengumuman/store', 'Admin\PengumumanController::store');
@@ -70,7 +70,7 @@ $routes->group('admin', ['filter' => 'auth'], function($routes) {
     $routes->post('pengumuman/update/(:num)', 'Admin\PengumumanController::update/$1');
     $routes->get('pengumuman/delete/(:num)', 'Admin\PengumumanController::delete/$1');
 
-// // Admin Agenda
+    // // Admin Agenda
     $routes->get('agenda', 'Admin\AgendaController::index');
     $routes->get('agenda/create', 'Admin\AgendaController::create');
     $routes->post('agenda/store', 'Admin\AgendaController::store');
@@ -101,7 +101,7 @@ $routes->group('admin', ['filter' => 'auth'], function($routes) {
     $routes->get('penduduk/edit/(:num)', 'Admin\PendudukController::edit/$1');
     $routes->post('penduduk/update/(:num)', 'Admin\PendudukController::update/$1');
     $routes->get('penduduk/delete/(:num)', 'Admin\PendudukController::delete/$1');
-    
+
     // ADMIN WILAYAH
     $routes->get('wilayah', 'Admin\WilayahController::index');
     $routes->get('wilayah/create', 'Admin\WilayahController::create');
@@ -110,7 +110,7 @@ $routes->group('admin', ['filter' => 'auth'], function($routes) {
     $routes->post('wilayah/update/(:num)', 'Admin\WilayahController::update/$1');
     $routes->get('wilayah/delete/(:num)', 'Admin\WilayahController::delete/$1');
 
-     // ADMIN LEMBAGA
+    // ADMIN LEMBAGA
     $routes->get('lembaga', 'Admin\LembagaController::index');
     $routes->get('lembaga/create', 'Admin\LembagaController::create');
     $routes->post('lembaga/store', 'Admin\LembagaController::store');
@@ -133,9 +133,18 @@ $routes->group('admin', ['filter' => 'auth'], function($routes) {
     $routes->get('apbdes/edit/(:num)', 'Admin\ApbdesController::edit/$1');
     $routes->post('apbdes/update/(:num)', 'Admin\ApbdesController::update/$1');
     $routes->get('apbdes/delete/(:num)', 'Admin\ApbdesController::delete/$1');
+    // PENDAPATAN DESA ROUTES
+    $routes->post('apbdes/pendapatan/store', 'Admin\ApbdesController::pendapatan_store');
+    $routes->post('apbdes/pendapatan/update/(:num)', 'Admin\ApbdesController::pendapatan_update/$1');
+    $routes->get('apbdes/pendapatan/delete/(:num)', 'Admin\ApbdesController::pendapatan_delete/$1');
+    // PEMBIAYAAN DESA ROUTES
+    $routes->post('apbdes/pembiayaan/store', 'ApbdesController::pembiayaan_store');
+    $routes->post('apbdes/pembiayaan/update/(:num)', 'ApbdesController::pembiayaan_update/$1');
+    $routes->get('apbdes/pembiayaan/delete/(:num)', 'ApbdesController::pembiayaan_delete/$1');
+
 
     // ADMIN ANGGARAN
-     $routes->get('realisasi', 'Admin\RealisasiAnggaranController::index');
+    $routes->get('realisasi', 'Admin\RealisasiAnggaranController::index');
     $routes->get('realisasi/create', 'Admin\RealisasiAnggaranController::create');
     $routes->post('realisasi/store', 'Admin\RealisasiAnggaranController::store');
     $routes->get('realisasi/edit/(:num)', 'Admin\RealisasiAnggaranController::edit/$1');

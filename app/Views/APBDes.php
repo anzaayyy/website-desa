@@ -72,7 +72,7 @@
                   <td><?= esc($row['bidang']) ?></td>
                   <td>Rp<?= number_format((float)$row['anggaran'], 0, ',', '.') ?></td>
                   <td>Rp<?= number_format((float)$row['realisasi'], 0, ',', '.') ?></td>
-                  <td><?= esc($row['persentase']) ?>%</td>
+                  <td><?= $totalPersentase ?>%</td>
                 </tr>
               <?php endforeach; ?>
 
