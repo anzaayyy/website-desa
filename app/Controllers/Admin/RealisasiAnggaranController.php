@@ -16,6 +16,7 @@ class RealisasiAnggaranController extends BaseController
     public function index()
     {
         $data['rows'] = $this->model->findAll();
+        
         return view('admin/realisasi/index', $data);
     }
 
@@ -27,11 +28,11 @@ class RealisasiAnggaranController extends BaseController
     public function store()
     {
         $this->model->save([
-            'bidang' => $this->request->getPost('bidang'),
-            'anggaran' => $this->request->getPost('anggaran'),
-            'realisasi' => $this->request->getPost('realisasi'),
-            'persentase' => $this->request->getPost('persentase'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
+            'bidang'            => $this->request->getPost('bidang'),
+            'anggaran'          => $this->request->getPost('anggaran'),
+            'realisasi'         => $this->request->getPost('realisasi'),
+            'deskripsi'         => $this->request->getPost('deskripsi'),
+            'tanggal_realisasi' => $this->request->getPost('tanggal_realisasi'),
         ]);
 
         return redirect()->to('/admin/realisasi')->with('success', 'Data berhasil ditambahkan');
@@ -46,11 +47,11 @@ class RealisasiAnggaranController extends BaseController
     public function update($id)
     {
         $this->model->update($id, [
-            'bidang' => $this->request->getPost('bidang'),
-            'anggaran' => $this->request->getPost('anggaran'),
-            'realisasi' => $this->request->getPost('realisasi'),
-            'persentase' => $this->request->getPost('persentase'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
+            'bidang'            => $this->request->getPost('bidang'),
+            'anggaran'          => $this->request->getPost('anggaran'),
+            'realisasi'         => $this->request->getPost('realisasi'),
+            'deskripsi'         => $this->request->getPost('deskripsi'),
+            'tanggal_realisasi' => $this->request->getPost('tanggal_realisasi'),
         ]);
 
         return redirect()->to('/admin/realisasi')->with('success', 'Data berhasil diperbarui');

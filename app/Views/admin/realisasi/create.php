@@ -9,16 +9,16 @@
     <input type="text" name="bidang" class="form-control" required>
   </div>
   <div class="mb-3">
+    <label>Tahun</label>
+    <input type="date" name="tanggal_realisasi" class="form-control" required>
+  </div>
+  <div class="mb-3">
     <label>Anggaran</label>
     <input type="number" name="anggaran" class="form-control" required>
   </div>
   <div class="mb-3">
     <label>Realisasi</label>
     <input type="number" name="realisasi" class="form-control" required>
-  </div>
-  <div class="mb-3">
-    <label>Persentase</label>
-    <input type="number" name="persentase" class="form-control" required>
   </div>
   <div class="mb-3">
     <label>Deskripsi</label>

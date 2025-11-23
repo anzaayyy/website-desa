@@ -23,7 +23,7 @@
           <!--Menu-->
           <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
             <ul class="navbar-nav">
-              <li><a href="<?= base_url('index'); ?>">BERANDA</a></li>
+              <li><a href="<?= base_url('beranda'); ?>">BERANDA</a></li>
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"

@@ -16,7 +16,9 @@ class PendapatanDesaModel extends Model
         'kategori',
         'jumlah',
         'keterangan',
-        'urutan'];
+        'urutan',
+        'tanggal_pendapatan',
+    ];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

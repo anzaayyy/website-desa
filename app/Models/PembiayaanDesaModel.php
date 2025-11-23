@@ -16,7 +16,9 @@ class PembiayaanDesaModel extends Model
         'uraian',
         'jumlah',
         'keterangan',
-        'urutan'];
+        'urutan',
+        'tanggal_pembiayaan'
+    ];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
