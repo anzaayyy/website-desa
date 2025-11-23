@@ -17,7 +17,7 @@
   </head>
 
   <body>
-    <header class="header-sticky">
+    <header class="header-bg">
       <?= $this->include('layouts/navbar'); ?>
     </header>
 
