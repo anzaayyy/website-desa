@@ -1,11 +1,6 @@
 <?= $this->extend('admin/template/template') ?>
 <?= $this->section('content') ?>
 
-<div class="d-flex justify-content-between mb-3">
-    <h3 class="fw-bold">Data APBDes</h3>
-    <a href="<?= base_url('admin/apbdes/create') ?>" class="btn btn-primary">+ Tambah Data APBDes</a>
-</div>
-
 <?php if (session()->getFlashdata('success')): ?>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <?= session()->getFlashdata('success') ?>
@@ -19,6 +14,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <?php endif; ?>
+
+<div class="d-flex justify-content-between mb-3">
+    <h3 class="fw-bold">Data APBDes</h3>
+    <a href="<?= base_url('admin/apbdes/create') ?>" class="btn btn-primary">+ Tambah Data APBDes</a>
+</div>
+
 
 <!-- ========================= -->
 <!--    TABEL APBDES UTAMA     -->
@@ -86,6 +87,7 @@
                 <th style="width: 60px;">No</th>
                 <th>Kategori</th>
                 <th>Jumlah (Rp)</th>
+                <th>Tahun</th>
                 <th>Keterangan</th>
                 <th style="width: 80px;">Urutan</th>
                 <th style="width: 180px;">Aksi</th>
@@ -99,6 +101,7 @@
                         <td class="text-center"><?= $no++ ?></td>
                         <td><?= esc($row['kategori']) ?></td>
                         <td>Rp<?= number_format($row['jumlah'], 0, ',', '.') ?></td>
+                        <td><?= esc($row['tanggal_pendapatan']) ?></td>
                         <td><?= esc($row['keterangan']) ?></td>
                         <td class="text-center"><?= esc($row['urutan']) ?></td>
                         <td class="text-center">
@@ -142,6 +145,11 @@
                                             <input type="number" name="jumlah" class="form-control"
                                                    value="<?= esc($row['jumlah']) ?>" required>
                                         </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Tanggal Pendapatan</label>
+                                            <input type="date" name="tanggal_pendapatan" class="form-control"
+                                                   value="<?= esc($row['tanggal_pendapatan']) ?>" required>
+                                        </div>
 
                                         <div class="mb-3">
                                             <label class="form-label">Keterangan</label>
@@ -168,7 +176,7 @@
                 <?php endforeach; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="6" class="text-center text-muted">Belum ada data Pendapatan Desa.</td>
+                    <td colspan="7" class="text-center text-muted">Belum ada data Pendapatan Desa.</td>
                 </tr>
             <?php endif; ?>
         </tbody>
@@ -196,6 +204,11 @@
                     <div class="mb-3">
                         <label class="form-label">Jumlah (Rp)</label>
                         <input type="number" name="jumlah" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Tanggal Pendapatan</label>
+                        <input type="date" name="tanggal_pendapatan" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
@@ -238,6 +251,7 @@
                 <th style="width: 60px;">No</th>
                 <th>Uraian</th>
                 <th>Jumlah (Rp)</th>
+                <th>Tahun</th>
                 <th>Keterangan</th>
                 <th style="width: 80px;">Urutan</th>
                 <th style="width: 180px;">Aksi</th>
@@ -251,6 +265,7 @@
                         <td class="text-center"><?= $no++ ?></td>
                         <td><?= esc($row['uraian']) ?></td>
                         <td>Rp<?= number_format($row['jumlah'], 0, ',', '.') ?></td>
+                        <td><?= esc($row['tanggal_pembiayaan']) ?></td>
                         <td><?= esc($row['keterangan']) ?></td>
                         <td class="text-center"><?= esc($row['urutan']) ?></td>
                         <td class="text-center">
@@ -293,6 +308,12 @@
                                             <label class="form-label">Jumlah (Rp)</label>
                                             <input type="number" name="jumlah" class="form-control"
                                                    value="<?= esc($row['jumlah']) ?>" required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Tanggal Pembiayaan</label>
+                                            <input type="date" name="tanggal_pembiayaan" class="form-control"
+                                                   value="<?= esc($row['tanggal_pembiayaan']) ?>" required>
                                         </div>
 
                                         <div class="mb-3">
@@ -348,6 +369,11 @@
                     <div class="mb-3">
                         <label class="form-label">Jumlah (Rp)</label>
                         <input type="number" name="jumlah" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Tanggal Pembiayaan</label>
+                        <input type="date" name="tanggal_pembiayaan" class="form-control" required>
                     </div>
 
                     <div class="mb-3">

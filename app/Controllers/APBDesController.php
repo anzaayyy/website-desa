@@ -17,6 +17,10 @@ class APBDesController extends BaseController
         $pendapatanModel     = new PendapatanDesaModel();
         $pembiayaanDesaModel = new PembiayaanDesaModel();
 
+        $tahun = date('Y');
+        $start  = $tahun . '-01-01';
+        $end    = $tahun . '-12-31';
+
         // ==========================
         //  APBDes utama (ringkasan)
         // ==========================
@@ -45,6 +49,8 @@ class APBDesController extends BaseController
         //  PENDAPATAN DESA
         // ==========================
         $pendapatan = $pendapatanModel
+            ->where('tanggal_pendapatan >=', $start)
+            ->where('tanggal_pendapatan <=', $end)
             ->orderBy('urutan', 'ASC')
             ->findAll();
 
@@ -57,6 +63,8 @@ class APBDesController extends BaseController
         //  PEMBIAYAAN DESA
         // ==========================
         $pembiayaan = $pembiayaanDesaModel
+            ->where('tanggal_pembiayaan >=', $start)
+            ->where('tanggal_pembiayaan <=', $end)
             ->orderBy('urutan', 'ASC')
             ->findAll();
 

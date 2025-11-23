@@ -1,32 +1,49 @@
 <?= $this->extend('admin/template/template') ?>
 <?= $this->section('content') ?>
 
-<h3>Tambah APBDes</h3>
+<h3 class="mb-3">Tambah APBDes</h3>
 
 <form action="<?= base_url('admin/apbdes/store') ?>" method="post">
+    <?= csrf_field() ?>
+
     <div class="mb-3">
-        <label>Tahun</label>
+        <label class="form-label">Tahun</label>
         <input type="text" name="tahun" class="form-control" required>
     </div>
+
     <div class="mb-3">
-        <label>Deskripsi</label>
-        <textarea name="deskripsi" class="form-control"></textarea>
+        <label class="form-label">Deskripsi (opsional)</label>
+        <textarea name="deskripsi" class="form-control" rows="3"></textarea>
     </div>
+
+    <hr>
+
     <div class="mb-3">
-        <label>Total Pendapatan</label>
-        <input type="number" name="total_pendapatan" class="form-control" required>
+        <label class="form-label">Total Pendapatan (otomatis)</label>
+        <input type="text" class="form-control"
+               value="<?= 'Rp' . number_format($totalPendapatan, 0, ',', '.') ?>"
+               readonly>
     </div>
+
     <div class="mb-3">
-        <label>Total Belanja</label>
-        <input type="number" name="total_belanja" class="form-control" required>
+        <label class="form-label">Total Belanja (otomatis)</label>
+        <input type="text" class="form-control"
+               value="<?= 'Rp' . number_format($totalBelanja, 0, ',', '.') ?>"
+               readonly>
     </div>
+
     <div class="mb-3">
-        <label>Total Pembiayaan</label>
-        <input type="number" name="total_pembiayaan" class="form-control" required>
+        <label class="form-label">Total Pembiayaan (otomatis)</label>
+        <input type="text" class="form-control"
+               value="<?= 'Rp' . number_format($totalPembiayaan, 0, ',', '.') ?>"
+               readonly>
     </div>
+
     <div class="mb-3">
-        <label>SILPA</label>
-        <input type="number" name="silpa" class="form-control" required>
+        <label class="form-label">SILPA (otomatis)</label>
+        <input type="text" class="form-control"
+               value="<?= 'Rp' . number_format($silpa, 0, ',', '.') ?>"
+               readonly>
     </div>
 
     <button class="btn btn-success">Simpan</button>

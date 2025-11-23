@@ -6,7 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
-$routes->get('/', 'Home::index');
+$routes->get('/beranda', 'Home::index');
 $routes->get('sejarah', 'SejarahController::index');
 $routes->get('visimisi', 'VimiController::index');
 $routes->get('struktur', 'StrukturController::struktur');
@@ -134,14 +134,16 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('apbdes/edit/(:num)', 'Admin\ApbdesController::edit/$1');
     $routes->post('apbdes/update/(:num)', 'Admin\ApbdesController::update/$1');
     $routes->get('apbdes/delete/(:num)', 'Admin\ApbdesController::delete/$1');
+
     // PENDAPATAN DESA ROUTES
     $routes->post('apbdes/pendapatan/store', 'Admin\ApbdesController::pendapatan_store');
     $routes->post('apbdes/pendapatan/update/(:num)', 'Admin\ApbdesController::pendapatan_update/$1');
     $routes->get('apbdes/pendapatan/delete/(:num)', 'Admin\ApbdesController::pendapatan_delete/$1');
+
     // PEMBIAYAAN DESA ROUTES
-    $routes->post('apbdes/pembiayaan/store', 'ApbdesController::pembiayaan_store');
-    $routes->post('apbdes/pembiayaan/update/(:num)', 'ApbdesController::pembiayaan_update/$1');
-    $routes->get('apbdes/pembiayaan/delete/(:num)', 'ApbdesController::pembiayaan_delete/$1');
+    $routes->post('apbdes/pembiayaan/store', 'Admin\ApbdesController::pembiayaan_store');
+    $routes->post('apbdes/pembiayaan/update/(:num)', 'Admin\ApbdesController::pembiayaan_update/$1');
+    $routes->get('apbdes/pembiayaan/delete/(:num)', 'Admin\ApbdesController::pembiayaan_delete/$1');
 
 
     // ADMIN ANGGARAN
