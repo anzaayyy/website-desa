@@ -16,7 +16,7 @@
             <th>Bidang</th>
             <th>Anggaran</th>
             <th>Realisasi</th>
-            <th>Persentase</th>
+            <th>Deskripsi</th>
           </tr>
         </thead>
         <tbody>
@@ -27,7 +27,7 @@
               <td><?= $row['bidang'] ?></td>
               <td>Rp<?= number_format($row['anggaran'], 0, ',', '.') ?></td>
               <td>Rp<?= number_format($row['realisasi'], 0, ',', '.') ?></td>
-              <td><?= $row['persentase'] ?>%</td>
+              <td><?= $row['deskripsi'] ?></td>
             </tr>
           <?php endforeach; ?>
         </tbody>
