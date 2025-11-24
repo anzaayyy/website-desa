@@ -3,7 +3,7 @@
 
 <h3>Edit APBDes</h3>
 
-<form action="<?= base_url('admin/apbdes/update/'.$row['id']) ?>" method="post">
+<form action="<?= base_url('admin/apbdes/update/'.$row['id_apbdes']) ?>" method="post">
     <div class="mb-3">
         <label>Tahun</label>
         <input type="text" name="tahun" class="form-control" value="<?= $row['tahun'] ?>" required>
