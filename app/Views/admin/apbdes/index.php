@@ -49,12 +49,12 @@
                         <td>Rp<?= number_format($row['total_pembiayaan'], 0, ',', '.') ?></td>
                         <td>Rp<?= number_format($row['silpa'], 0, ',', '.') ?></td>
                         <td class="text-center">
-                            <a href="<?= base_url('admin/apbdes/edit/' . $row['id_apbdes']) ?>" class="btn btn-warning btn-sm">
-                                Edit
+                            <a href="<?= base_url('admin/apbdes/perbarui/' . $row['id_apbdes']) ?>" class="btn btn-warning btn-sm">
+                                Perbarui
                             </a>
                             <a href="<?= base_url('admin/apbdes/delete/' . $row['id_apbdes']) ?>"
-                               onclick="return confirm('Hapus data APBDes ini?')"
-                               class="btn btn-danger btn-sm">
+                                onclick="return confirm('Hapus data APBDes ini?')"
+                                class="btn btn-danger btn-sm">
                                 Hapus
                             </a>
                         </td>
@@ -107,15 +107,15 @@
                         <td class="text-center">
                             <!-- Tombol Edit -->
                             <button class="btn btn-warning btn-sm"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#modalEditPendapatan<?= $row['id_pendapatan'] ?>">
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalEditPendapatan<?= $row['id_pendapatan'] ?>">
                                 Edit
                             </button>
 
                             <!-- Tombol Delete -->
                             <a href="<?= base_url('admin/apbdes/pendapatan/delete/' . $row['id_pendapatan']) ?>"
-                               onclick="return confirm('Hapus pendapatan ini?')"
-                               class="btn btn-danger btn-sm">
+                                onclick="return confirm('Hapus pendapatan ini?')"
+                                class="btn btn-danger btn-sm">
                                 Hapus
                             </a>
                         </td>
@@ -137,18 +137,18 @@
                                         <div class="mb-3">
                                             <label class="form-label">Kategori</label>
                                             <input type="text" name="kategori" class="form-control"
-                                                   value="<?= esc($row['kategori']) ?>" required>
+                                                value="<?= esc($row['kategori']) ?>" required>
                                         </div>
 
                                         <div class="mb-3">
                                             <label class="form-label">Jumlah (Rp)</label>
                                             <input type="number" name="jumlah" class="form-control"
-                                                   value="<?= esc($row['jumlah']) ?>" required>
+                                                value="<?= esc($row['jumlah']) ?>" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Tanggal Pendapatan</label>
                                             <input type="date" name="tanggal_pendapatan" class="form-control"
-                                                   value="<?= esc($row['tanggal_pendapatan']) ?>" required>
+                                                value="<?= esc($row['tanggal_pendapatan']) ?>" required>
                                         </div>
 
                                         <div class="mb-3">
@@ -159,7 +159,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">Urutan</label>
                                             <input type="number" name="urutan" class="form-control"
-                                                   value="<?= esc($row['urutan']) ?>" required>
+                                                value="<?= esc($row['urutan']) ?>" required>
                                         </div>
                                     </div>
 
@@ -271,15 +271,15 @@
                         <td class="text-center">
                             <!-- Tombol Edit -->
                             <button class="btn btn-warning btn-sm"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#modalEditPembiayaan<?= $row['id_pembiayaan'] ?>">
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalEditPembiayaan<?= $row['id_pembiayaan'] ?>">
                                 Edit
                             </button>
 
                             <!-- Tombol Delete -->
                             <a href="<?= base_url('admin/apbdes/pembiayaan/delete/' . $row['id_pembiayaan']) ?>"
-                               onclick="return confirm('Hapus pembiayaan ini?')"
-                               class="btn btn-danger btn-sm">
+                                onclick="return confirm('Hapus pembiayaan ini?')"
+                                class="btn btn-danger btn-sm">
                                 Hapus
                             </a>
                         </td>
@@ -301,19 +301,19 @@
                                         <div class="mb-3">
                                             <label class="form-label">Uraian</label>
                                             <input type="text" name="uraian" class="form-control"
-                                                   value="<?= esc($row['uraian']) ?>" required>
+                                                value="<?= esc($row['uraian']) ?>" required>
                                         </div>
 
                                         <div class="mb-3">
                                             <label class="form-label">Jumlah (Rp)</label>
                                             <input type="number" name="jumlah" class="form-control"
-                                                   value="<?= esc($row['jumlah']) ?>" required>
+                                                value="<?= esc($row['jumlah']) ?>" required>
                                         </div>
 
                                         <div class="mb-3">
                                             <label class="form-label">Tanggal Pembiayaan</label>
                                             <input type="date" name="tanggal_pembiayaan" class="form-control"
-                                                   value="<?= esc($row['tanggal_pembiayaan']) ?>" required>
+                                                value="<?= esc($row['tanggal_pembiayaan']) ?>" required>
                                         </div>
 
                                         <div class="mb-3">
@@ -324,7 +324,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">Urutan</label>
                                             <input type="number" name="urutan" class="form-control"
-                                                   value="<?= esc($row['urutan']) ?>" required>
+                                                value="<?= esc($row['urutan']) ?>" required>
                                         </div>
                                     </div>
 

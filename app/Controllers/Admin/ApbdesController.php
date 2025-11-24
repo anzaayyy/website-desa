@@ -125,6 +125,59 @@ class ApbdesController extends BaseController
             ->with('success', 'Data APBDes berhasil ditambahkan!');
     }
 
+    public function perbarui($id)
+    {
+        $tahun = date('Y');
+        $start  = $tahun . '-01-01';
+        $end    = $tahun . '-12-31';
+        // Cari data APBDes dulu
+        $row = $this->apbdes->find($id);
+
+        if (!$row) {
+            return redirect()->to('/admin/apbdes')
+                ->with('error', 'Data APBDes tidak ditemukan.');
+        }
+
+        // Hitung ulang total pendapatan
+        $sumPendapatan   = $this->pendapatan
+        ->where('tanggal_pendapatan >=', $start)
+        ->where('tanggal_pendapatan <=', $end)
+        ->selectSum('jumlah')->first();
+        $totalPendapatan = $sumPendapatan['jumlah'] ?? 0;
+
+        // Hitung ulang total belanja (dari realisasi anggaran)
+        $sumBelanja   = $this->realran
+        ->where('tanggal_realisasi >=', $start)
+        ->where('tanggal_realisasi <=', $end)
+        ->selectSum('realisasi')
+        ->first();
+        $totalBelanja = $sumBelanja['realisasi'] ?? 0;
+
+        // Hitung ulang total pembiayaan
+        $sumPembiayaan   = $this->pembiayaan
+        ->where('tanggal_pembiayaan >=', $start)
+        ->where('tanggal_pembiayaan <=', $end)
+        ->selectSum('jumlah')
+        ->first();
+        $totalPembiayaan = $sumPembiayaan['jumlah'] ?? 0;
+
+        // Hitung SILPA = Pendapatan + Pembiayaan - Belanja
+        $silpa = $totalPendapatan + $totalPembiayaan - $totalBelanja;
+
+        // Update baris APBDes ini dengan nilai terbaru
+        $this->apbdes->update($id, [
+            'total_pendapatan' => $totalPendapatan,
+            'total_belanja'    => $totalBelanja,
+            'total_pembiayaan' => $totalPembiayaan,
+            'silpa'            => $silpa,
+            // kalau mau sekalian update deskripsi / tahun, bisa ditambah di sini
+        ]);
+
+        return redirect()->to('/admin/apbdes')
+            ->with('success', 'Data APBDes berhasil diperbarui dari data pendapatan, belanja, dan pembiayaan terkini.');
+    }
+
+
     public function edit($id)
     {
         $row = $this->apbdes->find($id);

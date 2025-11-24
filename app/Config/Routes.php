@@ -134,6 +134,7 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('apbdes/edit/(:num)', 'Admin\ApbdesController::edit/$1');
     $routes->post('apbdes/update/(:num)', 'Admin\ApbdesController::update/$1');
     $routes->get('apbdes/delete/(:num)', 'Admin\ApbdesController::delete/$1');
+    $routes->get('apbdes/perbarui/(:num)', 'Admin\ApbdesController::perbarui/$1');
 
     // PENDAPATAN DESA ROUTES
     $routes->post('apbdes/pendapatan/store', 'Admin\ApbdesController::pendapatan_store');
