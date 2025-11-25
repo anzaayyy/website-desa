@@ -11,8 +11,6 @@ class PembangunanController extends BaseController
     public function index()
     {
         $model = new PembangunanModel();
-
-        // Ambil semua pembangunan, urutkan dari terbaru
         $pembangunan = $model
             ->orderBy('created_at', 'DESC')
             ->findAll();
