@@ -13,6 +13,7 @@ use App\Models\PendudukModel;
 use App\Models\WilayahModel;
 use App\Models\LembagaModel;
 use App\Models\APBDesModel;
+use App\Models\RealranModel;
 
 class Home extends BaseController
 {
@@ -63,6 +64,8 @@ class Home extends BaseController
 
         $data['apbdes'] = $apbdes;
         $data['sisa_anggaran'] = $sisaAnggaran;
+
+        
 
         return view('index', $data);
     }

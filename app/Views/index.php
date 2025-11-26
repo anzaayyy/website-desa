@@ -473,7 +473,7 @@
 <section id="realisasi" class="reveal">
   <div class="container">
     <div class="text-center mb-4">
-      <h2 class="fw-bold">Realisasi Anggaran Desa</h2>
+      <h3>Realisasi Anggaran Desa</h3>
       <p class="text-muted">Transparansi penggunaan dana desa tahun 2025</p>
     </div>
 
