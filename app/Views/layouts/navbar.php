@@ -108,13 +108,13 @@
               </li>
               <li class="nav-item dropdown">
                 <a
-                  class="nav-link dropdown-toggle"
+                  class="nav-link"
                   role="button"
-                  data-bs-toggle="dropdown"
+                  href="<?= base_url('informasi_layanan'); ?>"
                 >
-                  LAYANAN PUBLIK
+                  INFORMASI LAYANAN
                 </a>
-                <ul class="dropdown-menu">
+                <!-- <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="<?= base_url('persuratan'); ?>">Persuratan</a></li>
                   <li>
                     <a class="dropdown-item" href="<?= base_url('layanan_mandiri'); ?>"
@@ -126,7 +126,7 @@
                       >Informasi Layanan</a
                     >
                   </li>
-                </ul>
+                </ul> -->
               </li>
               <li class="nav-item dropdown">
                 <a

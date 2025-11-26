@@ -12,10 +12,11 @@ use App\Models\AgendaModel;
 use App\Models\PendudukModel;
 use App\Models\WilayahModel;
 use App\Models\LembagaModel;
+use App\Models\APBDesModel;
 
 class Home extends BaseController
 {
-     public function index()
+    public function index()
     {
         // === Sejarah ===
         $sejarahModel = new SejarahModel();
@@ -25,10 +26,10 @@ class Home extends BaseController
         $data['vimi'] = $model->first();
 
         $model = new StrukturModel();
-        $data ['struktur'] = $model->findAll();
+        $data['struktur'] = $model->findAll();
 
         $model = new PerangkatModel();
-        $data ['perangkat'] = $model->findAll();
+        $data['perangkat'] = $model->findAll();
 
         $model = new BeritaModel();
         $data['berita'] = $model->orderBy('tanggal', 'DESC')->findAll(6);
@@ -41,13 +42,27 @@ class Home extends BaseController
             ->find();
 
         $agendaModel = new AgendaModel();
-        $data['agenda'] = $agendaModel->orderBy('tanggal_mulai','DESC')->findAll();
+        $data['agenda'] = $agendaModel->orderBy('tanggal_mulai', 'DESC')->findAll();
 
         $wilayahModel = new WilayahModel();
         $data['wilayah'] = $wilayahModel->findAll();
 
         $model = new LembagaModel();
         $data['lembaga'] = $model->findAll();
+
+        $apbdesModel = new APBDesModel();
+        $apbdes = $apbdesModel->orderBy('tahun', 'DESC')->first();
+
+        // Jika ada data APBDes, hitung sisa anggaran
+        if ($apbdes) {
+            $sisaAnggaran = ($apbdes['total_pendapatan'] + $apbdes['total_pembiayaan']) - $apbdes['total_belanja'];
+        } else {
+            $apbdes = [];
+            $sisaAnggaran = 0;
+        }
+
+        $data['apbdes'] = $apbdes;
+        $data['sisa_anggaran'] = $sisaAnggaran;
 
         return view('index', $data);
     }
