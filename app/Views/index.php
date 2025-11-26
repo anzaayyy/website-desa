@@ -404,23 +404,44 @@
 
       <!-- sarana prasarana -->
       <section id="sarpra" class="reveal">
-        <h3 class="mb-4">SARANA DAN PRASARANA</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel facere
-          eos maiores voluptatem magnam corrupti officia nam. Mollitia ab
-          expedita omnis adipisci perferendis temporibus dolorem similique nobis
-          voluptatibus, eveniet a.
+        <h3 class="mb-4 text-center">SARANA DAN PRASARANA</h3>
+        <p class="text-center mb-4">
+          Berikut adalah data lengkap mengenai berbagai sarana dan prasarana yang mendukung kegiatan masyarakat desa.
         </p>
-        <div class="row justify-content-center">
-          <div class="col-md-6 text-center mb-4">
-            <h4 class="">SARANA</h4>
-            <canvas id="chartSarana" style="max-height: 350px"></canvas>
+
+        <?php if (!empty($sarpras)): ?>
+          <?php 
+            // Data untuk Chart.js
+            $listSarana = [];
+            $listPrasarana = [];
+
+            foreach ($sarpras as $row) {
+              foreach (explode(',', $row['isi_sarana']) as $item) $listSarana[] = trim($item);
+              foreach (explode(',', $row['isi_prasarana']) as $item) $listPrasarana[] = trim($item);
+            }
+          ?>
+
+          <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-4">
+              <h4 class="">SARANA</h4>
+              <canvas id="chartSarana" style="max-height: 350px"></canvas>
+            </div>
+            <div class="col-md-6 text-center mb-4">
+              <h4 class="">PRASARANA</h4>
+              <canvas id="chartPrasarana" style="max-height: 350px"></canvas>
+            </div>
           </div>
-          <div class="col-md-6 text-center mb-4">
-            <h4 class="">PRASARANA</h4>
-            <canvas id="chartPrasarana" style="max-height: 350px"></canvas>
-          </div>
-        </div>
+
+          <!-- KIRIM DATA KE JAVASCRIPT -->
+          <script>
+            const saranaData = <?= json_encode(array_count_values($listSarana)) ?>;
+            const prasaranaData = <?= json_encode(array_count_values($listPrasarana)) ?>;
+          </script>
+
+        <?php else: ?>
+          <p class="text-center text-muted">Belum ada data sarana dan prasarana.</p>
+        <?php endif; ?>
+
         <div class="d-flex justify-content-center mt-4">
           <a href="<?= base_url('sarana_prasarana'); ?>" class="btn-bg">Selengkapnya</a>
         </div>
@@ -430,45 +451,58 @@
 
       <!-- APBDes -->
       <section id="APBDes" class="reveal">
-        <h5 class="text-center">
-          ANGGARAN PENDAPATAN DAN BELANJA DESA
-          <br />
-          (APBDes)
-        </h5>
+        <h3 class="text-center">
+          ANGGARAN PENDAPATAN DAN BELANJA DESA <br>(APBDes)
+        </h3>
+
         <div class="mb-3 align-items-center text-center">
-          <div class="mb-3 state-item">
-            <div class="state-number">Rp 1.350.000.000</div>
-            <div class="state-label">PENDAPATAN</div>
-          </div>
-          <div class="mb-3 state-item">
-            <div class="state-number">Rp 1.325.500.000</div>
-            <div class="state-label">REALISASI PENDAPATAN</div>
-          </div>
-          <div class="mb-3 state-item">
-            <div class="state-number">Rp 1.250.000.000</div>
-            <div class="state-label">RENCANA BELANJA</div>
-          </div>
-          <div class="mb-3 state-item">
-            <div class="state-number">Rp 1.223.000.000</div>
-            <div class="state-label">REALISASI BELANJA</div>
-          </div>
-          <div class="mb-3 state-item">
-            <div class="state-number">Rp 50.000.000</div>
-            <div class="state-label">PEMBIAYAAN (SiLPA)</div>
-          </div>
-          <div class="mb-3 state-item">
-            <div class="state-number">Rp 102.500.000</div>
-            <div class="state-label">SISA ANGGARAN</div>
-          </div>
+
+          <?php if (!empty($apbdes)): ?>
+            <div class="mb-3 state-item">
+              <div class="state-number">Rp <?= number_format($apbdes['total_pendapatan'], 0, ',', '.') ?></div>
+              <div class="state-label">PENDAPATAN</div>
+            </div>
+
+            <div class="mb-3 state-item">
+              <div class="state-number">Rp <?= number_format($apbdes['total_realisasi_pendapatan'], 0, ',', '.') ?></div>
+              <div class="state-label">REALISASI PENDAPATAN</div>
+            </div>
+
+            <div class="mb-3 state-item">
+              <div class="state-number">Rp <?= number_format($apbdes['total_belanja'], 0, ',', '.') ?></div>
+              <div class="state-label">RENCANA BELANJA</div>
+            </div>
+
+            <div class="mb-3 state-item">
+              <div class="state-number">Rp <?= number_format($apbdes['total_realisasi_belanja'], 0, ',', '.') ?></div>
+              <div class="state-label">REALISASI BELANJA</div>
+            </div>
+
+            <div class="mb-3 state-item">
+              <div class="state-number">Rp <?= number_format($apbdes['silpa'], 0, ',', '.') ?></div>
+              <div class="state-label">PEMBIAYAAN (SiLPA)</div>
+            </div>
+
+            <div class="mb-3 state-item">
+              <div class="state-number">
+                Rp <?= number_format($apbdes['sisa_anggaran'], 0, ',', '.') ?>
+              </div>
+              <div class="state-label">SISA ANGGARAN</div>
+            </div>
+          <?php else: ?>
+            <p class="text-muted">Data APBDes belum tersedia.</p>
+          <?php endif; ?>
+
         </div>
+
         <a href="<?= base_url('APBDes'); ?>" class="btn-bg"> Selengkapnya </a>
       </section>
 
       <!-- Realisasi Anggaran -->
-       <section id="realisasi" class="reveal">
+      <section id="realisasi" class="reveal">
         <div class="container">
           <div class="text-center mb-4">
-            <h2 class="fw-bold">Realisasi Anggaran Desa</h2>
+            <h3>REALISASI ANGGARAN</h3>
             <p class="text-muted">Transparansi penggunaan dana desa tahun 2025</p>
           </div>
 
@@ -484,84 +518,83 @@
                 </tr>
               </thead>
               <tbody>
+                <?php $no = 1; ?>
+                <?php foreach ($realisasi as $row): 
+                  $persentase = $row['anggaran'] > 0 
+                    ? round(($row['realisasi'] / $row['anggaran']) * 100, 2) 
+                    : 0;
+                ?>
                 <tr>
-                  <td>1</td>
-                  <td>Pemerintahan Desa</td>
-                  <td>Rp150.000.000</td>
-                  <td>Rp120.000.000</td>
-                  <td>80%</td>
+                  <td><?= $no++ ?></td>
+                  <td><?= $row['bidang'] ?></td>
+                  <td>Rp<?= number_format($row['anggaran'], 0, ',', '.') ?></td>
+                  <td>Rp<?= number_format($row['realisasi'], 0, ',', '.') ?></td>
+                  <td><?= $persentase ?>%</td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Pembangunan</td>
-                  <td>Rp300.000.000</td>
-                  <td>Rp270.000.000</td>
-                  <td>90%</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Pemberdayaan Masyarakat</td>
-                  <td>Rp100.000.000</td>
-                  <td>Rp85.000.000</td>
-                  <td>85%</td>
-                </tr>
+                <?php endforeach; ?>
               </tbody>
             </table>
           </div>
+
           <canvas id="anggaranChart" height="120"></canvas>
         </div>
       </section>
 
       <!-- Pembangunan -->
-       <section id="pembangunan" class="reveal">
+      <section id="pembangunan" class="reveal">
         <div class="container">
           <div class="text-center mb-4">
-            <h2 class="fw-bold">Pembangunan Desa</h2>
+            <h3>PEMBANGUNAN</h3>
             <p class="text-muted">Informasi progres pembangunan dan kegiatan desa</p>
           </div>
 
           <div class="row g-4">
-            <div class="col-md-4">
-              <div class="card shadow-sm h-100">
-                <img src="assets/img/artikel.jpeg" class="card-img-top" alt="Pembangunan Jalan Desa">
-                <div class="card-body">
-                  <h5 class="card-title">Pembangunan Jalan Desa</h5>
-                  <p class="card-text">Proyek peningkatan infrastruktur jalan di Dusun Sukamaju sepanjang 2 km.</p>
-                  <div class="progress mb-2" style="height: 10px;">
-                    <div class="progress-bar bg-success" style="width: 90%;"></div>
-                  </div>
-                  <small class="text-muted">Progres: 90%</small>
-                </div>
-              </div>
-            </div>
+            <?php if (!empty($pembangunan)): ?>
+              <?php foreach ($pembangunan as $p): ?>
+                <?php
+                  $img = !empty($p['foto'])
+                    ? base_url('assets/img/' . $p['foto'])
+                    : base_url('assets/img/artikel.jpeg');
 
-            <div class="col-md-4">
-              <div class="card shadow-sm h-100">
-                <img src="assets/img/artikel.jpeg" class="card-img-top" alt="Rehabilitasi Irigasi">
-                <div class="card-body">
-                  <h5 class="card-title">Rehabilitasi Irigasi</h5>
-                  <p class="card-text">Pemeliharaan saluran irigasi untuk mendukung pertanian warga.</p>
-                  <div class="progress mb-2" style="height: 10px;">
-                    <div class="progress-bar bg-warning" style="width: 70%;"></div>
-                  </div>
-                  <small class="text-muted">Progres: 70%</small>
-                </div>
-              </div>
-            </div>
+                  $alt       = $p['alt_foto'] ?: 'Foto Pembangunan Desa';
+                  $progress  = (int) ($p['progres'] ?? 0);
+                ?>
+                <div class="col-md-4">
+                  <div class="card shadow-sm h-100 border-0">
+                    <img src="<?= esc($img) ?>" alt="<?= esc($alt) ?>" class="card-img-top" style="height: 230px; object-fit: cover;">
 
-            <div class="col-md-4">
-              <div class="card shadow-sm h-100">
-                <img src="assets/img/artikel.jpeg" class="card-img-top" alt="Pembangunan Posyandu">
-                <div class="card-body">
-                  <h5 class="card-title">Pembangunan Posyandu</h5>
-                  <p class="card-text">Fasilitas kesehatan untuk balita dan ibu hamil di Dusun Mekarsari.</p>
-                  <div class="progress mb-2" style="height: 10px;">
-                    <div class="progress-bar bg-info" style="width: 50%;"></div>
+                    <div class="card-body d-flex flex-column">
+                      <h5 class="card-title fw-semibold mb-2">
+                        <a href="<?= base_url('pembangunan/' . esc($p['slug'])) ?>" class="text-dark text-decoration-none">
+                          <?= esc($p['nama_pembangunan']) ?>
+                        </a>
+                      </h5>
+
+                      <p class="card-text text-muted small mb-2">
+                        <?= character_limiter(strip_tags($p['deskripsi']), 90) ?>...
+                      </p>
+
+                      <div class="progress mb-2" style="height: 10px;">
+                        <div class="progress-bar" style="width: <?= $progress ?>%;"></div>
+                      </div>
+                      <small class="text-muted mb-3">Progres: <?= $progress ?>%</small>
+
+                      <div class="mt-auto">
+                        <a href="<?= base_url('pembangunan/' . esc($p['slug'])) ?>" class="text-primary fw-bold">
+                          Lihat Detail
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                  <small class="text-muted">Progres: 50%</small>
+                </div>
+              <?php endforeach; ?>
+            <?php else: ?>
+              <div class="col-12 text-center">
+                <div class="alert alert-info">
+                  Belum ada data pembangunan untuk ditampilkan.
                 </div>
               </div>
-            </div>
+            <?php endif; ?>
           </div>
         </div>
       </section>
@@ -651,102 +684,102 @@
       </section>
 
       <!-- Informasi Layanan -->
-<section id="informasila" class="reveal">
-  <div class="container">
-    <div class="mb-4 text-center">
-      <h3 class="mb-3">INFORMASI LAYANAN</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel facere eos
-        maiores voluptatem magnam corrupti officia nam. Mollitia ab expedita
-        omnis adipisci perferendis temporibus dolorem similique nobis
-        voluptatibus, eveniet a.
-      </p>
-    </div>
+      <section id="informasila" class="reveal">
+        <div class="container">
+          <div class="mb-4 text-center">
+            <h3 class="mb-3">INFORMASI LAYANAN</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel facere eos
+              maiores voluptatem magnam corrupti officia nam. Mollitia ab expedita
+              omnis adipisci perferendis temporibus dolorem similique nobis
+              voluptatibus, eveniet a.
+            </p>
+          </div>
 
-    <!-- Baris 1 -->
-    <div class="row g-4 mb-4">
-      <div class="col-md-6">
-        <div class="card h-100 shadow-sm border-0">
-          <div class="card-body">
-            <h6 class="fw-semibold text-primary mb-3">
-              Jenis Surat yang Umum Dilayani
-            </h6>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Surat Keterangan Domisili (SKD)</li>
-              <li class="list-group-item">Surat Keterangan Usaha (SKU)</li>
-              <li class="list-group-item">Surat Keterangan Tidak Mampu (SKTM)</li>
-              <li class="list-group-item">Surat Pengantar Pembuatan KTP / KK / Akta</li>
-              <li class="list-group-item">Surat Keterangan Kelahiran / Kematian</li>
-              <li class="list-group-item">Surat Keterangan Pindah / Datang Penduduk</li>
-              <li class="list-group-item">Surat Pengantar Nikah (N1 - N4)</li>
-              <li class="list-group-item">Surat Keterangan Tanah / Waris</li>
-              <li class="list-group-item">Surat Rekomendasi Lainnya</li>
-            </ul>
+          <!-- Baris 1 -->
+          <div class="row g-4 mb-4">
+            <div class="col-md-6">
+              <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                  <h6 class="fw-semibold text-primary mb-3">
+                    Jenis Surat yang Umum Dilayani
+                  </h6>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Surat Keterangan Domisili (SKD)</li>
+                    <li class="list-group-item">Surat Keterangan Usaha (SKU)</li>
+                    <li class="list-group-item">Surat Keterangan Tidak Mampu (SKTM)</li>
+                    <li class="list-group-item">Surat Pengantar Pembuatan KTP / KK / Akta</li>
+                    <li class="list-group-item">Surat Keterangan Kelahiran / Kematian</li>
+                    <li class="list-group-item">Surat Keterangan Pindah / Datang Penduduk</li>
+                    <li class="list-group-item">Surat Pengantar Nikah (N1 - N4)</li>
+                    <li class="list-group-item">Surat Keterangan Tanah / Waris</li>
+                    <li class="list-group-item">Surat Rekomendasi Lainnya</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="card h-100 shadow-sm border-0 bg-light">
+                <div class="card-body">
+                  <h6 class="fw-semibold text-primary mb-3">Proses Pelayanan</h6>
+                  <ol class="list-group list-group-numbered">
+                    <li class="list-group-item">
+                      Warga mengajukan permohonan ke RT/RW untuk surat pengantar
+                    </li>
+                    <li class="list-group-item">Membawa pengantar & berkas ke Kantor Desa</li>
+                    <li class="list-group-item">Petugas desa memverifikasi data</li>
+                    <li class="list-group-item">
+                      Surat dibuat, ditandatangani Kepala Desa atau Sekretaris Desa
+                    </li>
+                    <li class="list-group-item">
+                      Surat bisa langsung diambil warga (biasanya 1 hari kerja)
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Baris 2 -->
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="card h-100 shadow-sm border-0 bg-light">
+                <div class="card-body">
+                  <h6 class="fw-semibold text-primary mb-3">
+                    Syarat Umum Pengajuan Surat
+                  </h6>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Fotokopi KTP & KK</li>
+                    <li class="list-group-item">Surat pengantar RT/RW</li>
+                    <li class="list-group-item">
+                      Dokumen pendukung (akta lahir, surat nikah, ijazah, dll sesuai kebutuhan)
+                    </li>
+                    <li class="list-group-item">
+                      Mengisi formulir permohonan di Kantor Desa
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                  <h6 class="fw-semibold text-primary mb-3">Jam Layanan (Umumnya)</h6>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Senin - Jumat : 08.00 - 14.00</li>
+                    <li class="list-group-item">Istirahat : 12.00 - 13.00</li>
+                    <li class="list-group-item">
+                      Sabtu - Minggu : Libur (kecuali ada pelayanan darurat)
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="card h-100 shadow-sm border-0 bg-light">
-          <div class="card-body">
-            <h6 class="fw-semibold text-primary mb-3">Proses Pelayanan</h6>
-            <ol class="list-group list-group-numbered">
-              <li class="list-group-item">
-                Warga mengajukan permohonan ke RT/RW untuk surat pengantar
-              </li>
-              <li class="list-group-item">Membawa pengantar & berkas ke Kantor Desa</li>
-              <li class="list-group-item">Petugas desa memverifikasi data</li>
-              <li class="list-group-item">
-                Surat dibuat, ditandatangani Kepala Desa atau Sekretaris Desa
-              </li>
-              <li class="list-group-item">
-                Surat bisa langsung diambil warga (biasanya 1 hari kerja)
-              </li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Baris 2 -->
-    <div class="row g-4">
-      <div class="col-md-6">
-        <div class="card h-100 shadow-sm border-0 bg-light">
-          <div class="card-body">
-            <h6 class="fw-semibold text-primary mb-3">
-              Syarat Umum Pengajuan Surat
-            </h6>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Fotokopi KTP & KK</li>
-              <li class="list-group-item">Surat pengantar RT/RW</li>
-              <li class="list-group-item">
-                Dokumen pendukung (akta lahir, surat nikah, ijazah, dll sesuai kebutuhan)
-              </li>
-              <li class="list-group-item">
-                Mengisi formulir permohonan di Kantor Desa
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="card h-100 shadow-sm border-0">
-          <div class="card-body">
-            <h6 class="fw-semibold text-primary mb-3">Jam Layanan (Umumnya)</h6>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Senin - Jumat : 08.00 - 14.00</li>
-              <li class="list-group-item">Istirahat : 12.00 - 13.00</li>
-              <li class="list-group-item">
-                Sabtu - Minggu : Libur (kecuali ada pelayanan darurat)
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       <h1 class="mb-4">KONTAK & PENGADUAN</h1>
 
