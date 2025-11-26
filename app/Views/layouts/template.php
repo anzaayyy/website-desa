@@ -118,6 +118,35 @@
         plugins: [ChartDataLabels, centerText],
       });
     </script>
+    <script>
+      // Chart SARANA
+      if (typeof saranaData !== "undefined") {
+        new Chart(document.getElementById("chartSarana"), {
+          type: "bar",
+          data: {
+            labels: Object.keys(saranaData),
+            datasets: [{
+              label: "Jumlah",
+              data: Object.values(saranaData)
+            }]
+          }
+        });
+      }
+
+      // Chart PRASARANA
+      if (typeof prasaranaData !== "undefined") {
+        new Chart(document.getElementById("chartPrasarana"), {
+          type: "bar",
+          data: {
+            labels: Object.keys(prasaranaData),
+            datasets: [{
+              label: "Jumlah",
+              data: Object.values(prasaranaData)
+            }]
+          }
+        });
+      }
+    </script>
 
     <!-- chart js penduduk -->
     <script>
