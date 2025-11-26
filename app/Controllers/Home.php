@@ -14,6 +14,7 @@ use App\Models\WilayahModel;
 use App\Models\LembagaModel;
 use App\Models\APBDesModel;
 use App\Models\RealranModel;
+use App\Models\PembangunanModel;
 
 class Home extends BaseController
 {
@@ -65,7 +66,13 @@ class Home extends BaseController
         $data['apbdes'] = $apbdes;
         $data['sisa_anggaran'] = $sisaAnggaran;
 
-        
+        $model = new RealranModel();
+        $data['realisasi'] = $model->findAll();
+
+        $model = new PembangunanModel();
+        $pembangunan = $model
+            ->orderBy('created_at', 'DESC')
+            ->findAll();
 
         return view('index', $data);
     }
