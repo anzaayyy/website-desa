@@ -42,3 +42,16 @@ const sections = document.querySelectorAll('.reveal');
   sections.forEach(section => {
     observer.observe(section);
   });
+
+  function toggleLi(id) {
+    const box = document.getElementById(id);
+    const icon = document.getElementById("icon-" + id);
+
+    if (box.style.display === "block") {
+      box.style.display = "none";
+      icon.classList.remove("rotate");
+    } else {
+      box.style.display = "block";
+      icon.classList.add("rotate");
+    }
+  }
