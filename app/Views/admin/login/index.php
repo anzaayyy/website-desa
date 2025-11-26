@@ -12,7 +12,7 @@
                 </a>
             </div>
 
-            <h2 class="auth-heading text-center mb-4">Login Admin</h2>
+            <h2 class="auth-heading text-center mb-4">Login Website Desa</h2>
 
             <?php if(session()->getFlashdata('error')): ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -35,11 +35,11 @@
                         </button>
                     </div>
                 </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                <div class="d-flex justify-content-center gap-2">
+                    <button type="submit" class="btn btn-primary flex-fill">Login</button>
+                    <a href="<?= base_url('beranda') ?>" class="btn btn-secondary flex-fill">Kembali</a>
                 </div>
             </form>
-
         </div>
     </div>
 

@@ -56,8 +56,8 @@
         </select>
     </div>
 
-    <button class="btn btn-primary">Perbarui Data</button>
-    <a href="<?= base_url('admin/penduduk') ?>" class="btn btn-secondary">Kembali</a>
+    <button class="btn btn-primary">Update</button>
+    <a href="<?= base_url('admin/penduduk') ?>" class="btn btn-secondary">Batal</a>
 </form>
 
 <?= $this->endSection() ?>

@@ -48,6 +48,7 @@
     </div>
 
     <button class="btn btn-primary">Simpan</button>
+    <a href="<?= base_url('admin/penduduk') ?>" class="btn btn-secondary">Kembali</a>
 </form>
 
 <?= $this->endSection() ?>

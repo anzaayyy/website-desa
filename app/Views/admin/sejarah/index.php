@@ -1,7 +1,10 @@
 <?= $this->extend('admin/template/template') ?>
 <?= $this->section('content') ?>
 
-<h3 class="fw-bold mb-2">Manajemen Sejarah Desa</h3>
+<div class="d-flex justify-content-between mb-2">
+  <h3 class="fw-bold">Manajemen Sejarah Desa</h3>
+  <a href="<?= base_url('admin/sejarah/create') ?>" class="btn btn-primary">+ Tambah Sejarah</a>
+</div>
 
 <?php if (session()->getFlashdata('success')): ?>
 <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
@@ -27,7 +30,7 @@
                 <td><?= word_limiter(strip_tags($row['isi']), 20) ?></td>
                 <td>
                     <a href="<?= base_url('admin/sejarah/edit/'.$row['id']) ?>" class="btn btn-sm btn-warning">Edit</a>
-                    <!-- <a href="<?= base_url('admin/sejarah/delete/'.$row['id']) ?>" onclick="return confirm('Hapus data ini?')" class="btn btn-sm btn-danger">Hapus</a> -->
+                    <a href="<?= base_url('admin/sejarah/delete/'.$row['id']) ?>" onclick="return confirm('Hapus data ini?')" class="btn btn-sm btn-danger">Hapus</a>
                 </td>
             </tr>
             <?php endforeach ?>

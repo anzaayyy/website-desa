@@ -4,9 +4,6 @@
 
 <div class="d-flex justify-content-between align-items-center mb-4">
   <h1 class="h3 mb-0 text-gray-800">Tambah Lembaga Desa</h1>
-  <a href="<?= base_url('admin/lembaga') ?>" class="btn btn-secondary">
-    <i class="fas fa-arrow-left"></i> Kembali
-  </a>
 </div>
 
 <?php if (session()->getFlashdata('errors')): ?>
@@ -56,12 +53,15 @@
       <div class="mb-3">
         <label for="alt_gambar" class="form-label">Alt Gambar (Teks alternatif)</label>
         <input type="text" name="alt_gambar" id="alt_gambar" class="form-control"
-               value="<?= old('alt_gambar') ?>">
+        value="<?= old('alt_gambar') ?>">
       </div>
 
       <button type="submit" class="btn btn-primary">
         <i class="fas fa-save"></i> Simpan
       </button>
+      <a href="<?= base_url('admin/lembaga') ?>" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i> Kembali
+      </a>
     </form>
   </div>
 </div>

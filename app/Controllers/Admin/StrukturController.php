@@ -65,10 +65,7 @@ class StrukturController extends BaseController
 
     public function edit($id)
     {
-        $data = [
-            'struktur' => $this->strukturModel->find($id),
-        ];
-
+        $data = ['struktur' => $this->strukturModel->find($id),];
         return view('admin/struktur/edit', $data);
     }
 

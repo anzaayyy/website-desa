@@ -38,6 +38,7 @@
         <input type="text" name="alt_foto" value="<?= $data['alt_foto'] ?>" class="form-control">
 
         <button class="btn btn-primary mt-3 w-100">Update</button>
+        <a href="<?= base_url('admin/pembangunan') ?>" class="btn btn-secondary">Batal</a>
     </div>
 </div>
 </form>
