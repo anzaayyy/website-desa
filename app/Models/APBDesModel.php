@@ -12,7 +12,7 @@ class APBDesModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['tahun', 'deskripsi', 'total_pendapatan',
+    protected $allowedFields    = ['tahun', 'deskripsi', 'total_pendapatan', 'total_rencana_belanja',
 'total_belanja', 'total_pembiayaan', 'silpa'];
 
     protected bool $allowEmptyInserts = false;

@@ -33,6 +33,7 @@
             <tr class="text-center">
                 <th>Tahun</th>
                 <th>Total Pendapatan</th>
+                <th>Rencara Belanja</th>
                 <th>Total Belanja</th>
                 <th>Total Pembiayaan</th>
                 <th>SILPA</th>
@@ -45,6 +46,7 @@
                     <tr>
                         <td class="text-center"><?= esc($row['tahun']) ?></td>
                         <td>Rp<?= number_format($row['total_pendapatan'], 0, ',', '.') ?></td>
+                        <td>Rp<?= number_format($row['total_rencana_belanja'], 0, ',', '.') ?></td>
                         <td>Rp<?= number_format($row['total_belanja'], 0, ',', '.') ?></td>
                         <td>Rp<?= number_format($row['total_pembiayaan'], 0, ',', '.') ?></td>
                         <td>Rp<?= number_format($row['silpa'], 0, ',', '.') ?></td>

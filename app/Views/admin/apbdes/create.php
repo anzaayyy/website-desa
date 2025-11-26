@@ -19,6 +19,13 @@
     <hr>
 
     <div class="mb-3">
+        <label class="form-label">Total Rencana Belanja (otomatis)</label>
+        <input type="text" class="form-control"
+               value="<?= 'Rp' . number_format($totalPendapatan, 0, ',', '.') ?>"
+               readonly>
+    </div>
+
+    <div class="mb-3">
         <label class="form-label">Total Pendapatan (otomatis)</label>
         <input type="text" class="form-control"
                value="<?= 'Rp' . number_format($totalPendapatan, 0, ',', '.') ?>"

@@ -110,15 +110,22 @@ class ApbdesController extends BaseController
             ->first();
         $totalPembiayaan = $sumPembiayaan['jumlah'] ?? 0;
 
+        $sumAnggaran = $this->realran
+            ->where('tanggal_realisasi >=', $start)
+            ->where('tanggal_realisasi <=', $end)
+            ->selectSum('anggaran')
+            ->first();
+        $totalRealisasiAnggaran = $sumAnggaran['anggaran'] ?? 0;
         $silpa = $totalPendapatan + $totalPembiayaan - $totalBelanja;
 
         $this->apbdes->save([
-            'tahun'            => $this->request->getPost('tahun'),
-            'deskripsi'        => $this->request->getPost('deskripsi'),
-            'total_pendapatan' => $totalPendapatan,
-            'total_belanja'    => $totalBelanja,
-            'total_pembiayaan' => $totalPembiayaan,
-            'silpa'            => $silpa,
+            'tahun'                     => $this->request->getPost('tahun'),
+            'deskripsi'                 => $this->request->getPost('deskripsi'),
+            'total_pendapatan'          => $totalPendapatan,
+            'total_rencana_belanja'     => $totalRealisasiAnggaran,
+            'total_belanja'             => $totalBelanja,
+            'total_pembiayaan'          => $totalPembiayaan,
+            'silpa'                     => $silpa,
         ]);
 
         return redirect()->to('/admin/apbdes')
@@ -161,15 +168,24 @@ class ApbdesController extends BaseController
         ->first();
         $totalPembiayaan = $sumPembiayaan['jumlah'] ?? 0;
 
+        // Hitung ulang total realisasi anggaran
+        $sumAnggaran   = $this->realran
+        ->where('tanggal_realisasi >=', $start)
+        ->where('tanggal_realisasi <=', $end)
+        ->selectSum('anggaran')
+        ->first();
+        $totalRealisasiAnggaran = $sumAnggaran['anggaran'] ?? 0;
+
         // Hitung SILPA = Pendapatan + Pembiayaan - Belanja
         $silpa = $totalPendapatan + $totalPembiayaan - $totalBelanja;
 
         // Update baris APBDes ini dengan nilai terbaru
         $this->apbdes->update($id, [
-            'total_pendapatan' => $totalPendapatan,
-            'total_belanja'    => $totalBelanja,
-            'total_pembiayaan' => $totalPembiayaan,
-            'silpa'            => $silpa,
+            'total_pendapatan'          => $totalPendapatan,
+            'total_rencana_belanja'     => $totalRealisasiAnggaran,
+            'total_belanja'             => $totalBelanja,
+            'total_pembiayaan'          => $totalPembiayaan,
+            'silpa'                     => $silpa,
             // kalau mau sekalian update deskripsi / tahun, bisa ditambah di sini
         ]);
 
@@ -203,18 +219,22 @@ class ApbdesController extends BaseController
         $sumBelanja = $this->realran->selectSum('realisasi')->first();
         $totalBelanja = $sumBelanja['realisasi'] ?? 0;
 
+        $sumAnggaran = $this->realran->selectSum('anggaran')->first();
+        $totalAnggaran = $sumAnggaran['anggaran'] ?? 0;
+
         $sumPembiayaan = $this->pembiayaan->selectSum('jumlah')->first();
         $totalPembiayaan = $sumPembiayaan['jumlah'] ?? 0;
 
         $silpa = $totalPendapatan + $totalPembiayaan - $totalBelanja;
 
         $this->apbdes->update($id, [
-            'tahun'            => $this->request->getPost('tahun'),
-            'deskripsi'        => $this->request->getPost('deskripsi'),
-            'total_pendapatan' => $totalPendapatan,
-            'total_belanja'    => $totalBelanja,
-            'total_pembiayaan' => $totalPembiayaan,
-            'silpa'            => $silpa,
+            'tahun'                     => $this->request->getPost('tahun'),
+            'deskripsi'                 => $this->request->getPost('deskripsi'),
+            'total_pendapatan'          => $totalPendapatan,
+            'total_rencana_belanja'     => $totalAnggaran,
+            'total_belanja'             => $totalBelanja,
+            'total_pembiayaan'          => $totalPembiayaan,
+            'silpa'                     => $silpa,
         ]);
 
         return redirect()->to('/admin/apbdes')
@@ -291,7 +311,7 @@ class ApbdesController extends BaseController
             'jumlah'                => $this->request->getPost('jumlah'),
             'keterangan'            => $this->request->getPost('keterangan'),
             'urutan'                => $this->request->getPost('urutan'),
-            'tanggal_pembiayaan'     => $this->request->getPost('tanggal_pembiayaan'),
+            'tanggal_pembiayaan'    => $this->request->getPost('tanggal_pembiayaan'),
         ]);
 
         return redirect()->to('/admin/apbdes')->with('success', 'Pembiayaan Desa berhasil diupdate!');
