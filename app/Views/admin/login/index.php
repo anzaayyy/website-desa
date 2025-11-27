@@ -14,7 +14,7 @@
 
             <h2 class="auth-heading text-center mb-4">Login Website Desa</h2>
 
-            <?php if(session()->getFlashdata('error')): ?>
+            <?php if (session()->getFlashdata('error')): ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <?= session()->getFlashdata('error'); ?>
                 </div>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="d-flex justify-content-center gap-2">
                     <button type="submit" class="btn btn-primary flex-fill">Login</button>
-                    <a href="<?= base_url('beranda') ?>" class="btn btn-secondary flex-fill">Kembali</a>
+                    <a href="javascript:history.back()" class="btn btn-secondary flex-fill">Kembali</a>
                 </div>
             </form>
         </div>

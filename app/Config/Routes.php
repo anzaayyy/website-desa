@@ -31,7 +31,9 @@ $routes->get('layanan_mandiri', 'LamanController::index');
 $routes->get('informasi_layanan', 'InforlayananController::index');
 $routes->get('kontak', 'KontakController::index');
 $routes->get('kritik', 'KritikController::index');
+$routes->post('kritik/store', 'KritikController::store');
 $routes->get('pengaduan', 'PengaduanController::index');
+$routes->post('pengaduan/store', 'PengaduanController::store');
 
 // LOGIN ADMIN
 $routes->get('login', 'AuthController::login');
