@@ -150,6 +150,10 @@
           Rp <?= number_format($apbdes['total_pendapatan'], 0, ',', '.'); ?>
         </p>
         <p class="mb-1">
+          <strong>Total Rencana Belanja:</strong>
+          Rp <?= number_format($apbdes['total_rencana_belanja'], 0, ',', '.'); ?>
+        </p>
+        <p class="mb-1">
           <strong>Total Belanja:</strong>
           Rp <?= number_format($apbdes['total_belanja'], 0, ',', '.'); ?>
         </p>

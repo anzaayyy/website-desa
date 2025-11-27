@@ -490,18 +490,18 @@
         </thead>
         <tbody>
           <?php $no = 1; ?>
-          <?php foreach ($realisasi as $row): 
-            $persentase = $row['anggaran'] > 0 
-              ? round(($row['realisasi'] / $row['anggaran']) * 100, 2) 
+          <?php foreach ($realisasi as $row):
+            $persentase = $row['anggaran'] > 0
+              ? round(($row['realisasi'] / $row['anggaran']) * 100, 2)
               : 0;
           ?>
-          <tr>
-            <td><?= $no++ ?></td>
-            <td><?= $row['bidang'] ?></td>
-            <td>Rp<?= number_format($row['anggaran'], 0, ',', '.') ?></td>
-            <td>Rp<?= number_format($row['realisasi'], 0, ',', '.') ?></td>
-            <td><?= $persentase ?>%</td>
-          </tr>
+            <tr>
+              <td><?= $no++ ?></td>
+              <td><?= $row['bidang'] ?></td>
+              <td>Rp<?= number_format($row['anggaran'], 0, ',', '.') ?></td>
+              <td>Rp<?= number_format($row['realisasi'], 0, ',', '.') ?></td>
+              <td><?= $persentase ?>%</td>
+            </tr>
           <?php endforeach; ?>
         </tbody>
       </table>
@@ -523,12 +523,12 @@
       <?php if (!empty($pembangunan)): ?>
         <?php foreach ($pembangunan as $p): ?>
           <?php
-            $img = !empty($p['foto'])
-              ? base_url('assets/img/' . $p['foto'])
-              : base_url('assets/img/artikel.jpeg');
+          $img = !empty($p['foto'])
+            ? base_url('assets/img/' . $p['foto'])
+            : base_url('assets/img/artikel.jpeg');
 
-            $alt       = $p['alt_foto'] ?: 'Foto Pembangunan Desa';
-            $progress  = (int) ($p['progres'] ?? 0);
+          $alt       = $p['alt_foto'] ?: 'Foto Pembangunan Desa';
+          $progress  = (int) ($p['progres'] ?? 0);
           ?>
           <div class="col-md-4">
             <div class="card shadow-sm h-100 border-0">
@@ -573,7 +573,7 @@
 <h1 class="mb-4">LAYANAN PUBLIK</h1>
 
 <!-- Persuratan -->
-<section id="persuratan" class="reveal">
+<!-- <section id="persuratan" class="reveal">
   <div class="container">
     <div class="text-center mb-4">
       <h3>LAYANAN PERSURATAN</h3>
@@ -614,10 +614,10 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- Layanan Mandiri -->
-<section id="layananpu" class="reveal">
+<!-- <section id="layananpu" class="reveal">
   <div class="mb-4">
     <p class="card-text">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel facere
@@ -651,7 +651,7 @@
       <a href="<?= base_url('layanan_mandiri'); ?>" class="btn-bg"> Permohonan Surat </a>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- Informasi Layanan -->
 <section id="informasila" class="reveal">
@@ -664,83 +664,83 @@
     <div class="row g-4 mb-4">
       <div class="col-md-6">
         <div class="card h-100 shadow-sm border-0 bg-light">
-        <div class="card-body">
-        <h6 class="fw-semibold text-primary mb-3">Jenis Surat yang Umum Dilayani</h6>
-        <div class="li-card" onclick="toggleLi('d1')">
-          Surat Keterangan Domisili (SKD)
-          <span id="icon-d1" class="arrow">›</span>
-        </div>
-        <div id="d1" class="li-detail">
-          Detail SKD:  
-          Biasanya digunakan untuk keperluan pendaftaran sekolah, kerja, atau kebutuhan administrasi lainnya.
-        </div>
+          <div class="card-body">
+            <h6 class="fw-semibold text-primary mb-3">Jenis Surat yang Umum Dilayani</h6>
+            <div class="li-card" onclick="toggleLi('d1')">
+              Surat Keterangan Domisili (SKD)
+              <span id="icon-d1" class="arrow">›</span>
+            </div>
+            <div id="d1" class="li-detail">
+              Detail SKD:
+              Biasanya digunakan untuk keperluan pendaftaran sekolah, kerja, atau kebutuhan administrasi lainnya.
+            </div>
 
-        <div class="li-card" onclick="toggleLi('d2')">
-          Surat Keterangan Usaha (SKU)
-          <span id="icon-d2" class="arrow">›</span>
-        </div>
-        <div id="d2" class="li-detail">
-          Detail SKU:  
-          Dibutuhkan untuk izin usaha, pengajuan bantuan UMKM, hingga pengurusan perbankan.
-        </div>
+            <div class="li-card" onclick="toggleLi('d2')">
+              Surat Keterangan Usaha (SKU)
+              <span id="icon-d2" class="arrow">›</span>
+            </div>
+            <div id="d2" class="li-detail">
+              Detail SKU:
+              Dibutuhkan untuk izin usaha, pengajuan bantuan UMKM, hingga pengurusan perbankan.
+            </div>
 
-        <div class="li-card" onclick="toggleLi('d3')">
-          Surat Keterangan Tidak Mampu (SKTM)
-          <span id="icon-d3" class="arrow">›</span>
-        </div>
-        <div id="d3" class="li-detail">
-          Detail SKTM:  
-          Digunakan untuk bantuan sosial, pendidikan, kesehatan, dsb.
-        </div>
-        <div class="li-card" onclick="toggleLi('d4')">
-          Surat Pengantar Pembuatan KTP / KK / Akta
-          <span id="icon-d4" class="arrow">›</span>
-        </div>
-        <div id="d4" class="li-detail">
-          Digunakan sebagai syarat pengurusan dokumen identitas seperti KTP, KK, dan akta kelahiran.
-        </div>
+            <div class="li-card" onclick="toggleLi('d3')">
+              Surat Keterangan Tidak Mampu (SKTM)
+              <span id="icon-d3" class="arrow">›</span>
+            </div>
+            <div id="d3" class="li-detail">
+              Detail SKTM:
+              Digunakan untuk bantuan sosial, pendidikan, kesehatan, dsb.
+            </div>
+            <div class="li-card" onclick="toggleLi('d4')">
+              Surat Pengantar Pembuatan KTP / KK / Akta
+              <span id="icon-d4" class="arrow">›</span>
+            </div>
+            <div id="d4" class="li-detail">
+              Digunakan sebagai syarat pengurusan dokumen identitas seperti KTP, KK, dan akta kelahiran.
+            </div>
 
-        <div class="li-card" onclick="toggleLi('d5')">
-          Surat Keterangan Kelahiran / Kematian
-          <span id="icon-d5" class="arrow">›</span>
-        </div>
-        <div id="d5" class="li-detail">
-          Surat resmi dari desa untuk administrasi kelahiran atau kematian warga.
-        </div>
+            <div class="li-card" onclick="toggleLi('d5')">
+              Surat Keterangan Kelahiran / Kematian
+              <span id="icon-d5" class="arrow">›</span>
+            </div>
+            <div id="d5" class="li-detail">
+              Surat resmi dari desa untuk administrasi kelahiran atau kematian warga.
+            </div>
 
-        <div class="li-card" onclick="toggleLi('d6')">
-          Surat Keterangan Pindah / Datang Penduduk
-          <span id="icon-d6" class="arrow">›</span>
-        </div>
-        <div id="d6" class="li-detail">
-          Dibutuhkan untuk proses perpindahan domisili baik keluar maupun masuk wilayah desa.
-        </div>
+            <div class="li-card" onclick="toggleLi('d6')">
+              Surat Keterangan Pindah / Datang Penduduk
+              <span id="icon-d6" class="arrow">›</span>
+            </div>
+            <div id="d6" class="li-detail">
+              Dibutuhkan untuk proses perpindahan domisili baik keluar maupun masuk wilayah desa.
+            </div>
 
-        <div class="li-card" onclick="toggleLi('d7')">
-          Surat Pengantar Nikah (N1 - N4)
-          <span id="icon-d7" class="arrow">›</span>
-        </div>
-        <div id="d7" class="li-detail">
-          Dokumen persiapan pernikahan sesuai prosedur administratif dari desa hingga KUA.
-        </div>
+            <div class="li-card" onclick="toggleLi('d7')">
+              Surat Pengantar Nikah (N1 - N4)
+              <span id="icon-d7" class="arrow">›</span>
+            </div>
+            <div id="d7" class="li-detail">
+              Dokumen persiapan pernikahan sesuai prosedur administratif dari desa hingga KUA.
+            </div>
 
-        <div class="li-card" onclick="toggleLi('d8')">
-          Surat Keterangan Tanah / Waris
-          <span id="icon-d8" class="arrow">›</span>
-        </div>
-        <div id="d8" class="li-detail">
-          Digunakan untuk pembuktian kepemilikan tanah atau hak waris atas properti keluarga.
-        </div>
+            <div class="li-card" onclick="toggleLi('d8')">
+              Surat Keterangan Tanah / Waris
+              <span id="icon-d8" class="arrow">›</span>
+            </div>
+            <div id="d8" class="li-detail">
+              Digunakan untuk pembuktian kepemilikan tanah atau hak waris atas properti keluarga.
+            </div>
 
-        <div class="li-card" onclick="toggleLi('d9')">
-          Surat Rekomendasi Lainnya
-          <span id="icon-d9" class="arrow">›</span>
-        </div>
-        <div id="d9" class="li-detail">
-          Meliputi berbagai rekomendasi administratif sesuai kebutuhan warga.
-        </div>
-        <!-- Tambahkan item lain sesuai kebutuhan -->
-        </div>
+            <div class="li-card" onclick="toggleLi('d9')">
+              Surat Rekomendasi Lainnya
+              <span id="icon-d9" class="arrow">›</span>
+            </div>
+            <div id="d9" class="li-detail">
+              Meliputi berbagai rekomendasi administratif sesuai kebutuhan warga.
+            </div>
+            <!-- Tambahkan item lain sesuai kebutuhan -->
+          </div>
         </div>
       </div>
 
@@ -909,5 +909,32 @@
 
   </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const labels = <?= json_encode(array_column($realisasi, 'bidang')); ?>;
+  const anggaran = <?= json_encode(array_column($realisasi, 'anggaran')); ?>;
+  const realisasi = <?= json_encode(array_column($realisasi, 'realisasi')); ?>;
+
+  const ctx = document.getElementById('anggaranChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+          label: 'Anggaran',
+          data: anggaran,
+          borderWidth: 1
+        },
+        {
+          label: 'Realisasi',
+          data: realisasi,
+          borderWidth: 1
+        }
+      ]
+    }
+  });
+</script>
 
 <?= $this->endSection() ?>
