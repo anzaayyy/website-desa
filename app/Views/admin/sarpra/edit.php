@@ -26,6 +26,7 @@
   </div>
 
   <button class="btn btn-primary">Update</button>
+    <a href="<?= base_url('admin/sarpra') ?>" class="btn btn-secondary">Batal</a>
 </form>
 
 <?= $this->endSection() ?>

@@ -890,12 +890,12 @@
             <input type="email" name="email" class="form-control" placeholder="Email Anda" required>
           </div>
           <div class="mb-3">
-            <select name="kategori" class="form-control" required>
-              <option value="">Pilih Kategori Pengaduan</option>
-              <option value="layanan">Layanan</option>
-              <option value="sarana">Sarana / Prasarana</option>
-              <option value="lainnya">Lainnya</option>
-            </select>
+              <select id="kategori" name="kategori" class="form-select" required>
+                  <option value="" disabled selected>Pilih Kategori Pengaduan</option>
+                  <option value="layanan">Layanan</option>
+                  <option value="sarana">Sarana / Prasarana</option>
+                  <option value="lainnya">Lainnya</option>
+              </select>
           </div>
           <div class="mb-3">
             <textarea name="pengaduan" rows="5" class="form-control" placeholder="Tuliskan pengaduan Anda" required></textarea>

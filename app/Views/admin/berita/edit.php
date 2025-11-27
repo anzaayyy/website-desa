@@ -25,6 +25,7 @@
     <input type="file" name="gambar" class="form-control">
   </div>
   <button type="submit" class="btn btn-success">Update</button>
+  <a href="<?= base_url('admin/berita') ?>" class="btn btn-secondary">Batal</a>
 </form>
 
 <?= $this->endSection() ?>

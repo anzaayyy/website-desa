@@ -24,6 +24,7 @@
     </div>
 
     <button type="submit" class="btn btn-success">Simpan</button>
+    <a href="<?= base_url('admin/visimisi') ?>" class="btn btn-secondary">Kembali</a>
 </form>
 
 <?= $this->endSection() ?>

@@ -31,7 +31,7 @@
   </div>
 
   <button class="btn btn-warning">Update</button>
-  <a href="/admin/wilayah" class="btn btn-secondary">Kembali</a>
+  <a href="/admin/wilayah" class="btn btn-secondary">Batal</a>
 </form>
 
 <?= $this->endSection() ?>
