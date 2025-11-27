@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 
 class KritikModel extends Model
 {
-    protected $table            = 'kritiks';
-    protected $primaryKey       = 'id';
+    protected $table            = 'tb_kritik';
+    protected $primaryKey       = 'id_kritik';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['nama', 'link_email', 'kritikan'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
