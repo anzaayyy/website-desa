@@ -3,6 +3,7 @@
 
 <div class="d-flex justify-content-between align-items-center mb-2">
   <h3 class="fw-bold">Manajemen Visi & Misi</h3>
+  <a href="<?= base_url('admin/visimisi/create') ?>" class="btn btn-primary">+ Tambah Data</a>
 </div>
 
 <?php if (session()->getFlashdata('success')): ?>
@@ -46,12 +47,12 @@
                 <a href="<?= base_url('admin/visimisi/edit/' . $visimisi['id_visimisi']) ?>"
                     class="btn btn-warning btn-sm">Edit</a>
 
-                <!-- <form action="<?= base_url('admin/visimisi/delete/' . $visimisi['id_visimisi']) ?>"
+                <form action="<?= base_url('admin/visimisi/delete/' . $visimisi['id_visimisi']) ?>"
                         method="post"
                         class="d-inline"
                         onsubmit="return confirm('Yakin ingin menghapus data ini?')">
                     <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                </form> -->
+                </form>
                 </td>
             </tr>
 

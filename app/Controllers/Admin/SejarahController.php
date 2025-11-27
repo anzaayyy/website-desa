@@ -20,6 +20,11 @@ class SejarahController extends BaseController
         return view('admin/sejarah/index', $data);
     }
 
+    public function create()
+    {
+        return view('admin/sejarah/create');
+    }
+
     public function store()
     {
         $file = $this->request->getFile('gambar');

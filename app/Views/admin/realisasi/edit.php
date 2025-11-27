@@ -26,7 +26,7 @@
   </div>
 
   <button class="btn btn-success">Update</button>
-  <a href="<?= base_url('admin/realisasi') ?>" class="btn btn-secondary">Kembali</a>
+  <a href="<?= base_url('admin/realisasi') ?>" class="btn btn-secondary">Batal</a>
 </form>
 
 <?= $this->endSection() ?>

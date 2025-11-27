@@ -68,8 +68,8 @@
 
   </div>
 
-  <button type="submit" class="btn btn-primary">Perbarui</button>
-  <a href="<?= base_url('admin/struktur') ?>" class="btn btn-secondary">Kembali</a>
+  <button type="submit" class="btn btn-primary">Update</button>
+  <a href="<?= base_url('admin/struktur') ?>" class="btn btn-secondary">Batal</a>
 </form>
 
 <?= $this->endSection() ?>

@@ -6,13 +6,16 @@ use CodeIgniter\Model;
 
 class PengaduanModel extends Model
 {
-    protected $table            = 'pengaduans';
-    protected $primaryKey       = 'id';
+    protected $table            = 'tb_pengaduan';
+    protected $primaryKey       = 'id_pengaduan';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['id_kategori_pengaduan',
+        'nama',
+        'link_email',
+        'pengaduan'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -21,7 +24,7 @@ class PengaduanModel extends Model
     protected array $castHandlers = [];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

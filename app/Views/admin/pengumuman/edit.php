@@ -29,7 +29,8 @@
             <input type="file" name="gambar" class="form-control">
         </div>
 
-        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="<?= base_url('admin/pengumuman') ?>" class="btn btn-secondary">Batal</a>
     </form>
 </div>
 <?= $this->endSection() ?>

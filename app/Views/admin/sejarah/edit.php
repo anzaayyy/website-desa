@@ -25,7 +25,7 @@
         <textarea name="deskripsi" class="form-control" rows="6"><?= esc($sejarah['isi']) ?></textarea>
     </div>
     <button type="submit" class="btn btn-success">Update</button>
-    <a href="<?= base_url('admin/sejarah') ?>" class="btn btn-secondary">Batal</a>
+    <a href="<?= base_url('admin/sejarah') ?>" class="btn btn-secondary">Kembali</a>
 </form>
 
 <?= $this->endSection() ?>

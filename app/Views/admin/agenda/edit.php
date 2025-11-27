@@ -40,8 +40,8 @@
     </div>
 
     <div class="d-flex justify-content-between">
-      <a href="<?= base_url('admin/agenda') ?>" class="btn btn-secondary">Kembali</a>
-      <button type="submit" class="btn btn-success">Perbarui</button>
+      <button type="submit" class="btn btn-success">Update</button>
+      <a href="<?= base_url('admin/agenda') ?>" class="btn btn-secondary">Batal</a>
     </div>
   </form>
 </div>

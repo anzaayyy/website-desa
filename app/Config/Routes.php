@@ -45,15 +45,19 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
 
     // ADMIN SEJARAH
     $routes->get('sejarah', 'Admin\SejarahController::index');
+    $routes->get('sejarah/create', 'Admin\SejarahController::create');
     $routes->post('sejarah/store', 'Admin\SejarahController::store');
     $routes->get('sejarah/edit/(:num)', 'Admin\SejarahController::edit/$1');
     $routes->post('sejarah/update/(:num)', 'Admin\SejarahController::update/$1');
     $routes->get('sejarah/delete/(:num)', 'Admin\SejarahController::delete/$1');
-
+    
     // ADMIN VISI MISI
     $routes->get('visimisi', 'Admin\VisimisiController::index');
+    $routes->get('visimisi/create', 'Admin\VisiMisiController::create');
+    $routes->post('visimisi/store', 'Admin\VisiMisiController::store');
     $routes->get('visimisi/edit/(:num)', 'Admin\VisimisiController::edit/$1');
     $routes->post('visimisi/update/(:num)', 'Admin\VisimisiController::update/$1');
+    $routes->get('visimisi/delete/(:num)', 'Admin\VisimisiController::delete/$1');
 
     // ADMIN BERITA
     $routes->get('berita', 'Admin\BeritaController::index');

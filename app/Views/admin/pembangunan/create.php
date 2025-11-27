@@ -34,6 +34,7 @@
         <input type="text" name="alt_foto" class="form-control">
 
         <button class="btn btn-primary mt-3 w-100">Simpan</button>
+        <a href="<?= base_url('admin/pembangunan') ?>" class="btn btn-secondary">Kembali</a>
     </div>
 </div>
 </form>

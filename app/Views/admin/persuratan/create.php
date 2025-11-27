@@ -33,6 +33,7 @@
         </div>
 
         <button class="btn btn-primary">Simpan</button>
+    <a href="<?= base_url('admin/persuratan') ?>" class="btn btn-secondary">Kembali</a>
     </form>
 </div>
 
