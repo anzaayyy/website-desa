@@ -106,6 +106,14 @@
             class="sidebar-link <?= service('uri')->getSegment(2) == 'persuratan' ? 'active' : '' ?>">
             <i class="fa fa-newspaper"></i> Persuratan
             </a>
+            <a href="<?= base_url('admin/kritik') ?>" 
+            class="sidebar-link <?= service('uri')->getSegment(2) == 'kritik' ? 'active' : '' ?>">
+            <i class="fa fa-newspaper"></i> Kritik
+            </a>
+            <a href="<?= base_url('admin/pengaduan') ?>" 
+            class="sidebar-link <?= service('uri')->getSegment(2) == 'pengaduan' ? 'active' : '' ?>">
+            <i class="fa fa-newspaper"></i> Pengaduan
+            </a>
 
         </div>
     </div>

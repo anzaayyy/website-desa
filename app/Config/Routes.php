@@ -176,4 +176,10 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('persuratan/edit/(:num)', 'Admin\PersuratanController::edit/$1');
     $routes->post('persuratan/update/(:num)', 'Admin\PersuratanController::update/$1');
     $routes->get('persuratan/delete/(:num)', 'Admin\PersuratanController::delete/$1');
+
+    // ADMIN KRITIK
+    $routes->get('kritik', 'Admin\KritikController::index');
+
+    // ADMIN PENGADUAN
+    $routes->get('pengaduan', 'Admin\PengaduanController::index');
 });
