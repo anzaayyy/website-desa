@@ -138,7 +138,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="<?= base_url('kontak'); ?>">Kontak</a></li>
-                  <li><a class="dropdown-item" href="<?= base_url('kritik'); ?>">Kritik</a></li>
+                  <li><a class="dropdown-item" href="<?= base_url('kritik'); ?>">Kritik / Saran</a></li>
                   <li><a class="dropdown-item" href="<?= base_url('pengaduan'); ?>">Pengaduan</a></li>
                 </ul>
               </li>
