@@ -15,6 +15,7 @@ use App\Models\LembagaModel;
 use App\Models\APBDesModel;
 use App\Models\RealranModel;
 use App\Models\PembangunanModel;
+use App\Models\KritikModel;
 
 class Home extends BaseController
 {

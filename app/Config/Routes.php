@@ -52,7 +52,7 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('sejarah/edit/(:num)', 'Admin\SejarahController::edit/$1');
     $routes->post('sejarah/update/(:num)', 'Admin\SejarahController::update/$1');
     $routes->get('sejarah/delete/(:num)', 'Admin\SejarahController::delete/$1');
-    
+
     // ADMIN VISI MISI
     $routes->get('visimisi', 'Admin\VisimisiController::index');
     $routes->get('visimisi/create', 'Admin\VisiMisiController::create');
@@ -182,4 +182,7 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
 
     // ADMIN PENGADUAN
     $routes->get('pengaduan', 'Admin\PengaduanController::index');
+    $routes->post('pengaduan/kategori/store', 'Admin\PengaduanController::kategori_store');
+    $routes->post('pengaduan/kategori/update/(:num)', 'Admin\PengaduanController::kategori_update/$1');
+    $routes->get('pengaduan/kategori/delete/(:num)', 'Admin\PengaduanController::kategori_delete/$1');
 });

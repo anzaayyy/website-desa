@@ -5,7 +5,7 @@
   <div class="container">
 
     <div class="section-title text-center mb-5">
-      <h2>Kritik</h2>
+      <h2>Kritik Atau Saran</h2>
       <p>Sampaikan kritik Anda untuk meningkatkan layanan kami</p>
     </div>
 
@@ -39,10 +39,10 @@
           </div>
           <div class="mb-3">
             <textarea name="kritik" rows="5" class="form-control"
-                      placeholder="Tuliskan kritik Anda" required><?= old('kritik') ?></textarea>
+                      placeholder="Masukan Kritik atau Saran Anda" required><?= old('kritik') ?></textarea>
           </div>
           <div class="text-end">
-            <button type="submit" class="btn btn-danger px-4">Kirim Kritik</button>
+            <button type="submit" class="btn btn-danger px-4">Kirim</button>
           </div>
         </form>
       </div>
