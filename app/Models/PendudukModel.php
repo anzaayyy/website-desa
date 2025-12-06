@@ -12,7 +12,7 @@ class PendudukModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nik', 'nama', 'jenis_kelamin', 'alamat','pekerjaan', 'dusun','status_keluarga'];
+    protected $allowedFields    = ['nik', 'nama', 'jenis_kelamin','pekerjaan', 'dusun','status_keluarga','created_at'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -21,7 +21,7 @@ class PendudukModel extends Model
     protected array $castHandlers = [];
 
     // Dates
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

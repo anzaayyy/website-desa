@@ -9,8 +9,8 @@
     <input type="text" name="judul" class="form-control" required>
   </div>
   <div class="mb-3">
-    <label>Isi</label>
-    <textarea name="isi" class="form-control" rows="5" required></textarea>
+    <label>Deskripsi</label>
+    <textarea name="deskripsi" class="form-control" rows="5" required></textarea>
   </div>
   <div class="mb-3">
     <label>Tanggal</label>

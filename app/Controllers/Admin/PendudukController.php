@@ -18,7 +18,7 @@ class PendudukController extends BaseController
     {
         $data = [
             'title' => 'Data Penduduk',
-            'data' => $this->penduduk->orderBy('id_penduduk', 'DESC')->findAll()
+            'penduduk' => $this->penduduk->orderBy('id_penduduk', 'DESC')->findAll()
         ];
         return view('admin/penduduk/index', $data);
     }
@@ -31,31 +31,40 @@ class PendudukController extends BaseController
     public function store()
     {
         $validated = $this->validate([
-            'nik' => 'required|min_length[10]|max_length[20]|is_unique[tb_penduduk.nik]',
-            'nama' => 'required',
-            'jenis_kelamin' => 'required',
-            'tanggal_lahir' => 'required',
-            'dusun' => 'required',
+            'nik'            => 'required|min_length[10]|max_length[20]|is_unique[tb_penduduk.nik]',
+            'nama'           => 'required',
+            'jenis_kelamin'  => 'required|in_list[Laki-laki,Perempuan]',
+            'dusun'          => 'required',
+            'status_keluarga'=> 'required|in_list[Kepala Keluarga,Anggota]',
+            'pekerjaan'      => 'permit_empty|max_length[100]'
         ]);
 
         if (!$validated) {
             return redirect()->back()->withInput()->with('error', $this->validator->listErrors());
         }
 
-        $this->penduduk->save($this->request->getPost());
+        $this->penduduk->save([
+            'nik'             => $this->request->getPost('nik'),
+            'nama'            => $this->request->getPost('nama'),
+            'jenis_kelamin'   => $this->request->getPost('jenis_kelamin'),
+            'dusun'           => $this->request->getPost('dusun'),
+            'pekerjaan'       => $this->request->getPost('pekerjaan'),
+            'status_keluarga' => $this->request->getPost('status_keluarga'),
+        ]);
+
         return redirect()->to('/admin/penduduk')->with('success', 'Data berhasil ditambahkan');
     }
 
-public function edit($id)
-{
-    $penduduk = $this->penduduk->find($id);
+    public function edit($id)
+    {
+        $penduduk = $this->penduduk->find($id);
 
-    if (!$penduduk) {
-        return redirect()->to('/admin/penduduk')->with('error', 'Data tidak ditemukan');
+        if (!$penduduk) {
+            return redirect()->to('/admin/penduduk')->with('error', 'Data tidak ditemukan');
+        }
+
+        return view('admin/penduduk/edit', ['penduduk' => $penduduk]);
     }
-
-    return view('admin/penduduk/edit', ['penduduk' => $penduduk]);
-}
 
     public function update($id)
     {
@@ -64,29 +73,30 @@ public function edit($id)
             return redirect()->to('/admin/penduduk')->with('error', 'Data tidak ditemukan');
         }
 
+        // Validasi nik harus tidak duplikat kecuali miliknya sendiri
+        $nikRule = ($penduduk['nik'] == $this->request->getPost('nik'))
+            ? 'required'
+            : 'required|is_unique[tb_penduduk.nik]';
+
         $validated = $this->validate([
-            'nik' => "required|min_length[10]|max_length[20]",
-            'nama' => "required",
-            'jenis_kelamin' => "required|in_list[L,P]",
-            'tanggal_lahir' => "required",
-            'dusun' => "required",
-            'pekerjaan' => "permit_empty|max_length[100]",
-            'status_keluarga' => "required|in_list[Kepala Keluarga,Anggota]"
+            'nik'             => $nikRule,
+            'nama'            => 'required',
+            'jenis_kelamin'   => 'required|in_list[Laki-laki,Perempuan]',
+            'dusun'           => 'required',
+            'status_keluarga' => 'required|in_list[Kepala Keluarga,Anggota]',
+            'pekerjaan'       => 'permit_empty|max_length[100]'
         ]);
 
         if (!$validated) {
             return redirect()->back()->withInput()->with('error', $this->validator->listErrors());
         }
 
-        // Update data
         $this->penduduk->update($id, [
-            'nik' => $this->request->getPost('nik'),
-            'nama' => $this->request->getPost('nama'),
-            'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
-            'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
-            'dusun' => $this->request->getPost('dusun'),
-            'alamat' => $this->request->getPost('alamat'),
-            'pekerjaan' => $this->request->getPost('pekerjaan'),
+            'nik'             => $this->request->getPost('nik'),
+            'nama'            => $this->request->getPost('nama'),
+            'jenis_kelamin'   => $this->request->getPost('jenis_kelamin'),
+            'dusun'           => $this->request->getPost('dusun'),
+            'pekerjaan'       => $this->request->getPost('pekerjaan'),
             'status_keluarga' => $this->request->getPost('status_keluarga'),
         ]);
 

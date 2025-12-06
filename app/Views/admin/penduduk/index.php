@@ -18,8 +18,8 @@
             <th>NIK</th>
             <th>Nama</th>
             <th>JK</th>
-            <th>Tgl Lahir</th>
             <th>Dusun</th>
+            <th>Status</th>
             <th>Aksi</th>
         </tr>
     </thead>
@@ -30,9 +30,9 @@
             <td><?= $no++ ?></td>
             <td><?= esc($p['nik']) ?></td>
             <td><?= esc($p['nama']) ?></td>
-            <td><?= $p['jenis_kelamin']=='L' ? 'Laki-laki' : 'Perempuan' ?></td>
-            <td><?= esc($p['tanggal_lahir']) ?></td>
+            <td><?= esc($p['jenis_kelamin']) ?></td>
             <td><?= esc($p['dusun']) ?></td>
+            <td><?= esc($p['status_keluarga']) ?></td>
             <td>
                 <a href="<?= base_url('admin/penduduk/edit/'.$p['id_penduduk']) ?>" class="btn btn-sm btn-warning">Edit</a>
                 <a onclick="return confirm('Yakin hapus?')" 

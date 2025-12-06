@@ -12,7 +12,7 @@ class LembagaModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama',	'nama_lembaga',	'jabatan',	'deskripsi',	'gambar',	'alt_gambar',	'kontak',	'link_kontak',	'meta_title',	'meta_desc',	'slug'	];
+    protected $allowedFields    = ['nama',	'nama_lembaga',	'jabatan',	'deskripsi',	'gambar',	'alt_gambar',	'kontak',	'link_kontak',	'meta_title',	'meta_desc',	'slug', 'created_at','updated_at'	];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

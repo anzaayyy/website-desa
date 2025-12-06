@@ -33,15 +33,17 @@
 
               <td class="text-center">
                 <?php if ($p['gambar']): ?>
-                  <img src="<?= base_url($p['gambar']) ?>" width="80" height="60" style="object-fit:cover;border-radius:5px;">
+                  <img src="<?= base_url('uploads/pengumuman/' . esc($p['gambar'])) ?>" 
+                         class="img-thumbnail"
+                         style="width: 60px; height: 60px; object-fit: cover;">                
                 <?php else: ?>
                   <span class="text-muted">-</span>
                 <?php endif; ?>
               </td>
 
               <td class="text-center">
-                <a href="<?= base_url('admin/pengumuman/edit/'.$p['id']) ?>" class="btn btn-sm btn-warning">Edit</a>
-                <a href="<?= base_url('admin/pengumuman/delete/'.$p['id']) ?>" 
+                <a href="<?= base_url('admin/pengumuman/edit/'.$p['id_pengumuman']) ?>" class="btn btn-sm btn-warning">Edit</a>
+                <a href="<?= base_url('admin/pengumuman/delete/'.$p['id_pengumuman']) ?>" 
                    onclick="return confirm('Yakin ingin menghapus?')" 
                    class="btn btn-sm btn-danger">Hapus</a>
               </td>

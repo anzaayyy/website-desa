@@ -19,14 +19,9 @@
     <div class="mb-3">
         <label>Jenis Kelamin</label>
         <select name="jenis_kelamin" class="form-control">
-            <option value="L">Laki-laki</option>
-            <option value="P">Perempuan</option>
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
         </select>
-    </div>
-
-    <div class="mb-3">
-        <label>Tanggal Lahir</label>
-        <input type="date" name="tanggal_lahir" class="form-control">
     </div>
 
     <div class="mb-3">

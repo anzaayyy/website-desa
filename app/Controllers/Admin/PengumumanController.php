@@ -28,24 +28,28 @@ class PengumumanController extends BaseController
     public function store()
     {
         $gambar = $this->request->getFile('gambar');
-        $file = $this->request->getFile('file');
+        $gambarName = null;
 
-        $gambarName = $gambar && $gambar->isValid() ? $gambar->getRandomName() : null;
-        if ($gambarName) $gambar->move('uploads/pengumuman', $gambarName);
+        if ($gambar && $gambar->isValid() && !$gambar->hasMoved()) {
+            $gambarName = $gambar->getRandomName();
+            $gambar->move('uploads/pengumuman', $gambarName);
+        }
 
-        $fileName = $file && $file->isValid() ? $file->getRandomName() : null;
-        if ($fileName) $file->move('uploads/pengumuman/file', $fileName);
+        $judul = $this->request->getPost('judul');
+        $slug  = url_title($judul, '-', true);
 
         $this->pengumumanModel->save([
-            'judul'          => $this->request->getPost('judul'),
-            'isi'            => $this->request->getPost('isi'),
-            'gambar'         => $gambarName,
-            'file'           => $fileName,
-            'tanggal_post'=> $this->request->getPost('tanggal_post'),
-            'tanggal_exp'=> $this->request->getPost('tanggal_exp'),
+            'judul'        => $judul,
+            'deskripsi'    => $this->request->getPost('deskripsi'),
+            'tanggal'      => $this->request->getPost('tanggal'),
+            'gambar'       => $gambarName,
+            'alt_gambar'   => $this->request->getPost('alt_gambar'),
+            'meta_title'   => $this->request->getPost('meta_title'),
+            'meta_desc'    => $this->request->getPost('meta_desc'),
+            'slug'         => $slug,
         ]);
 
-        return redirect()->to('/admin/pengumuman');
+        return redirect()->to('/admin/pengumuman')->with('success', 'Pengumuman berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -59,29 +63,47 @@ class PengumumanController extends BaseController
         $pengumuman = $this->pengumumanModel->find($id);
 
         $gambar = $this->request->getFile('gambar');
-        $file = $this->request->getFile('file');
-
         $gambarName = $pengumuman['gambar'];
-        if ($gambar && $gambar->isValid()) {
+
+        if ($gambar && $gambar->isValid() && !$gambar->hasMoved()) {
             $gambarName = $gambar->getRandomName();
             $gambar->move('uploads/pengumuman', $gambarName);
         }
 
-        $fileName = $pengumuman['file'];
-        if ($file && $file->isValid()) {
-            $fileName = $file->getRandomName();
-            $file->move('uploads/pengumuman/file', $fileName);
-        }
+        $judul = $this->request->getPost('judul');
+        $slug  = url_title($judul, '-', true);
 
         $this->pengumumanModel->update($id, [
-            'judul'          => $this->request->getPost('judul'),
-            'isi'            => $this->request->getPost('isi'),
-            'gambar'         => $gambarName,
-            'file'           => $fileName,
-            'tanggal_post'=> $this->request->getPost('tanggal_post'),
-            'tanggal_exp'=> $this->request->getPost('tanggal_exp'),
+            'judul'        => $judul,
+            'deskripsi'    => $this->request->getPost('deskripsi'),
+            'tanggal'      => $this->request->getPost('tanggal'),
+            'gambar'       => $gambarName,
+            'alt_gambar'   => $this->request->getPost('alt_gambar'),
+            'meta_title'   => $this->request->getPost('meta_title'),
+            'meta_desc'    => $this->request->getPost('meta_desc'),
+            'slug'         => $slug,
         ]);
 
-        return redirect()->to('/admin/pengumuman');
+        return redirect()->to('/admin/pengumuman')->with('success', 'Pengumuman berhasil diupdate.');
+    }
+
+    public function delete($id)
+    {
+        // Ambil data dulu untuk menghapus file jika ada
+        $pengumuman = $this->pengumumanModel->find($id);
+
+        if (!$pengumuman) {
+            return redirect()->back()->with('error', 'Data tidak ditemukan.');
+        }
+
+        // Hapus file gambar jika ada
+        if (!empty($pengumuman['gambar']) && file_exists('uploads/pengumuman/' . $pengumuman['gambar'])) {
+            unlink('uploads/pengumuman/' . $pengumuman['gambar']);
+        }
+
+        // Hapus data dari database
+        $this->pengumumanModel->delete($id);
+
+        return redirect()->to('/admin/pengumuman')->with('success', 'Data berhasil dihapus.');
     }
 }

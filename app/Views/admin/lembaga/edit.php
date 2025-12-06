@@ -18,7 +18,7 @@
 
 <div class="card shadow mb-4">
   <div class="card-body">
-    <form action="<?= base_url('admin/lembaga/update/' . $lembaga['id']) ?>" method="post" enctype="multipart/form-data">
+    <form action="<?= base_url('admin/lembaga/update/' . $lembaga['id_lembaga']) ?>" method="post" enctype="multipart/form-data">
       <?= csrf_field() ?>
 
       <div class="mb-3">

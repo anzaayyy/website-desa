@@ -5,7 +5,7 @@
 <div class="d-flex justify-content-between align-items-center mb-2">
     <h3 class="fw-bold"> Manajemen Lembaga Desa</h3>
     <a href="<?= base_url('admin/lembaga/create') ?>" class="btn btn-primary">
-        <i class="fas fa-plus"></i> + Tambah Lembaga
+        <i class="fas fa-plus"></i> Tambah Lembaga
     </a>
 </div>
 
@@ -54,13 +54,13 @@
                 <td><?= esc($l['jabatan']) ?></td>
                 <td><?= esc($l['nama']) ?></td>
                 <td class="text-center">
-                  <a href="<?= base_url('lembaga/' . esc($l['slug'])) ?>" target="_blank" class="btn btn-sm btn-info mb-1">
+                  <!-- <a href="<?= base_url('lembaga/' . esc($l['slug'])) ?>" target="_blank" class="btn btn-sm btn-info mb-1">
                     <i class="fas fa-eye"></i> Lihat Publik
-                  </a>
-                  <a href="<?= base_url('admin/lembaga/edit/' . $l['id']) ?>" class="btn btn-sm btn-warning mb-1">
+                  </a> -->
+                  <a href="<?= base_url('admin/lembaga/edit/' . $l['id_lembaga']) ?>" class="btn btn-sm btn-warning mb-1">
                     <i class="fas fa-edit"></i> Edit
                   </a>
-                  <a href="<?= base_url('admin/lembaga/delete/' . $l['id']) ?>" 
+                  <a href="<?= base_url('admin/lembaga/delete/' . $l['id_lembaga']) ?>" 
                      class="btn btn-sm btn-danger mb-1"
                      onclick="return confirm('Yakin ingin menghapus data ini?');">
                     <i class="fas fa-trash"></i> Hapus

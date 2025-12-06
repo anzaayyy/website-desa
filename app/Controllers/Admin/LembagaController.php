@@ -57,10 +57,15 @@ class LembagaController extends BaseController
         $namaLembaga = $this->request->getPost('nama_lembaga');
         $slug        = url_title($namaLembaga, '-', true);
 
-        // Upload gambar
+        // Upload aman
         $fileGambar = $this->request->getFile('gambar');
-        $namaGambar = $fileGambar->getRandomName();
-        $fileGambar->move('uploads/lembaga', $namaGambar);
+
+        if ($fileGambar->isValid() && !$fileGambar->hasMoved()) {
+            $namaGambar = $fileGambar->getRandomName();
+            $fileGambar->move('uploads/lembaga', $namaGambar);
+        } else {
+            return redirect()->back()->withInput()->with('errors', ['gambar' => 'Gambar gagal diupload.']);
+        }
 
         $this->lembagaModel->insert([
             'nama_lembaga' => $namaLembaga,

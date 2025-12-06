@@ -9,8 +9,8 @@
     <input type="text" name="judul" class="form-control" value="<?= esc($berita['judul']) ?>" required>
   </div>
   <div class="mb-3">
-    <label>Isi</label>
-    <textarea name="isi" class="form-control" rows="5" required><?= esc($berita['deskripsi']) ?></textarea>
+    <label>Deskripsi</label>
+    <textarea name="deskripsi" class="form-control" rows="5" required><?= esc($berita['deskripsi']) ?></textarea>
   </div>
   <div class="mb-3">
     <label>Tanggal</label>
@@ -19,10 +19,10 @@
   <div class="mb-3">
     <label>Gambar Lama</label><br>
     <?php if($berita['gambar']): ?>
-      <img src="<?= base_url('assets/img/' . $berita['gambar']) ?>" width="120"><br>
+      <img src="<?= base_url('uploads/berita/' . $berita['gambar']) ?>" width="120"><br>
     <?php endif; ?>
-    <label>Ganti Gambar</label>
-    <input type="file" name="gambar" class="form-control">
+    <!-- <label>Ganti Gambar</label>
+    <input type="file" name="gambar" class="form-control"> -->
   </div>
   <button type="submit" class="btn btn-success">Update</button>
   <a href="<?= base_url('admin/berita') ?>" class="btn btn-secondary">Batal</a>
