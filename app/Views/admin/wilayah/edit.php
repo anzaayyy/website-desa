@@ -3,7 +3,7 @@
 
 <h3 class="fw-bold mb-3">Edit Data Wilayah</h3>
 
-<form action="/admin/wilayah/update/<?= $w['id'] ?>" method="post">
+<form action="/admin/wilayah/update/<?= $w['id_wilayah'] ?>" method="post">
   <div class="mb-3">
     <label>Nama Wilayah</label>
     <input type="text" name="nama_wilayah" value="<?= $w['nama_wilayah'] ?>" class="form-control" required>
