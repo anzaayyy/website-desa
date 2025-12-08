@@ -7,7 +7,7 @@
   <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
 <?php endif; ?>
 
-<form action="<?= base_url('admin/penduduk/update/'.$penduduk['id']) ?>" method="post">
+<form action="<?= base_url('admin/penduduk/update/'.$penduduk['id_penduduk']) ?>" method="post">
     <?= csrf_field() ?>
 
     <div class="mb-3">
@@ -23,24 +23,14 @@
     <div class="mb-3">
         <label>Jenis Kelamin</label>
         <select name="jenis_kelamin" class="form-control">
-            <option value="L" <?= old('jenis_kelamin', $penduduk['jenis_kelamin']) == 'L' ? 'selected' : '' ?>>Laki-laki</option>
-            <option value="P" <?= old('jenis_kelamin', $penduduk['jenis_kelamin']) == 'P' ? 'selected' : '' ?>>Perempuan</option>
+            <option value="Laki-laki" <?= old('jenis_kelamin', $penduduk['jenis_kelamin']) == 'Laki-laki' ? 'selected' : '' ?>>Laki-laki</option>
+            <option value="Perempuan" <?= old('jenis_kelamin', $penduduk['jenis_kelamin']) == 'Perempuan' ? 'selected' : '' ?>>Perempuan</option>
         </select>
-    </div>
-
-    <div class="mb-3">
-        <label>Tanggal Lahir</label>
-        <input type="date" name="tanggal_lahir" class="form-control" value="<?= old('tanggal_lahir', $penduduk['tanggal_lahir']) ?>">
     </div>
 
     <div class="mb-3">
         <label>Dusun</label>
         <input type="text" name="dusun" class="form-control" value="<?= old('dusun', $penduduk['dusun']) ?>">
-    </div>
-
-    <div class="mb-3">
-        <label>Alamat</label>
-        <textarea name="alamat" class="form-control" rows="3"><?= old('alamat', $penduduk['alamat']) ?></textarea>
     </div>
 
     <div class="mb-3">

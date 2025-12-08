@@ -4,7 +4,7 @@
 <div class="container mt-4">
     <h2>Edit Pengumuman</h2>
 
-    <form action="<?= base_url('admin/pengumuman/update/'.$pengumuman['id']) ?>" method="post" enctype="multipart/form-data">
+    <form action="<?= base_url('admin/pengumuman/update/'.$pengumuman['id_pengumuman']) ?>" method="post" enctype="multipart/form-data">
         <?= csrf_field() ?>
         <div class="mb-3">
             <label>Judul</label>
