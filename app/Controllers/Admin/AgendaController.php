@@ -18,7 +18,7 @@ class AgendaController extends BaseController
     {
         $data = [
             'title' => 'Agenda Desa',
-            'data' => $this->agendaModel->orderBy('id', 'DESC')->findAll()
+            'agenda' => $this->agendaModel->orderBy('id', 'DESC')->findAll()
         ];
         return view('admin/agenda/index', $data);
     }
@@ -36,13 +36,13 @@ class AgendaController extends BaseController
         if ($fileName) {
             $file->move('uploads/agenda', $fileName);
         }
-
+    
         $this->agendaModel->insert([
             'judul'     => $this->request->getPost('judul'),
             'deskripsi' => $this->request->getPost('deskripsi'),
-            'tanggal'   => $this->request->getPost('tanggal'),
-            'waktu'     => $this->request->getPost('waktu'),
-            'lokasi'    => $this->request->getPost('lokasi'),
+            'tanggal_mulai'   => $this->request->getPost('tanggal_mulai'),
+            'tanggal_selesai'   => $this->request->getPost('tanggal_selesai'),
+            'alt_gambar'   => $this->request->getPost('judul'),
             'gambar'    => $fileName ? 'uploads/agenda/' . $fileName : null,
         ]);
 
@@ -70,9 +70,9 @@ class AgendaController extends BaseController
         $this->agendaModel->update($id, [
             'judul'     => $this->request->getPost('judul'),
             'deskripsi' => $this->request->getPost('deskripsi'),
-            'tanggal'   => $this->request->getPost('tanggal'),
-            'waktu'     => $this->request->getPost('waktu'),
-            'lokasi'    => $this->request->getPost('lokasi'),
+            'tanggal_mulai'   => $this->request->getPost('tanggal_mulai'),
+            'tanggal_selesai'   => $this->request->getPost('tanggal_selesai'),
+            'alt_gambar'   => $this->request->getPost('judul'),
             'gambar'    => $fileName,
         ]);
 

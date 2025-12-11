@@ -102,10 +102,10 @@
             <i class="fa fa-newspaper"></i> Pembangunan
             </a>
 
-            <a href="<?= base_url('admin/persuratan') ?>" 
+            <!-- <a href="<?= base_url('admin/persuratan') ?>" 
             class="sidebar-link <?= service('uri')->getSegment(2) == 'persuratan' ? 'active' : '' ?>">
             <i class="fa fa-newspaper"></i> Persuratan
-            </a>
+            </a> -->
             <a href="<?= base_url('admin/kritik') ?>" 
             class="sidebar-link <?= service('uri')->getSegment(2) == 'kritik' ? 'active' : '' ?>">
             <i class="fa fa-newspaper"></i> Kritik

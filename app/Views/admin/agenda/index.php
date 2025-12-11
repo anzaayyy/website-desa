@@ -16,9 +16,9 @@
         <tr class="text-center">
           <th width="5%">No</th>
           <th>Judul</th>
-          <th>Tanggal</th>
-          <th>Waktu</th>
-          <th>Lokasi</th>
+          <th>Deskripsi</th>
+          <th>Tanggal Mulai</th>
+          <th>Tanggal Selesai</th>
           <th>Gambar</th>
           <th width="15%">Aksi</th>
         </tr>
@@ -29,9 +29,9 @@
             <tr>
               <td class="text-center"><?= $no++ ?></td>
               <td><?= esc($a['judul']) ?></td>
-              <td><?= esc($a['tanggal']) ?></td>
-              <td><?= esc($a['waktu']) ?></td>
-              <td><?= esc($a['lokasi']) ?></td>
+              <td><?= esc($a['deskripsi']) ?></td>
+              <td><?= esc($a['tanggal_mulai']) ?></td>
+              <td><?= esc($a['tanggal_selesai']) ?></td>
               <td class="text-center">
                 <?php if ($a['gambar']): ?>
                   <img src="<?= base_url($a['gambar']) ?>" width="80" height="60" style="object-fit:cover;border-radius:5px;">
