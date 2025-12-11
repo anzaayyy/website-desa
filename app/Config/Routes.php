@@ -21,6 +21,7 @@ $routes->get('agenda/(:segment)', 'AgendaController::detail/$1');
 $routes->get('penduduk', 'PendudukController::index');
 $routes->get('wilayah', 'WilayahController::index');
 $routes->get('lembaga', 'LembagaController::index');
+$routes->get('lembaga/(:segment)', 'LembagaController::detail/$1');
 $routes->get('sarana_prasarana', 'SarprasController::index');
 $routes->get('APBDes', 'APBDesController::index');
 $routes->get('realisasi_anggaran', 'RealranController::index');

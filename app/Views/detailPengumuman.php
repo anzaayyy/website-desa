@@ -10,7 +10,7 @@
         <article class="card shadow-sm border-0 p-4">
           <?php if (!empty($p['gambar'])): ?>
             <img
-              src="<?= base_url('assets/img/' . esc($p['gambar'])) ?>"
+              src="<?= base_url('uploads/pengumuman/' . esc($p['gambar'])) ?>"
               alt="<?= esc($p['alt_gambar'] ?: 'Gambar Pengumuman') ?>"
               class="img-fluid rounded mb-4"
             />

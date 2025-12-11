@@ -90,7 +90,7 @@ class PembangunanController extends BaseController
         }
 
         $dataUpdate = [
-            'id' => $id,
+            'id_pembangunan' => $id,
             'nama_pembangunan' => $this->request->getPost('nama_pembangunan'),
             'lokasi' => $this->request->getPost('lokasi'),
             'anggaran' => $this->request->getPost('anggaran'),
@@ -102,10 +102,14 @@ class PembangunanController extends BaseController
         ];
 
         $file = $this->request->getFile('foto');
-        if ($file->isValid() && !$file->hasMoved()) {
+        if ($file && $file->isValid() && !$file->hasMoved()) {
+            // upload file baru
             $filename = $file->getRandomName();
             $file->move('uploads/pembangunan', $filename);
             $dataUpdate['foto'] = $filename;
+        } else {
+            // pakai foto lama
+            $dataUpdate['foto'] = $this->request->getPost('foto_lama');
         }
 
         $this->pembangunanModel->save($dataUpdate);

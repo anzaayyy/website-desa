@@ -11,13 +11,9 @@ class PembangunanController extends BaseController
     public function index()
     {
         $model = new PembangunanModel();
-        $pembangunan = $model
-            ->orderBy('created_at', 'DESC')
-            ->findAll();
+        $data['pembangunan'] = $model->orderBy('created_at', 'DESC')->findAll();
 
-        return view('pembangunan', [
-            'pembangunan' => $pembangunan,
-        ]);
+        return view('pembangunan', $data);
     }
 
     // (Opsional) detail berdasarkan slug

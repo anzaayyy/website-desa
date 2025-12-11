@@ -17,7 +17,7 @@
           <?php
             // path gambar: default jika kosong
             $imgPath = !empty($p['foto'])
-              ? base_url('assets/img/' . $p['foto'])
+              ? base_url('uploads/pembangunan/' . $p['foto'])
               : base_url('assets/img/artikel.jpeg');
 
             $alt       = $p['alt_foto'] ?: 'Foto Pembangunan Desa';
