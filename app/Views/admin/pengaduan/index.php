@@ -18,7 +18,6 @@
         <th>Kategori</th>
         <th>Pengaduan</th>
         <th>Tanggal</th>
-        <th>Aksi</th>
       </tr>
     </thead>
     <tbody>
@@ -32,7 +31,6 @@
             <td><?= esc($row['nama_kategori'] ?? '-') ?></td>
             <td><?= esc(character_limiter($row['pengaduan'], 80)) ?></td>
             <td class="text-center"><?= date('d-m-Y H:i', strtotime($row['created_at'])) ?></td>
-            <td class="text-center"> - </td>
           </tr>
         <?php endforeach; ?>
       <?php else: ?>

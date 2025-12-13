@@ -31,19 +31,21 @@ class AgendaController extends BaseController
     public function store()
     {
         $file = $this->request->getFile('gambar');
-        $fileName = $file->isValid() ? $file->getRandomName() : null;
+        $fileName = null;
 
-        if ($fileName) {
-            $file->move('uploads/agenda', $fileName);
+        if ($file && $file->isValid() && !$file->hasMoved()) {
+            $fileName = $file->getRandomName();
+            $file->move(FCPATH . 'uploads/agenda', $fileName);
         }
-    
+
         $this->agendaModel->insert([
-            'judul'     => $this->request->getPost('judul'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-            'tanggal_mulai'   => $this->request->getPost('tanggal_mulai'),
-            'tanggal_selesai'   => $this->request->getPost('tanggal_selesai'),
-            'alt_gambar'   => $this->request->getPost('judul'),
-            'gambar'    => $fileName ? 'uploads/agenda/' . $fileName : null,
+            'judul'            => $this->request->getPost('judul'),
+            'slug'            => url_title($this->request->getPost('judul'), '-', true),
+            'deskripsi'        => $this->request->getPost('deskripsi'),
+            'tanggal_mulai'    => $this->request->getPost('tanggal_mulai'),
+            'tanggal_selesai'  => $this->request->getPost('tanggal_selesai'),
+            'alt_gambar'       => $this->request->getPost('judul'),
+            'gambar'           => $fileName, 
         ]);
 
         return redirect()->to(base_url('admin/agenda'))->with('success', 'Agenda berhasil ditambahkan');
@@ -58,22 +60,23 @@ class AgendaController extends BaseController
     public function update($id)
     {
         $agenda = $this->agendaModel->find($id);
-        $file = $this->request->getFile('gambar');
         $fileName = $agenda['gambar'];
 
-        if ($file->isValid()) {
+        $file = $this->request->getFile('gambar');
+
+        if ($file && $file->isValid() && !$file->hasMoved()) {
             $newName = $file->getRandomName();
-            $file->move('uploads/agenda', $newName);
-            $fileName = 'uploads/agenda/' . $newName;
+            $file->move(FCPATH . 'uploads/agenda', $newName);
+            $fileName = $newName;
         }
 
         $this->agendaModel->update($id, [
-            'judul'     => $this->request->getPost('judul'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-            'tanggal_mulai'   => $this->request->getPost('tanggal_mulai'),
-            'tanggal_selesai'   => $this->request->getPost('tanggal_selesai'),
-            'alt_gambar'   => $this->request->getPost('judul'),
-            'gambar'    => $fileName,
+            'judul'            => $this->request->getPost('judul'),
+            'deskripsi'        => $this->request->getPost('deskripsi'),
+            'tanggal_mulai'    => $this->request->getPost('tanggal_mulai'),
+            'tanggal_selesai'  => $this->request->getPost('tanggal_selesai'),
+            'alt_gambar'       => $this->request->getPost('judul'),
+            'gambar'           => $fileName,
         ]);
 
         return redirect()->to(base_url('admin/agenda'))->with('success', 'Agenda berhasil diperbarui');

@@ -23,7 +23,6 @@
           $medsos       = esc($row['media_sosial'] ?? 'Media Sosial');
           $medsosHref   = !empty($row['link_medsos']) ? $row['link_medsos'] : '#';
           $slug         = esc($row['slug'] ?? '');
-          $judul        = esc($row['judul'] ?? '');
           $deskripsi    = nl2br(esc($row['deskripsi'] ?? ''));
           $img          = !empty($row['gambar']) ? base_url('uploads/struktur/' . $row['gambar']) : base_url('uploads/struktur/pejabat.jpeg');
           $alt          = esc($row['alt_gambar'] ?? $nama);

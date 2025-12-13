@@ -16,6 +16,7 @@ use App\Models\SarprasModel;
 use App\Models\APBDesModel;
 use App\Models\RealranModel;
 use App\Models\PembangunanModel;
+use App\Models\KategoriPengaduanModel;
 
 class Home extends BaseController
 {
@@ -75,6 +76,11 @@ class Home extends BaseController
 
         $model = new PembangunanModel();
         $data['pembangunan'] = $model->orderBy('created_at', 'DESC')->findAll();
+
+        $model = new KategoriPengaduanModel();
+        $data['kategori_pengaduan'] = $model
+                ->orderBy('nama_kategori', 'ASC')
+                ->findAll();
 
         return view('index', $data);
     }

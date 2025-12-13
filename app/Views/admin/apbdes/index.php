@@ -191,7 +191,7 @@
         <div class="modal-content">
             <form action="<?= base_url('admin/apbdes/pendapatan/store') ?>" method="post">
                 <?= csrf_field() ?>
-
+                <input type="hidden" name="id_apbdes" value="<?= esc($id_apbdes) ?>">
                 <div class="modal-header">
                     <h5 class="modal-title">Tambah Pendapatan Desa</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -356,7 +356,7 @@
         <div class="modal-content">
             <form action="<?= base_url('admin/apbdes/pembiayaan/store') ?>" method="post">
                 <?= csrf_field() ?>
-
+                <input type="hidden" name="id_apbdes" value="<?= esc($id_apbdes) ?>">
                 <div class="modal-header">
                     <h5 class="modal-title">Tambah Pembiayaan Desa</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
