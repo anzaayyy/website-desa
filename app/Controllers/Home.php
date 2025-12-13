@@ -12,10 +12,11 @@ use App\Models\AgendaModel;
 use App\Models\PendudukModel;
 use App\Models\WilayahModel;
 use App\Models\LembagaModel;
+use App\Models\SarprasModel;
 use App\Models\APBDesModel;
 use App\Models\RealranModel;
 use App\Models\PembangunanModel;
-use App\Models\KritikModel;
+use App\Models\KategoriPengaduanModel;
 
 class Home extends BaseController
 {
@@ -39,7 +40,7 @@ class Home extends BaseController
 
         // === Pengumuman (4 terbaru) ===
         $pengumumanModel = new PengumumanModel();
-        $data['pengumuman_terbaru'] = $pengumumanModel
+        $data['pengumuman'] = $pengumumanModel
             ->orderBy('tanggal', 'DESC')
             ->limit(4)
             ->find();
@@ -52,6 +53,9 @@ class Home extends BaseController
 
         $model = new LembagaModel();
         $data['lembaga'] = $model->findAll();
+
+        $model = new SarprasModel();
+        $data['sarpras'] = $model->findAll();
 
         $apbdesModel = new APBDesModel();
         $apbdes = $apbdesModel->orderBy('tahun', 'DESC')->first();
@@ -71,9 +75,12 @@ class Home extends BaseController
         $data['realisasi'] = $model->findAll();
 
         $model = new PembangunanModel();
-        $pembangunan = $model
-            ->orderBy('created_at', 'DESC')
-            ->findAll();
+        $data['pembangunan'] = $model->orderBy('created_at', 'DESC')->findAll();
+
+        $model = new KategoriPengaduanModel();
+        $data['kategori_pengaduan'] = $model
+                ->orderBy('nama_kategori', 'ASC')
+                ->findAll();
 
         return view('index', $data);
     }

@@ -29,9 +29,12 @@ class ApbdesController extends BaseController
 
     public function index()
     {
+        $apbdesList = $this->apbdes->orderBy('id_apbdes', 'DESC')->findAll();
+        $id_apbdes = count($apbdesList) > 0 ? $apbdesList[0]['id_apbdes'] : null;
         $data = [
             'title'       => 'Data APBDes',
-            'apbdes'      => $this->apbdes->orderBy('id_apbdes', 'DESC')->findAll(),
+            'apbdes'      => $apbdesList,
+            'id_apbdes'   => $id_apbdes,
             'pendapatan'  => $this->pendapatan->orderBy('urutan', 'ASC')->findAll(),
             'pembiayaan'  => $this->pembiayaan->orderBy('urutan', 'ASC')->findAll(),
         ];
@@ -257,6 +260,7 @@ class ApbdesController extends BaseController
     public function pendapatan_store()
     {
         $this->pendapatan->save([
+            'id_apbdes'             => $this->request->getPost('id_apbdes'),
             'kategori'              => $this->request->getPost('kategori'),
             'jumlah'                => $this->request->getPost('jumlah'),
             'keterangan'            => $this->request->getPost('keterangan'),
@@ -294,6 +298,7 @@ class ApbdesController extends BaseController
     public function pembiayaan_store()
     {
         $this->pembiayaan->save([
+            'id_apbdes'             => $this->request->getPost('id_apbdes'),
             'uraian'                => $this->request->getPost('uraian'),
             'jumlah'                => $this->request->getPost('jumlah'),
             'keterangan'            => $this->request->getPost('keterangan'),

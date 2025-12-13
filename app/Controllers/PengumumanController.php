@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\PengumumanModel;
 
 class PengumumanController extends BaseController
@@ -11,7 +10,12 @@ class PengumumanController extends BaseController
     public function index()
     {
         $model = new PengumumanModel();
-        $data['pengumuman'] = $model->orderBy('tanggal', 'DESC')->findAll();
+
+        $data = [
+            'pengumuman' => $model->orderBy('tanggal', 'DESC')->findAll(),
+            'meta_title' => 'Pengumuman Desa',
+            'meta_desc'  => 'Pengumuman resmi dan informasi penting dari pemerintah desa.'
+        ];
 
         return view('pengumuman', $data);
     }
@@ -22,12 +26,22 @@ class PengumumanController extends BaseController
         $pengumuman = $model->where('slug', $slug)->first();
 
         if (!$pengumuman) {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Pengumuman tidak ditemukan");
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound(
+                'Pengumuman tidak ditemukan'
+            );
         }
 
-        $data['p'] = $pengumuman;
-        $data['title'] = $pengumuman['meta_title'] ?: $pengumuman['judul'];
-        $data['meta_desc'] = $pengumuman['meta_desc'] ?: strip_tags($pengumuman['deskripsi']);
+        $data = [
+            'pengumuman' => $pengumuman,
+
+            'meta_title' => !empty($pengumuman['meta_title'])
+                ? $pengumuman['meta_title']
+                : $pengumuman['judul'] . ' | Pengumuman Desa',
+
+            'meta_desc' => !empty($pengumuman['meta_desc'])
+                ? $pengumuman['meta_desc']
+                : substr(strip_tags($pengumuman['deskripsi']), 0, 160)
+        ];
 
         return view('detailPengumuman', $data);
     }

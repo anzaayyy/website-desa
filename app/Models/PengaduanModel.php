@@ -15,7 +15,7 @@ class PengaduanModel extends Model
     protected $allowedFields    = ['id_kategori_pengaduan',
         'nama',
         'link_email',
-        'pengaduan'];
+        'pengaduan','created_at'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -24,7 +24,7 @@ class PengaduanModel extends Model
     protected array $castHandlers = [];
 
     // Dates
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

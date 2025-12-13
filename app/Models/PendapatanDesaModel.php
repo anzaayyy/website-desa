@@ -13,6 +13,7 @@ class PendapatanDesaModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
+        'id_apbdes',
         'kategori',
         'jumlah',
         'keterangan',

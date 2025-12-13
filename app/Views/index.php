@@ -399,21 +399,43 @@
 <section id="sarpra" class="reveal">
   <h3 class="mb-4">SARANA DAN PRASARANA</h3>
   <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel facere
-    eos maiores voluptatem magnam corrupti officia nam. Mollitia ab
-    expedita omnis adipisci perferendis temporibus dolorem similique nobis
-    voluptatibus, eveniet a.
+    Berikut adalah data lengkap mengenai berbagai sarana dan prasarana yang mendukung kegiatan masyarakat desa.
   </p>
-  <div class="row justify-content-center">
-    <div class="col-md-6 text-center mb-4">
-      <h4 class="">SARANA</h4>
-      <canvas id="chartSarana" style="max-height: 350px"></canvas>
+  <?php if (!empty($sarpras)): ?>
+    <div class="row g-4">
+      <?php foreach ($sarpras as $row): ?>
+        <!-- SARANA -->
+        <div class="col-md-6">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+              <h5 class="mb-3 text-primary"><?= esc($row['judul_sarana']) ?></h5>
+              <ul class="mb-0">
+                <?php foreach (explode(',', $row['isi_sarana']) as $item): ?>
+                  <li><?= esc(trim($item)) ?></li>
+                <?php endforeach; ?>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRASARANA -->
+        <div class="col-md-6">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+              <h5 class="mb-3 text-success"><?= esc($row['judul_prasarana']) ?></h5>
+              <ul class="mb-0">
+                <?php foreach (explode(',', $row['isi_prasarana']) as $item): ?>
+                  <li><?= esc(trim($item)) ?></li>
+                <?php endforeach; ?>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <?php endforeach; ?>
     </div>
-    <div class="col-md-6 text-center mb-4">
-      <h4 class="">PRASARANA</h4>
-      <canvas id="chartPrasarana" style="max-height: 350px"></canvas>
-    </div>
-  </div>
+  <?php else: ?>
+    <p class="text-center text-muted">Belum ada data sarana dan prasarana.</p>
+  <?php endif; ?>
   <div class="d-flex justify-content-center mt-4">
     <a href="<?= base_url('sarana_prasarana'); ?>" class="btn-bg">Selengkapnya</a>
   </div>
@@ -524,7 +546,7 @@
         <?php foreach ($pembangunan as $p): ?>
           <?php
           $img = !empty($p['foto'])
-            ? base_url('assets/img/' . $p['foto'])
+            ? base_url('uploads/pembangunan/' . $p['foto'])
             : base_url('assets/img/artikel.jpeg');
 
           $alt       = $p['alt_foto'] ?: 'Foto Pembangunan Desa';
@@ -550,11 +572,11 @@
                 </div>
                 <small class="text-muted mb-3">Progres: <?= $progress ?>%</small>
 
-                <div class="mt-auto">
+                <!-- <div class="mt-auto">
                   <a href="<?= base_url('pembangunan/' . esc($p['slug'])) ?>" class="text-primary fw-bold">
                     Lihat Detail
                   </a>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -568,6 +590,9 @@
       <?php endif; ?>
     </div>
   </div>
+  <a href="<?= base_url('pembangunan'); ?>" class="btn-bg d-block mx-auto" style="width: max-content;">
+    Selengkapnya
+  </a>
 </section>
 
 <h1 class="mb-4">LAYANAN PUBLIK</h1>

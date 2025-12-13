@@ -10,9 +10,12 @@ class LembagaController extends BaseController
     public function index()
     {
         $model = new LembagaModel();
-        $data['lembaga'] = $model->findAll();
+        $data = [
+            'lembaga'    => $model->findAll(),
+            'meta_title' => 'Lembaga Desa',
+            'meta_desc'  => 'Daftar lembaga desa yang berperan dalam pelayanan dan pembangunan masyarakat.'
+        ];
 
-        $data['title'] = 'Lembaga Desa';
         return view('lembaga', $data);
     }
 
@@ -26,10 +29,16 @@ class LembagaController extends BaseController
         }
 
         $data = [
-            'title' => $lembaga['meta_title'] ?? $lembaga['nama_lembaga'],
-            'meta_desc' => $lembaga['meta_desc'] ?? 'Informasi wilayah dan lembaga desa.',
             'lembaga' => $lembaga,
-        ];        
+
+            'meta_title' => !empty($lembaga['meta_title'])
+                ? $lembaga['meta_title']
+                : $lembaga['nama_lembaga'] . ' | Lembaga Desa',
+
+            'meta_desc' => !empty($lembaga['meta_desc'])
+                ? $lembaga['meta_desc']
+                : substr(strip_tags($lembaga['deskripsi'] ?? ''), 0, 160),
+        ];
 
         return view('detailLembaga', $data);
     }

@@ -5,7 +5,7 @@
 <?php
     // Data pembangunan
     $imgPath = !empty($pembangunan['foto'])
-        ? base_url('assets/img/' . $pembangunan['foto'])
+        ? base_url('uploads/pembangunan/' . $pembangunan['foto'])
         : base_url('assets/img/artikel.jpeg');
 
     $alt       = $pembangunan['alt_foto'] ?: 'Foto Pembangunan Desa';

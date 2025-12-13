@@ -6,7 +6,7 @@
 
   <form action="<?= base_url('admin/agenda/store') ?>" method="post" enctype="multipart/form-data" class="bg-white shadow-sm p-4 rounded">
     <div class="mb-3">
-      <label class="form-label">Judul Agenda</label>
+      <label class="form-label">Judul</label>
       <input type="text" name="judul" class="form-control" required>
     </div>
 
@@ -16,17 +16,13 @@
     </div>
 
     <div class="row">
-      <div class="col-md-4 mb-3">
-        <label class="form-label">Tanggal</label>
-        <input type="date" name="tanggal" class="form-control" required>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Tanggal Mulai</label>
+        <input type="date" name="tanggal_mulai" class="form-control" required>
       </div>
-      <div class="col-md-4 mb-3">
-        <label class="form-label">Waktu</label>
-        <input type="time" name="waktu" class="form-control">
-      </div>
-      <div class="col-md-4 mb-3">
-        <label class="form-label">Lokasi</label>
-        <input type="text" name="lokasi" class="form-control">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Tanggal Selesai</label>
+        <input type="date" name="tanggal_selesai" class="form-control" required>
       </div>
     </div>
 

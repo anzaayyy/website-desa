@@ -14,7 +14,7 @@
         <th>Email</th>
         <th>Kritik/Saran</th>
         <th>Tanggal</th>
-        <th>Aksi</th>
+        <!-- <th>Aksi</th> -->
       </tr>
     </thead>
 
@@ -34,10 +34,9 @@
                 -
               <?php endif; ?>
             </td>
-            <td class="text-center">
-              <!-- nanti bisa diisi tombol Detail / Hapus -->
+            <!-- <td class="text-center">
               -
-            </td>
+            </td> -->
           </tr>
         <?php endforeach; ?>
       <?php else: ?>

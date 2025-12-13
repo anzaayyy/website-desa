@@ -3,7 +3,7 @@
 
 <h3 class="mb-4">Edit Sarana & Prasarana</h3>
 
-<form action="<?= base_url('admin/sarpra/update/'.$data['id']) ?>" method="post">
+<form action="<?= base_url('admin/sarpra/update/'.$data['id_sarana']) ?>" method="post">
 
   <div class="mb-3">
     <label>Judul Sarana</label>

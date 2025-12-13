@@ -13,11 +13,12 @@
         <div class="col-md-3 text-center">
           <div class="card border-0 shadow-sm h-100">
             <img
-              src="<?= base_url('uploads/agenda/' . $item['gambar']) ?>"
+              src="<?= !empty($item['gambar'])
+                      ? base_url('uploads/agenda/' . $item['gambar'])
+                      : base_url('assets/img/no-image.png') ?>"
               alt="<?= esc($item['alt_gambar']) ?>"
               class="card-img-top"
-              style="height: 180px; object-fit: cover"
-            />
+              style="height: 180px; object-fit: cover" />
             <div class="card-body">
               <h5 class="card-title mb-2"><?= esc($item['judul']) ?></h5>
               <p class="text-muted small mb-1">

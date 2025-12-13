@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\AgendaModel;
 
 class AgendaController extends BaseController
@@ -11,7 +10,11 @@ class AgendaController extends BaseController
     public function index()
     {
         $agendaModel = new AgendaModel();
-        $data['agenda'] = $agendaModel->orderBy('tanggal_mulai','DESC')->findAll();
+        $data = [
+            'agenda'     => $agendaModel->orderBy('tanggal_mulai', 'DESC')->findAll(),
+            'meta_title' => 'Agenda Kegiatan Desa',
+            'meta_desc'  => 'Daftar agenda dan kegiatan resmi desa yang akan dan telah dilaksanakan.'
+        ];
         return view('agenda', $data);
     }
 
@@ -26,7 +29,7 @@ class AgendaController extends BaseController
 
         $data = [
             'agenda' => $agenda,
-            'meta_title' => !empty($agenda['meta_title']) ? $agenda['meta_title'] : $agenda['judul'],
+            'meta_title' => !empty($agenda['meta_title']) ? $agenda['meta_title'] : $agenda['judul'] . ' | Agenda Desa',
             'meta_desc'  => !empty($agenda['meta_desc']) ? $agenda['meta_desc'] : substr(strip_tags($agenda['deskripsi']), 0, 160)
         ];
 

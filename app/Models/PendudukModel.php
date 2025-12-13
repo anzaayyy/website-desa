@@ -49,9 +49,9 @@ class PendudukModel extends Model
     {
         return [
             'total'       => $this->countAllResults(),
-            'laki'        => $this->where('jenis_kelamin', 'L')->countAllResults(),
-            'perempuan'   => $this->where('jenis_kelamin', 'P')->countAllResults(),
-            'kk'          => $this->distinct()->select('alamat')->countAllResults(), // anggap 1 alamat = 1 KK
+            'laki'        => $this->where('jenis_kelamin', 'Laki-laki')->countAllResults(),
+            'perempuan'   => $this->where('jenis_kelamin', 'Perempuan')->countAllResults(),
+            'kk'          => $this->where('status_keluarga', 'Kepala Keluarga')->countAllResults(),
         ];
     }
 
@@ -59,8 +59,8 @@ class PendudukModel extends Model
     public function getRekapDusun()
     {
         return $this->select("dusun,
-                SUM(jenis_kelamin='L') AS laki,
-                SUM(jenis_kelamin='P') AS perempuan,
+                SUM(jenis_kelamin='Laki-laki') AS laki,
+                SUM(jenis_kelamin='Perempuan') AS perempuan,
                 COUNT(*) AS total")
             ->groupBy('dusun')
             ->findAll();

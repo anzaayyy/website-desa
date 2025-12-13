@@ -16,7 +16,9 @@
         <tr class="text-center">
         <th>No</th>
         <th>Judul Sarana</th>
+        <th>Deskripsi Sarana</th>
         <th>Judul Prasarana</th>
+        <th>Deskrpsi Prasarana</th>
         <th>Aksi</th>
       </tr>
     </thead>
@@ -26,7 +28,9 @@
         <tr>
           <td><?= $i+1 ?></td>
           <td><?= esc($row['judul_sarana']) ?></td>
+          <td><?= esc($row['isi_sarana']) ?></td>
           <td><?= esc($row['judul_prasarana']) ?></td>
+          <td><?= esc($row['isi_prasarana']) ?></td>
           <td>
             <a href="<?= base_url('admin/sarpra/edit/'.$row['id_sarana']) ?>" class="btn btn-sm btn-warning">Edit</a>
             <a href="<?= base_url('admin/sarpra/delete/'.$row['id_sarana']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')">Hapus</a>
