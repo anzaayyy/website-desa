@@ -39,11 +39,13 @@
       </p>
     </div>
     <div class="col-md-4 text-center">
-      <img
-        src="<?= base_url('assets/img/' . $vimi['gambar']); ?>"
-        alt="<?= esc($vimi['alt_gambar'] ?? 'visimisi'); ?>"
-        class="img-fluid shadow rounded"
-        style="width: 300px; height: 300px; object-fit: cover;" />
+      <?php if (!empty($vimi['gambar'])) : ?>
+        <img
+          src="<?= base_url('uploads/visimisi/' . $vimi['gambar']); ?>"
+          alt="<?= esc($vimi['alt_gambar'] ?? 'visimisi'); ?>"
+          class="img-fluid shadow rounded"
+          style="width: 300px; height: 300px; object-fit: cover;" />
+      <?php endif; ?>
     </div>
     <div class="col-md-4 text-center">
       <h3 class="card-title">MISI</h3>

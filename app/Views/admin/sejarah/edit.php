@@ -22,7 +22,7 @@
     </div>
     <div class="mb-3">
         <label>Deskripsi</label>
-        <textarea name="deskripsi" class="form-control" rows="6"><?= esc($sejarah['isi']) ?></textarea>
+        <textarea name="isi" class="form-control" rows="6"><?= esc($sejarah['isi']) ?></textarea>
     </div>
     <button type="submit" class="btn btn-success">Update</button>
     <a href="<?= base_url('admin/sejarah') ?>" class="btn btn-secondary">Kembali</a>

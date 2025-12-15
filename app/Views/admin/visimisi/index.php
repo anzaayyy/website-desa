@@ -38,7 +38,7 @@
                 </td>
 
                 <td>
-                <img src="<?= base_url('assets/img/' . ($visimisi['gambar'] ?? 'default.png')) ?>"
+                <img src="<?= base_url('uploads/visimisi/' . ($visimisi['gambar'])) ?>"
                     width="60" height="60"
                     style="object-fit:cover; border-radius:6px;">
                 </td>
@@ -48,7 +48,7 @@
                     class="btn btn-warning btn-sm">Edit</a>
 
                 <form action="<?= base_url('admin/visimisi/delete/' . $visimisi['id_visimisi']) ?>"
-                        method="post"
+                        method="get"
                         class="d-inline"
                         onsubmit="return confirm('Yakin ingin menghapus data ini?')">
                     <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
