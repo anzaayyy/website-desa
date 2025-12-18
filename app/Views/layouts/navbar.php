@@ -4,9 +4,8 @@
           src="<?= base_url('assets/img/logo.jpeg') ?>" alt="Logo"
           alt="Logo"
           class="img-fluid pentagon-wrapper pentagon-img mb-3"
-          style="width: 100px; height: 100px; object-fit: cover"
-        />
-        <h2 class="" style="color: aliceblue">DESA MATARAM</h2>
+          style="width: 100px; height: 100px; object-fit: cover" />
+        <h2 class="" style="color: aliceblue">DESA SUKAMAJU LESTARI</h2>
       </div>
       <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container-fluid">
@@ -15,8 +14,7 @@
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-          >
+            data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
           </button>
 
@@ -28,26 +26,19 @@
                 <a
                   class="nav-link dropdown-toggle"
                   role="button"
-                  data-bs-toggle="dropdown"
-                >
+                  data-bs-toggle="dropdown">
                   PROFIL
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="<?= base_url('sejarah'); ?>"
-                      >Sejarah</a
-                    >
+                    <a class="dropdown-item" href="<?= base_url('sejarah'); ?>">Sejarah</a>
                   </li>
                   <li><a class="dropdown-item" href="<?= base_url('visimisi'); ?>">Visi Misi</a></li>
                   <li>
-                    <a class="dropdown-item" href="<?= base_url('struktur'); ?>"
-                      >Struktur Organisasi</a
-                    >
+                    <a class="dropdown-item" href="<?= base_url('struktur'); ?>">Struktur Organisasi</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="<?= base_url('perangkat'); ?>"
-                      >Perangkat Desa</a
-                    >
+                    <a class="dropdown-item" href="<?= base_url('perangkat'); ?>">Perangkat Desa</a>
                   </li>
                 </ul>
               </li>
@@ -55,16 +46,13 @@
                 <a
                   class="nav-link dropdown-toggle"
                   role="button"
-                  data-bs-toggle="dropdown"
-                >
+                  data-bs-toggle="dropdown">
                   BERITA
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="<?= base_url('berita'); ?>">Berita</a></li>
                   <li>
-                    <a class="dropdown-item" href="<?= base_url('pengumuman'); ?>"
-                      >Pengumuman Desa</a
-                    >
+                    <a class="dropdown-item" href="<?= base_url('pengumuman'); ?>">Pengumuman Desa</a>
                   </li>
                   <li>
                     <a class="dropdown-item" href="<?= base_url('agenda'); ?>">Agenda Desa</a>
@@ -75,8 +63,7 @@
                 <a
                   class="nav-link dropdown-toggle"
                   role="button"
-                  data-bs-toggle="dropdown"
-                >
+                  data-bs-toggle="dropdown">
                   DATA & STATISTIK DESA
                 </a>
                 <ul class="dropdown-menu">
@@ -94,8 +81,7 @@
                 <a
                   class="nav-link dropdown-toggle"
                   role="button"
-                  data-bs-toggle="dropdown"
-                >
+                  data-bs-toggle="dropdown">
                   INFORMASI
                 </a>
                 <ul class="dropdown-menu">
@@ -110,8 +96,7 @@
                 <a
                   class="nav-link"
                   role="button"
-                  href="<?= base_url('informasi_layanan'); ?>"
-                >
+                  href="<?= base_url('informasi_layanan'); ?>">
                   INFORMASI LAYANAN
                 </a>
                 <!-- <ul class="dropdown-menu">
@@ -132,8 +117,7 @@
                 <a
                   class="nav-link dropdown-toggle"
                   role="button"
-                  data-bs-toggle="dropdown"
-                >
+                  data-bs-toggle="dropdown">
                   KONTAK & PENGADUAN
                 </a>
                 <ul class="dropdown-menu">

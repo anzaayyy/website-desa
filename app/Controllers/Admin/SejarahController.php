@@ -39,7 +39,7 @@ class SejarahController extends BaseController
         $this->sejarahModel->save([
             'judul'     => $this->request->getPost('judul'),
             'gambar'    => $gambar,
-            'deskripsi' => $this->request->getPost('deskripsi'),
+            'isi' => $this->request->getPost('isi'),
         ]);
 
         return redirect()->to('/admin/sejarah')->with('success', 'Data berhasil ditambahkan');
@@ -72,7 +72,7 @@ class SejarahController extends BaseController
         $this->sejarahModel->update($id, [
             'judul'     => $this->request->getPost('judul'),
             'gambar'    => $gambar,
-            'deskripsi' => $this->request->getPost('deskripsi'),
+            'isi' => $this->request->getPost('isi'),
         ]);
 
         return redirect()->to('/admin/sejarah')->with('success', 'Data berhasil diperbarui');

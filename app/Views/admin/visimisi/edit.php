@@ -18,7 +18,7 @@
     <div class="mb-3">
         <label>Gambar</label><br>
         <?php if (!empty($visimisi['gambar'])): ?>
-            <img src="<?= base_url('assets/img/' . $visimisi['gambar']) ?>" width="200" class="mb-3"><br>
+            <img src="<?= base_url('uploads/visimisi/' . $visimisi['gambar']) ?>" width="200" class="mb-3"><br>
         <?php endif; ?>
         <input type="file" name="gambar" class="form-control">
     </div>

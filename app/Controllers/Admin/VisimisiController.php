@@ -27,12 +27,10 @@ class VisimisiController extends BaseController
 
     public function store()
     {
-        $validation = \Config\Services::validation();
-
         $rules = [
-            'visi' => 'required|min_length[3]',
-            'misi' => 'required|min_length[3]',
-            'gambar' => 'mime_in[gambar,image/jpg,image/jpeg,image/png]|max_size[gambar,2048]'
+            'visi'   => 'required|min_length[3]',
+            'misi'   => 'required|min_length[3]',
+            'gambar' => 'permit_empty|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]|max_size[gambar,2048]'
         ];
 
         if (!$this->validate($rules)) {
@@ -41,80 +39,93 @@ class VisimisiController extends BaseController
             ]);
         }
 
-        $model = new \App\Models\VisiMisiModel();
-
-        // Upload gambar (opsional)
         $file = $this->request->getFile('gambar');
         $namaGambar = null;
 
         if ($file && $file->isValid() && !$file->hasMoved()) {
             $namaGambar = $file->getRandomName();
-            $file->move('assets/img', $namaGambar);
+            $file->move('uploads/visimisi', $namaGambar);
         }
 
-        $model->save([
+        $this->visimisiModel->save([
             'visi'   => $this->request->getPost('visi'),
             'misi'   => $this->request->getPost('misi'),
             'gambar' => $namaGambar
         ]);
 
-        return redirect()->to('/admin/visimisi')->with('success', 'Visi & Misi berhasil ditambahkan.');
+        return redirect()->to('/admin/visimisi')
+            ->with('success', 'Visi & Misi berhasil ditambahkan.');
     }
-
 
     public function edit($id)
     {
         $data['visimisi'] = $this->visimisiModel->find($id);
+
+        if (!$data['visimisi']) {
+            return redirect()->to('/admin/visimisi')
+                ->with('error', 'Data tidak ditemukan.');
+        }
+
         return view('admin/visimisi/edit', $data);
     }
 
     public function update($id)
-{
-    $fileGambar = $this->request->getFile('gambar');
-    $dataUpdate = [
-        'visi' => $this->request->getPost('visi'),
-        'misi' => $this->request->getPost('misi')
-    ];
+    {
+        $visimisi = $this->visimisiModel->find($id);
 
-    if ($fileGambar && $fileGambar->isValid() && !$fileGambar->hasMoved()) {
-        // generate nama baru
-        $newName = $fileGambar->getRandomName();
-        // simpan ke folder public/uploads/visimisi
-        $fileGambar->move('uploads/visimisi', $newName);
-        $dataUpdate['gambar'] = 'uploads/visimisi/' . $newName;
-
-        // hapus gambar lama jika ada
-        $oldData = $this->visimisiModel->find($id);
-        if ($oldData && !empty($oldData['gambar']) && file_exists($oldData['gambar'])) {
-            unlink($oldData['gambar']);
+        if (!$visimisi) {
+            return redirect()->to('/admin/visimisi')
+                ->with('error', 'Data tidak ditemukan.');
         }
+
+        $dataUpdate = [
+            'visi' => $this->request->getPost('visi'),
+            'misi' => $this->request->getPost('misi'),
+        ];
+
+        $file = $this->request->getFile('gambar');
+
+        if ($file && $file->isValid() && !$file->hasMoved()) {
+            $newName = $file->getRandomName();
+            $file->move('uploads/visimisi', $newName);
+
+            // hapus gambar lama
+            if (!empty($visimisi['gambar'])) {
+                $oldPath = 'uploads/visimisi/' . $visimisi['gambar'];
+                if (file_exists($oldPath)) {
+                    unlink($oldPath);
+                }
+            }
+
+            $dataUpdate['gambar'] = $newName;
+        }
+
+        $this->visimisiModel->update($id, $dataUpdate);
+
+        return redirect()->to('/admin/visimisi')
+            ->with('success', 'Visi & Misi berhasil diperbarui.');
     }
 
-    $this->visimisiModel->update($id, $dataUpdate);
+    public function delete($id)
+    {
+        $visimisi = $this->visimisiModel->find($id);
 
-    return redirect()->to('/admin/visimisi')->with('success', 'Visi & Misi berhasil diperbarui');
-}
+        if (!$visimisi) {
+            return redirect()->to('/admin/visimisi')
+                ->with('error', 'Data tidak ditemukan.');
+        }
 
-public function delete($id)
-{
-    $model = new \App\Models\VisiMisiModel();
+        // hapus gambar
+        if (!empty($visimisi['gambar'])) {
+            $path = 'uploads/visimisi/' . $visimisi['gambar'];
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
 
-    // Ambil data berdasarkan ID
-    $data = $model->find($id);
+        $this->visimisiModel->delete($id);
 
-    if (!$data) {
-        return redirect()->to('/admin/visimisi')->with('error', 'Data tidak ditemukan.');
+        return redirect()->to('/admin/visimisi')
+            ->with('success', 'Data berhasil dihapus.');
     }
-
-    // Hapus gambar jika ada dan bukan default
-    if (!empty($data['gambar']) && file_exists('assets/img/' . $data['gambar'])) {
-        unlink('assets/img/' . $data['gambar']);
-    }
-
-    // Hapus data dari database
-    $model->delete($id);
-
-    return redirect()->to('/admin/visimisi')->with('success', 'Data berhasil dihapus.');
-}
-
 }
