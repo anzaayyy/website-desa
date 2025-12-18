@@ -19,7 +19,7 @@
   <div class="mb-3">
     <label>Gambar Lama</label><br>
     <?php if($berita['gambar']): ?>
-      <img src="<?= base_url('uploads/berita/' . $berita['gambar']) ?>" width="120"><br>
+      <img src="<?= base_url('/' . $berita['gambar']) ?>" width="120"><br>
     <?php endif; ?>
     <!-- <label>Ganti Gambar</label>
     <input type="file" name="gambar" class="form-control"> -->

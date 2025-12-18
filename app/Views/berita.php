@@ -16,7 +16,7 @@
         <?php foreach ($berita as $b): ?>
           <?php
             $imgPath = $b['gambar']
-              ? base_url('assets/img/' . $b['gambar'])
+              ? base_url('/' . $b['gambar'])
               : base_url('assets/img/berita-default.jpeg'); // fallback default
 
             $alt = $b['alt_gambar'] ?: 'Gambar Berita';

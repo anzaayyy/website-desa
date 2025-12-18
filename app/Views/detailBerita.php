@@ -4,7 +4,7 @@
 <?php
 // Fallback jika tidak ada gambar
 $img = $berita['gambar']
-    ? base_url('assets/img/' . $berita['gambar'])
+    ? base_url('/' . $berita['gambar'])
     : base_url('assets/img/berita-default.jpg');
 
 $tanggal = date('d F Y', strtotime($berita['tanggal']));

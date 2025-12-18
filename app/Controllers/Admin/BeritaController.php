@@ -27,6 +27,8 @@ class BeritaController extends BaseController
 
     public function store()
     {
+        helper(['text', 'url']);
+
         $gambar = $this->request->getFile('gambar');
         $namaGambar = null;
 
@@ -35,11 +37,23 @@ class BeritaController extends BaseController
             $gambar->move('uploads/berita', $namaGambar);
         }
 
+        // 1) slug dari judul (spasi -> -, lowercase)
+        $judul = $this->request->getPost('judul');
+        $slug = url_title($judul, '-', true); // true => lowercase
+
+        // 2) bikin unik kalau slug sudah ada
+        $baseSlug = $slug;
+        $i = 1;
+        while ($this->beritaModel->where('slug', $slug)->first()) {
+            $slug = $baseSlug . '-' . $i++;
+        }
+
         $this->beritaModel->save([
-            'judul'   => $this->request->getPost('judul'),
-            'deskripsi'     => $this->request->getPost('deskripsi'),
-            'tanggal' => $this->request->getPost('tanggal'),
-            'gambar'  => $namaGambar ? 'uploads/berita/'.$namaGambar : null,
+            'judul'     => $judul,
+            'slug'      => $slug, // ⬅️ simpan slug
+            'deskripsi' => $this->request->getPost('deskripsi'),
+            'tanggal'   => $this->request->getPost('tanggal'),
+            'gambar'    => $namaGambar ? 'uploads/berita/' . $namaGambar : null,
         ]);
 
         return redirect()->to('/admin/berita')->with('success', 'Berita berhasil ditambahkan');
@@ -63,7 +77,7 @@ class BeritaController extends BaseController
             }
             $namaGambarBaru = $gambar->getRandomName();
             $gambar->move('uploads/berita', $namaGambarBaru);
-            $namaGambar = 'uploads/berita/'.$namaGambarBaru;
+            $namaGambar = 'uploads/berita/' . $namaGambarBaru;
         }
 
         $this->beritaModel->update($id, [
